@@ -3,6 +3,8 @@ using UnityEngine.Audio;
 using System.Collections;
 using System.Collections.Generic;
 using Pixelplacement;
+using UnityEngine.Networking;
+using System.IO;
 
 public class AudioController : MonoBehaviour
 {
@@ -59,13 +61,32 @@ public class AudioController : MonoBehaviour
         transform.parent = null;
         DontDestroyOnLoad(gameObject);
 
-        foreach (object o in Resources.LoadAll("Audio/SFX"))
+
+        string sfxFolder = Path.Combine(Application.streamingAssetsPath, "Audio/SFX");
+        string loopsFolder = Path.Combine(Application.streamingAssetsPath, "Audio/Loops");
+        StartCoroutine(LoadAudioClipsFromFolder(sfx, sfxFolder));
+        StartCoroutine(LoadAudioClipsFromFolder(loops, loopsFolder));
+    }
+
+    IEnumerator LoadAudioClipsFromFolder(List<AudioClip> list, string path)
+    {
+        if(!Directory.Exists(path))
+            yield break;
+
+        foreach (var file in Directory.GetFiles(path))
         {
-            sfx.Add((AudioClip)o);
-        }
-        foreach (object o in Resources.LoadAll("Audio/Loops"))
-        {
-            loops.Add((AudioClip)o);
+            if(!file.EndsWith(".ogg") && !file.EndsWith(".wav") && !file.EndsWith(".mp3"))
+                continue;
+            
+            UnityWebRequest audioClipRequest = UnityWebRequestMultimedia.GetAudioClip(file, AudioType.WAV);
+            yield return audioClipRequest.SendWebRequest();
+
+            if (audioClipRequest.result == UnityWebRequest.Result.ConnectionError || audioClipRequest.result == UnityWebRequest.Result.ProtocolError)
+                continue;
+
+            var clip = DownloadHandlerAudioClip.GetContent(audioClipRequest);
+            clip.name = Path.GetFileNameWithoutExtension(file);
+            list.Add(clip);
         }
     }
 
