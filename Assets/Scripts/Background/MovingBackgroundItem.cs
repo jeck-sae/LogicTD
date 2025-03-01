@@ -1,17 +1,17 @@
 using UnityEngine;
 
-public class BackgroundItem : ManagedBehaviour
+public class BackgroundItem : MonoBehaviour
 {
-    [SerializeField] SpriteRenderer icon;
+    [SerializeField] public SpriteRenderer icon;
 
-    [SerializeField] Gradient colorGradient;
-    [SerializeField] AnimationCurve scaleCurve;
-    [SerializeField] AnimationCurve positionCurve;
-    [SerializeField] AnimationCurve rotationCurve;
+    [SerializeField] public Gradient colorGradient;
+    [SerializeField] public AnimationCurve scaleCurve;
+    [SerializeField] public AnimationCurve positionCurve;
+    [SerializeField] public AnimationCurve rotationCurve;
 
     public float colorMaxDist = 10;
 
-    public override void ManagedUpdate()
+    /*public override void ManagedUpdate()
     {
         var cursorPos = Helpers.Camera.ScreenToWorldPoint(Input.mousePosition);
         cursorPos.z = transform.position.z;
@@ -26,5 +26,5 @@ public class BackgroundItem : ManagedBehaviour
         icon.transform.localPosition = dir * positionCurve.Evaluate(dist);
 
         icon.color = colorGradient.Evaluate(dist / colorMaxDist);
-    }
+    }*/
 }

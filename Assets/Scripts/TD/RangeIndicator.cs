@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class RangeIndicator : MonoBehaviour
 {
-    public SpriteRenderer sr;
-    public LineRenderer lr;
-    
+    [SerializeField] SpriteRenderer sr;
+    [SerializeField] LineRenderer lr;
+    public ScaleWithStat scaleWithStat;
+
+
     public void SetColor(Color color)
     {
         Color srColor = color;

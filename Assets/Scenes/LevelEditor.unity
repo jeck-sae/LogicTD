@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d48e2687f7f4d74b978bc7628a3a8e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultTile: {fileID: 6488037865941911809, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+  defaultTile: {fileID: 7481382868539990814, guid: 68dc7b149b01d6a49a618f1b88b4f6fb, type: 3}
   placingTile: {fileID: 0}
   lastHoveredTile: {fileID: 0}
 --- !u!4 &1396050032
@@ -1046,10 +1046,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 6488037865941911809, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
-  - {fileID: 334132196036398160, guid: c9e3839a24831254fa680b59e8d6b57c, type: 3}
-  - {fileID: 3335858560894665073, guid: 64077b21cae3e5d43aff38199ed32f53, type: 3}
-  - {fileID: 7489020993404856787, guid: 2a733a3927da93f4a85b8298931d5f6a, type: 3}
+  - {fileID: 7481382868539990814, guid: 68dc7b149b01d6a49a618f1b88b4f6fb, type: 3}
+  - {fileID: 6450301955935209955, guid: 96fd9c819165838409c91bb7a90fcf0d, type: 3}
+  - {fileID: 2414692581692740574, guid: 1e26ca0b1959e324e8f92652ef8f28f7, type: 3}
+  - {fileID: 6808385134192229218, guid: cbfeef0f2e24feb4ca58ccd8c9d7d932, type: 3}
 --- !u!114 &1396050034
 MonoBehaviour:
   m_ObjectHideFlags: 0

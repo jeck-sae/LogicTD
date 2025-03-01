@@ -9,17 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/LevelSelect.unity
     guid: 72b795c3b6c1925419521ed077bcdbe9
   - enabled: 1
-    path: Assets/Scenes/DebugLevel.unity
-    guid: 4352ec1d372184043b1e55d6465378d8
-  - enabled: 1
     path: Assets/Scenes/LevelEditor.unity
     guid: db03e3b72708c7541a41e56c2955ce33
   - enabled: 1
     path: Assets/Scenes/LoadableLevel.unity
     guid: 72f6800939237ad47bacbab2d7b123d7
-  - enabled: 0
-    path: Assets/Scenes/ShowcaseScene.unity
-    guid: 48834ea9faf9c2e4091aad0526744b87
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

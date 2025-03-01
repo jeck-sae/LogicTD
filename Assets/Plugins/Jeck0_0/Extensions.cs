@@ -10,4 +10,8 @@ public static class Extensions
     public static Vector3 XY(this Vector3 vector)
         => new Vector3(vector.x, vector.y);
 
+    //sets the Z value of a Vector3 to zero
+    public static Vector3 ToVector3(this Vector2Int vector)
+        => new Vector3(vector.x, vector.y);
+
 }

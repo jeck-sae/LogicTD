@@ -18,7 +18,7 @@ public class GridManager : Singleton<GridManager>
             t.SetupTile();
     }
 
-        
+    
     public void AddTile(Vector2Int position, Tile tile)
     {
         if (tiles.ContainsKey(position))
@@ -36,6 +36,7 @@ public class GridManager : Singleton<GridManager>
         GetAdjacentTiles(position).ForEach(x=>x.OnNearbyTileChanged());
         OnTileAdded?.Invoke(tile);
     }
+
 
     public List<Tile> GetAdjacentTiles(Vector2Int position)
     {
@@ -92,4 +93,17 @@ public class GridManager : Singleton<GridManager>
 
     public bool Contains(Vector2Int position) => tiles.ContainsKey(position);
     public bool Contains(Tile tile) => tiles.ContainsValue(tile);
+
+    Tile cachedHoveringTile;
+    float cachedHoveringTileTime;
+    public Tile GetHoveringTile()
+    {
+        if (Time.time == cachedHoveringTileTime)
+            return cachedHoveringTile;
+
+        var mousePos = Helpers.Camera.ScreenToWorldPoint(Input.mousePosition);
+        cachedHoveringTile = Get(mousePos);
+        cachedHoveringTileTime = Time.time;
+        return cachedHoveringTile;
+    }
 }

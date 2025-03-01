@@ -8,6 +8,7 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
 {
     [ShowInInspector, ReadOnly]
     public Tower placingTower { get; private set; }
+    bool instantiateNew;
 
     protected Action onPlace;
     protected Action onCancelPlacing;
@@ -15,13 +16,13 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
     protected GameObject preview;
     protected SpriteRenderer[] previewRenderers;
 
-    protected ScaleWithStat rangePreview;
+    protected RangeIndicator rangePreview;
     protected bool startedPlacingThisFrame;
 
     private void Awake()
     {
-        rangePreview = Instantiate(Resources.Load("Prefabs/RangePreview"), transform).GetComponent<ScaleWithStat>();
-        rangePreview.multiply = 2;
+        rangePreview = Instantiate(Resources.Load("Prefabs/RangePreview"), transform).GetComponent<RangeIndicator>();
+        rangePreview.scaleWithStat.multiply = 2;
         rangePreview.gameObject.SetActive(false);
     }
 
@@ -46,35 +47,59 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
         }
 
 
-        //get current tile
-        var mousePos = Helpers.Camera.ScreenToWorldPoint(Input.mousePosition);
-        var intCoords = GridManager.FixCoordinates(mousePos);
-        Tile hoveringTile = GridManager.Instance.Get(intCoords);
+        Tile hoveringTile = GridManager.Instance.GetHoveringTile();
 
         //place tower
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && hoveringTile && hoveringTile.CanPlace())
         {
-            if (hoveringTile != null && hoveringTile.CanPlace())
-            {
-                InputManager.Instance.SetPlacingStatus(false);
-                var t = Instantiate(placingTower.gameObject).GetComponent<Tower>();
-                t.name = placingTower.name;
-                hoveringTile.PlaceTower(t);
-                onPlace?.Invoke();
-
-                AudioController.Instance.PlaySound2D("ui_confirm");
-
-                StopPlacing();
-                return;
-            }
+            PlaceSelectedTower(hoveringTile);
+            return;
         }
 
 
         //draw preview
-        Vector3 coords = new Vector3(intCoords.x, intCoords.y);
-        rangePreview.transform.position = coords;
-        preview.transform.position = coords;
-        if (hoveringTile && hoveringTile.CanPlace())
+        UpdatePreview(hoveringTile);
+    }
+
+
+    void PlaceSelectedTower(Tile tile)
+    {
+        if (!tile || !placingTower) return;
+
+        InputManager.Instance.SetPlacingStatus(false);
+
+        Tower tower = null;
+        if (instantiateNew)
+        {
+            tower = Instantiate(placingTower.gameObject).GetComponent<Tower>();
+        }
+        else
+        {
+            tower = placingTower;
+            preview.transform.parent = tower.transform;
+            preview.transform.localPosition = Vector3.zero;
+            preview = null;
+        }
+        previewRenderers = new SpriteRenderer[0];
+
+        tower.gameObject.SetActive(true);
+        tower.name = placingTower.name;
+        tile.PlaceTower(tower);
+        onPlace?.Invoke();
+
+        AudioController.Instance.PlaySound2D("ui_confirm");
+
+        StopPlacing();
+    }
+
+    void UpdatePreview(Tile tile)
+    {
+        if (!tile) return;
+
+        rangePreview.transform.position = tile.transform.position;
+        preview.transform.position = tile.transform.position;
+
+        if (tile && tile.CanPlace())
         {
             previewRenderers.ForEach(x => x.color = Color.white);
         }
@@ -96,12 +121,15 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
         placingTower = null;
         onPlace = null;
         onCancelPlacing = null;
-        Destroy(preview);
+
+        if(preview)
+            Destroy(preview);
+        
         rangePreview.gameObject.SetActive(false);
         InputManager.Instance.SetPlacingStatus(false);
     }
 
-    public void StartPlacing(Tower tower, Action onPlace = null, Action cancelPlacing = null)
+    public void StartPlacing(Tower tower, Action onPlace = null, Action cancelPlacing = null, bool instantiateNew = true)
     {
         if (placingTower == tower)
         {
@@ -110,26 +138,29 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
         }
 
         InputManager.Instance.SetPlacingStatus(true);
+        this.instantiateNew = instantiateNew;
         this.placingTower = tower;
         this.onPlace = onPlace;
         this.onCancelPlacing = cancelPlacing;
         startedPlacingThisFrame = true;
 
         //Range preview
-        // range = tower.b_maxRange*2;
-        //float range =  * 2;
-
         var hoveringCoords = GridManager.FixCoordinates(Input.mousePosition);
         rangePreview.transform.position = new Vector3(hoveringCoords.x, hoveringCoords.y, rangePreview.transform.position.z);
-
-        rangePreview.SetStat(tower.MaxRange);
-        //rangePreview.transform.localScale = Vector3.one * range;
+        rangePreview.scaleWithStat.SetStat(tower.MaxRange);
         rangePreview.gameObject.SetActive(true);
-        rangePreview.GetComponent<RangeIndicator>().SetColor(tower.towerColor);
+        rangePreview.SetColor(tower.towerColor);
 
         //Tower preview
         var pos = Helpers.Camera.ScreenToWorldPoint(Input.mousePosition);
-        preview = Instantiate(tower.transform.Find("GFX"), pos, Quaternion.identity).gameObject;
+        if (instantiateNew)
+            preview = Instantiate(tower.transform.Find("GFX"), pos, Quaternion.identity).gameObject;
+        else
+        {
+            preview = tower.transform.Find("GFX").gameObject;
+            tower.transform.position = Vector3.left * 10000;
+            tower.Tile.RemoveTower();
+        }
         previewRenderers = preview.GetComponentsInChildren<SpriteRenderer>();
 
         AudioController.Instance.PlaySound2D("ui_confirm");

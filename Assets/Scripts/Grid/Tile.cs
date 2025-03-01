@@ -96,5 +96,10 @@ public class Tile : MonoBehaviour
         name = "Tile [" + t.name + "]";
     }
 
-
+    public void RemoveTower()
+    {
+        if(tower?.Tile == this)
+            tower.Tile = null;
+        tower = null;
+    }
 }

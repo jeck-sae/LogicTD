@@ -10,14 +10,44 @@ public class BGIconSpawner : MonoBehaviour
     [SerializeField] protected Vector2 offset;
     [SerializeField] protected List<Vector2Int> ignoreTiles;
     [SerializeField] protected Vector2Int size;
-    [SerializeField] protected Dictionary<Vector2Int, GameObject> grid = new();
+    [SerializeField] protected Dictionary<Vector2Int, BackgroundItem> grid = new();
 
     void Start()
     {
         SpawnTiles();
     }
 
-    
+
+    private void Update()
+    {
+        UpdateTiles();
+    }
+
+    private void UpdateTiles()
+    {
+        var cursorPos = Helpers.Camera.ScreenToWorldPoint(Input.mousePosition);
+        cursorPos.z = transform.position.z;
+
+        foreach (var tile in grid)
+        {
+            if(tile.Value.gameObject.activeInHierarchy)
+                UpdateTile(tile.Key, tile.Value, cursorPos);
+        }
+    }
+
+    protected virtual void UpdateTile(Vector2Int pos, BackgroundItem item, Vector3 cursorPos)
+    {
+        var dir = (cursorPos - item.transform.position).normalized;
+        var dist = Vector3.Distance(item.transform.position, cursorPos);
+
+        item.icon.transform.localScale = Vector3.one * item.scaleCurve.Evaluate(dist);
+
+        //icon.transform.rotation = Quaternion.Euler(0, 0, rotationCurve.Evaluate(dist) * 90);
+
+        item.icon.transform.localPosition = dir * item.positionCurve.Evaluate(dist);
+
+        item.icon.color = item.colorGradient.Evaluate(dist / item.colorMaxDist);
+    }
 
     protected virtual void SpawnTiles()
     {
@@ -31,7 +61,14 @@ public class BGIconSpawner : MonoBehaviour
                 if (!ignoreTiles.Contains(p))
                 {
                     var go = Instantiate(iconPrefab, spawnPos, Quaternion.identity, transform);
-                    grid.Add(p, go);
+                    if (go.TryGetComponent(out BackgroundItem item))
+                    {
+                        grid.Add(p, item);
+                    }
+                    else
+                    {
+                        Debug.LogError("Background item does not have BackgroundItem script", item);
+                    }
                 }
             }
         }

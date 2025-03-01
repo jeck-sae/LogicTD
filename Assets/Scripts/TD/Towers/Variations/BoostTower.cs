@@ -18,10 +18,12 @@ public class BoostTower : Tower
     {
         if (Time.time < nextBoostTime) return;
         nextBoostTime = Time.time + 1f / boostFrequency;
-
-        foreach (var t in GridManager.Instance.GetAdjacentTiles(GridManager.FixCoordinates(transform.position)))
+        
+        if(!Tile) return;
+        
+        foreach (var t in GridManager.Instance.GetAdjacentTiles(Tile.position))
         {
-            var tower = t.GetComponentInChildren<AttackingTower>();
+            var tower = t.tower;
             if (!tower) continue;
 
 

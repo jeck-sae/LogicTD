@@ -80,8 +80,8 @@ MonoBehaviour:
     tempMax: 0
     m_minValue: 0
     m_maxValue: 0
-  placeSoundVolume: 0.399
-  modifierName: attackSpeedBoostTower
+  placeSoundVolume: 0.4
+  modifierName: boostTower
   buffs:
   - stat: attackSpeed
     add: 0

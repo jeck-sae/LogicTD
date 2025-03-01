@@ -34,6 +34,7 @@ public abstract class AttackingTower : Tower
 
     public override void ManagedUpdate()
     {
+        nextShotTime -= Time.deltaTime;
         UpdateAttack();
     }
 
@@ -60,8 +61,8 @@ public abstract class AttackingTower : Tower
 
         if (!FacingTarget()) return;
 
-        if (Time.time < nextShotTime) return;
-        nextShotTime = Time.time + 1 / AttackSpeed;
+        if (nextShotTime > 0) return;
+        nextShotTime = 1 / AttackSpeed;
 
         Attack();
         var pitch = new AudioParams.Pitch(AudioParams.Pitch.Variation.Medium);

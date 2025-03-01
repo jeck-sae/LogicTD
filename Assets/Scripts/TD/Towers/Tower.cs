@@ -39,8 +39,14 @@ public class Tower : Interactable2D, IStatObject
         SetupRangeIndicators();
 
         AudioController.Instance.PlaySound2D("tower_" + towerName + "_place", placeSoundVolume);
+
     }
 
+    private void OnEnable()
+    {
+        placedThisFrame = true;
+        CustomCoroutine.WaitThenExecute(0, () => { placedThisFrame = false; }, true);
+    }
 
     public virtual Stats GetStats()
     {
@@ -54,13 +60,6 @@ public class Tower : Interactable2D, IStatObject
         return tempStats;
     }
         
-
-    public override void ManagedLateUpdate()
-    {
-        if (placedThisFrame)
-            placedThisFrame = false;
-    }
-
     protected void SetupRangeIndicators()
     {
         maxRangeIndicator = Instantiate(Resources.Load("Prefabs/RangePreview"), transform).GetComponent<ScaleWithStat>();
@@ -97,13 +96,12 @@ public class Tower : Interactable2D, IStatObject
 
         InputManager.Instance.SetMovingStatus(true);
         this.Tile.tower = null; //hacky way of doing it. Works for now
-        TowerPlacementManager.Instance.StartPlacing(this, OnMoveAway, OnCancelMoving);
-        gameObject.SetActive(false);
+        TowerPlacementManager.Instance.StartPlacing(this, OnMoveAway, OnCancelMoving, false);
     }
 
     protected void OnMoveAway()
     {
-        Destroy(gameObject);
+        //Destroy(gameObject);
         InputManager.Instance.SetMovingStatus(false);
     }
 
@@ -113,5 +111,4 @@ public class Tower : Interactable2D, IStatObject
         this.Tile.PlaceTower(this);
         InputManager.Instance.SetMovingStatus(false);
     }
-
 }
