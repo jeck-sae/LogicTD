@@ -11,9 +11,6 @@ public class ProjectileTower : AttackingTower
     public GameObject projectilePrefab;
     public Transform bulletSpawnpoint;
     public bool destroyProjectileOnTargetDeath = true;
-    public float b_projectileSpeed = 5;
-    public float b_splashDamageArea = 0;
-    public float b_projectileLifetime = 10;
 
     public Stat ProjectileSpeed;
     public Stat SplashDamageArea;

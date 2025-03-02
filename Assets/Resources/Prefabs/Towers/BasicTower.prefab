@@ -80,6 +80,17 @@ MonoBehaviour:
     tempMax: 0
     m_minValue: 0
     m_maxValue: 3.4028235e+38
+  upgradeHandler:
+    currentLevel: 0
+    levels:
+    - cost: 0
+      statUpgrades:
+      - stat: 
+        modifier:
+          add: 0
+          multiply: 0
+      flagUpgrades: []
+    unlockedFlagUpgrades: []
   placeSoundVolume: 0.5
   cannon: {fileID: 8523013753695896763}
   attackAngleThreshold: 5
@@ -116,9 +127,6 @@ MonoBehaviour:
   projectilePrefab: {fileID: 8598423996874606982, guid: 87ca5140c912f71448bc74b68ca0074a, type: 3}
   bulletSpawnpoint: {fileID: 2646325776021732203}
   destroyProjectileOnTargetDeath: 1
-  b_projectileSpeed: 5
-  b_splashDamageArea: 0
-  b_projectileLifetime: 10
   ProjectileSpeed:
     m_name: 
     m_baseValue: 5

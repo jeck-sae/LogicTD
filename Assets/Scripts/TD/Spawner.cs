@@ -51,10 +51,10 @@ using UnityEngine;
                     
                     enemy.Initialize();
                     if (wave.advancedSettings.hpMultiplier != 1)
-                        enemy.stats.AddModifier("waveCustomHealth", "maxHealth", multiply: wave.advancedSettings.hpMultiplier);
+                        enemy.stats.AddModifier("maxHealth", "waveCustomHealth", multiply: wave.advancedSettings.hpMultiplier);
                     
                     float waveScaling = 1 + (WaveManager.Instance.CurrentWave * (multiplyHpPerWave - 1));
-                    enemy.stats.AddModifier("waveScaling", "maxHealth", multiply: waveScaling * multiplyHpBase);
+                    enemy.stats.AddModifier("maxHealth", "waveScaling", multiply: waveScaling * multiplyHpBase);
 
                     yield return Helpers.GetWait(e.delay);
                 }

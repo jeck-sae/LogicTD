@@ -30,7 +30,7 @@ public class SlowTower : AttackingTower
             e.Damage(Damage / AttackSpeed.BaseValue);
 
 
-            if (e.stats.HasModifier("burn", "moveSpeed")) continue;
+            if (e.stats.HasModifier("moveSpeed", "burn")) continue;
             StatModifierEffect slowEffect = new StatModifierEffect("freeze", e.stats);
             slowEffect.AddModifier("moveSpeed", multiply: SlowAmount);
             e.EffectHandler.AddEffect("freeze", slowEffect, SlowDuration);

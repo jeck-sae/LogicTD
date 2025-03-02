@@ -30,17 +30,16 @@ public class Stats
         AddStat(name, new Stat(name, baseValue, minValue, maxValue));
     }
 
-    public void AddModifier(string modifierName, string statName, float add = 0, float multiply = 1, bool keepHighestIfDuplicate = true)
+    public void AddModifier(string statName, string modifierName, float add = 0, float multiply = 1, bool keepHighestIfDuplicate = true)
         => stats[statName].AddModifier(modifierName, add, multiply, keepHighestIfDuplicate);
 
-    public bool HasModifier(string modifierName, string statName)
+    public bool HasModifier(string statName, string modifierName)
         => stats[statName].HasModifier(modifierName);
 
-    public void RemoveModifier(string modifierName, string statName)
+    public void RemoveModifier(string statName, string modifierName)
         => stats[statName].RemoveModifier(modifierName);
-
-    public Stat GetStat(string name) => stats[name];
 }
+
 
 [Serializable, InlineProperty, BoxGroup("Stats"), LabelWidth(100)]
 public class Stat
@@ -190,20 +189,25 @@ public class Stat
         UpdateValue();
     }
 
+
+    public static float ApplyModifiers(Stat stat, Dictionary<string, StatModifier> mods) => ApplyModifiers(stat.BaseValue, mods.Values, stat.MinValue, stat.MaxValue);
+    public static float ApplyModifiers(float baseValue, IEnumerable<StatModifier> mods, float minValue = float.MinValue, float maxValue = float.MaxValue)
+    {
+        float add = mods.Sum(x => x.add);
+        float multiply = 1 + mods.Sum(x => x.multiply - 1);
+
+        float res = baseValue * multiply + add;
+        return Mathf.Clamp(res, minValue, maxValue);
+    }
+
     protected void UpdateValue()
     {
-        float add = modifiers.Sum(x => x.Value.add);
-        float multiply = 1 + modifiers.Sum(x => x.Value.multiply - 1);
-
-        float res = BaseValue * multiply + add;
-        float newVal = Mathf.Clamp(res, MinValue, MaxValue);
-
         float previousValue = Value;
-        Value = newVal;
+        Value = ApplyModifiers(this, modifiers);
 
-        if (previousValue != newVal)
+        if (previousValue != Value)
         {
-            OnValueChanged?.Invoke(new StatValueChangedEventArgs(previousValue, newVal));
+            OnValueChanged?.Invoke(new StatValueChangedEventArgs(previousValue, Value));
         }
     }
 

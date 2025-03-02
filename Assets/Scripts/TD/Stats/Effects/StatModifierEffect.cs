@@ -23,7 +23,7 @@ public class StatModifierEffect : Effect
     {
         foreach (var mod in modifiers)
         {
-            target.AddModifier(modifierName, mod.statName, mod.add, mod.multiply);
+            target.AddModifier(mod.statName, modifierName, mod.add, mod.multiply);
         }
     }
 
@@ -32,7 +32,7 @@ public class StatModifierEffect : Effect
     {
         foreach (var mod in modifiers)
         {
-            target.RemoveModifier(modifierName, mod.statName);
+            target.RemoveModifier(mod.statName, modifierName);
         }
     }
 
