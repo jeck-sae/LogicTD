@@ -6,13 +6,14 @@ using UnityEngine;
 [Serializable]
 public class UpgradeHandler 
 {
-    public int CurrentLevel => currentLevel + 1;
-    public int CurrentLevelIndex => currentLevel;
-    [SerializeField] int currentLevel;
+    public int CurrentLevel => nextUpgradeIndex + 1;
+    public int NextUpgradeIndex => nextUpgradeIndex;
+    [SerializeField] int nextUpgradeIndex;
 
     [SerializeField] List<UpgradeLevel> levels;
     [SerializeField] List<FlagUpgrade> unlockedFlagUpgrades;
 
+    public bool IsMaxLevel => NextUpgradeIndex >= levels.Count;
     protected Stats stats;
     public UpgradeHandler(Stats stats)
     {
@@ -22,25 +23,33 @@ public class UpgradeHandler
 
     public bool UnlockedFlagUpgrade(string flag) => unlockedFlagUpgrades.Any(x => x.flag.Equals(flag));
 
+    public UpgradeLevel GetNextUpgrade()
+    {
+        if (IsMaxLevel)
+            return null;
+
+        return levels[NextUpgradeIndex];
+    }
+
     public float? UpgradeCost()
     {
-        if (levels.Count <= CurrentLevelIndex && levels[CurrentLevelIndex] != null)
+        if (levels.Count <= NextUpgradeIndex && levels[NextUpgradeIndex] != null)
             return null;
 
 
-        return levels[CurrentLevelIndex].cost;
+        return levels[NextUpgradeIndex].cost;
     }
 
     public void LevelUp()
     {
-        if (CurrentLevelIndex >= levels.Count) return;
-        currentLevel++;
+        if (NextUpgradeIndex >= levels.Count) return;
+        nextUpgradeIndex++;
 
-        foreach (var statUpgrade in levels[CurrentLevelIndex].statUpgrades)
+        foreach (var statUpgrade in levels[NextUpgradeIndex].statUpgrades)
         {
             stats.AddModifier(statUpgrade.stat, "upgradeLevel" + CurrentLevel, statUpgrade.modifier.add, statUpgrade.modifier.multiply);
         }
-        foreach (var flagUpgrade in levels[CurrentLevelIndex].flagUpgrades)
+        foreach (var flagUpgrade in levels[NextUpgradeIndex].flagUpgrades)
         {
             unlockedFlagUpgrades.Add(flagUpgrade);
         }

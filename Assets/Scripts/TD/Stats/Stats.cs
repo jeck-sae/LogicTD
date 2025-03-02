@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using System.Linq;
+using JetBrains.Annotations;
 
 public class Stats
 {
@@ -19,7 +20,8 @@ public class Stats
     {
         if (stats.ContainsKey(name))
             Debug.LogError("duplicate stat: " + name + ": " + stat);
-
+        
+        stat.SetName(name);
         stats.Add(name, stat);
     }
     public void AddStat(string name, float baseValue, float minValue = float.MinValue, float maxValue = float.MaxValue)
@@ -30,8 +32,8 @@ public class Stats
         AddStat(name, new Stat(name, baseValue, minValue, maxValue));
     }
 
-    public void AddModifier(string statName, string modifierName, float add = 0, float multiply = 1, bool keepHighestIfDuplicate = true)
-        => stats[statName].AddModifier(modifierName, add, multiply, keepHighestIfDuplicate);
+    public void AddModifier(string statName, string modifierName, float add = 0, float multiply = 1, bool overrideIfDuplicate = true)
+        => stats[statName].AddModifier(modifierName, add, multiply, overrideIfDuplicate);
 
     public bool HasModifier(string statName, string modifierName)
         => stats[statName].HasModifier(modifierName);
@@ -150,26 +152,19 @@ public class Stat
         UpdateValue();
     }
 
+    public void SetName(string newName) => Name = newName;
     public void SetBaseValue(float newValue)
     {
         BaseValue = newValue;
         UpdateValue();
     }
 
-    public void AddModifier(string id, float add = 0, float multiply = 1, bool keepHighestIfDuplicate = true)
+    public void AddModifier(string id, float add = 0, float multiply = 1, bool overrideIfDuplicate = true)
     {
-        if (modifiers.ContainsKey(id))
+        if (modifiers.ContainsKey(id) && overrideIfDuplicate)
         {
-            if (!keepHighestIfDuplicate)
-            {
-                modifiers[id].multiply = Mathf.Max(modifiers[id].multiply, multiply);
-                modifiers[id].add = Mathf.Max(modifiers[id].add, add);
-            }
-            else
-            {
-                modifiers[id].multiply = Mathf.Min(modifiers[id].multiply, multiply);
-                modifiers[id].add = Mathf.Min(modifiers[id].add, add);
-            }
+            modifiers[id].multiply = multiply;
+            modifiers[id].add = add;
         }
         else
         {
@@ -190,20 +185,20 @@ public class Stat
     }
 
 
-    public static float ApplyModifiers(Stat stat, Dictionary<string, StatModifier> mods) => ApplyModifiers(stat.BaseValue, mods.Values, stat.MinValue, stat.MaxValue);
-    public static float ApplyModifiers(float baseValue, IEnumerable<StatModifier> mods, float minValue = float.MinValue, float maxValue = float.MaxValue)
+    public static float GetValueWithModifiers(Stat stat, IEnumerable<StatModifier> mods) => GetValueWithModifiers(stat.BaseValue, mods, stat.MinValue, stat.MaxValue);
+    public static float GetValueWithModifiers(float baseValue, IEnumerable<StatModifier> mods, float minValue = float.MinValue, float maxValue = float.MaxValue)
     {
         float add = mods.Sum(x => x.add);
         float multiply = 1 + mods.Sum(x => x.multiply - 1);
-
         float res = baseValue * multiply + add;
+
         return Mathf.Clamp(res, minValue, maxValue);
     }
 
     protected void UpdateValue()
     {
         float previousValue = Value;
-        Value = ApplyModifiers(this, modifiers);
+        Value = GetValueWithModifiers(this, modifiers.Values);
 
         if (previousValue != Value)
         {
@@ -226,7 +221,7 @@ public class Stat
     public class StatModifier
     {
         public float add;
-        public float multiply;
+        public float multiply = 1;
         public StatModifier() { }
         public StatModifier(float add, float multiply)
         {

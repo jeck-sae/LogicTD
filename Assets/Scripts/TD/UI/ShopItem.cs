@@ -44,7 +44,7 @@ public class ShopItem : MonoBehaviour
 
     public void OnCursorHover()
     {
-        DisplayInfoUI.Instance.Show(this, tower.shopIcon, tower.towerName, tower.towerDescription);
+        DisplayInfoUI.Instance.Show(this, tower.shopIcon, tower.towerName, tower.towerDescription, false, tower.GetStats());
     }
     public void OnCursorExit()
     {

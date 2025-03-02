@@ -4869,7 +4869,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 50
-  b_maxHealth: 85
   isAlive: 1
   MaxHealth:
     m_name: 
@@ -4880,10 +4879,16 @@ MonoBehaviour:
     tempMax: 0
     m_minValue: 0
     m_maxValue: 3.4028235e+38
-  b_moveSpeed: 0.8
+  DamageTakenMultiplier:
+    m_name: 
+    m_baseValue: 1
+    min: 0
+    max: 0
+    tempMin: 0
+    tempMax: 0
+    m_minValue: -3.4028235e+38
+    m_maxValue: 3.4028235e+38
   maxPositionOffset: 0.1
-  b_damageToTower: 3
-  moneyReward: 10
   MoveSpeed:
     m_name: 
     m_baseValue: 0.8

@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
+using System.Collections.Generic;
 
 public class Tower : Interactable2D, IStatObject
 {
@@ -80,25 +81,28 @@ public class Tower : Interactable2D, IStatObject
     {
         maxRangeIndicator.gameObject.SetActive(true);
         minRangeIndicator.gameObject.SetActive(true);
-        DisplayInfoUI.Instance.Show(this, shopIcon, towerName, towerDescription);
     }
 
     protected override void OnCursorExit()
     {
         maxRangeIndicator.gameObject.SetActive(false);
         minRangeIndicator.gameObject.SetActive(false);
-        DisplayInfoUI.Instance.Hide(this);
     }
+    
 
     protected override void OnCursorSelectStart()
     {
-        if (!InputManager.Instance.acceptInput || placedThisFrame)
+        DisplayInfoUI.Instance.Show(this, shopIcon, towerName, towerDescription, true, stats, upgradeHandler);
+
+
+        /*if (!InputManager.Instance.acceptInput || placedThisFrame)
             return;
 
         InputManager.Instance.SetMovingStatus(true);
         this.Tile.tower = null; //hacky way of doing it. Works for now
-        TowerPlacementManager.Instance.StartPlacing(this, OnMoveAway, OnCancelMoving, false);
+        TowerPlacementManager.Instance.StartPlacing(this, OnMoveAway, OnCancelMoving, false);*/
     }
+
 
     protected void OnMoveAway()
     {

@@ -81,14 +81,14 @@ MonoBehaviour:
     m_minValue: 0
     m_maxValue: 3.4028235e+38
   upgradeHandler:
-    currentLevel: 0
+    nextUpgradeIndex: 0
     levels:
     - cost: 0
       statUpgrades:
-      - stat: 
+      - stat: damage
         modifier:
-          add: 0
-          multiply: 0
+          add: 5
+          multiply: 1
       flagUpgrades: []
     unlockedFlagUpgrades: []
   placeSoundVolume: 0.5

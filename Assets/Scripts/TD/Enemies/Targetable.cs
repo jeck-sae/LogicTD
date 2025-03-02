@@ -9,6 +9,7 @@ public class Targetable : ManagedBehaviour, IStatObject
     public bool isAlive = true;
 
     public Stat MaxHealth;
+    public Stat DamageTakenMultiplier;
 
     public event Action HealthChanged;
 
@@ -30,7 +31,7 @@ public class Targetable : ManagedBehaviour, IStatObject
 
         var tempStats = new Stats();
         tempStats.AddStat("maxHealth", MaxHealth);
-        tempStats.AddStat("damageTakenMultiplier", 1, 0);
+        tempStats.AddStat("damageTakenMultiplier", DamageTakenMultiplier, 0);
         return tempStats;
     }
 
