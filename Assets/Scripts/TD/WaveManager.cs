@@ -28,7 +28,7 @@ public class WaveManager : Singleton<WaveManager>
     {
         StartGame();
         GridManager.Instance.OnTileAdded += t => { if (t.tileId == "spawner") spawners.Add(t.GetComponent<Spawner>()); };
-        GridManager.Instance.OnTileRemoved += p => { spawners.RemoveAll(x => x?.GetComponent<Tile>()?.position == p); };
+        GridManager.Instance.OnTileRemoved += p => { spawners.RemoveAll(x => x?.GetComponent<Tile>()?.Position == p); };
     }
 
 

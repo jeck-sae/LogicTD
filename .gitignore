@@ -1,5 +1,7 @@
 #Custom
 /Assets/SaveData.txt
+/Assets/SaveData.txt.meta
+
 
 
 # This .gitignore file should be placed at the root of your Unity project directory

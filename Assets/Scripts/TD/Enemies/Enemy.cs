@@ -35,7 +35,7 @@ public class Enemy : Targetable
 
     public void UpdateDestination()
     {
-        movement.SetDestinationCriteria((Tile t) => t.isHome);
+        movement.SetDestinationCriteria((Tile t) => t.IsHome);
         movement.OnArrive += ReachedHomeTile;
         if (movement.path?.Count <= 1)
             Debug.LogError($"Path not found ({name})", gameObject);

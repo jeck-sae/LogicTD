@@ -13,9 +13,6 @@ public class GridManager : Singleton<GridManager>
     protected void Awake()
     {
         tiles = new Dictionary<Vector2Int, Tile>();
-        var allTiles = FindObjectsByType<Tile>(FindObjectsSortMode.None);
-        foreach (var t in allTiles)
-            t.SetupTile();
     }
 
     
@@ -28,11 +25,8 @@ public class GridManager : Singleton<GridManager>
         }
 
         tiles[position] = tile;
-        tile.transform.parent = transform;
-        tile.position = position;
-        tile.transform.position = new Vector3(position.x, position.y);
+        tile.InitializeTile(position);
 
-        tile.OnNearbyTileChanged();
         GetAdjacentTiles(position).ForEach(x=>x.OnNearbyTileChanged());
         OnTileAdded?.Invoke(tile);
     }
@@ -56,7 +50,7 @@ public class GridManager : Singleton<GridManager>
 
     public List<Tile> GetHomes()
     {
-        return tiles.Where(x => x.Value.isHome).Select(x => x.Value).ToList();
+        return tiles.Where(x => x.Value.IsHome).Select(x => x.Value).ToList();
     }
 
 

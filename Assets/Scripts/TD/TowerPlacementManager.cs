@@ -58,7 +58,7 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
 
 
         //draw preview
-        UpdatePreview(hoveringTile);
+        UpdatePreview();
     }
 
 
@@ -92,11 +92,12 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
         StopPlacing();
     }
 
-    void UpdatePreview(Tile tile)
+    void UpdatePreview()
     {
         Vector3 coords = Vector3.zero;
+        var tile = GridManager.Instance.GetHoveringTile();
         if (!tile) coords = GridManager.FixCoordinates(Helpers.Camera.ScreenToWorldPoint(Input.mousePosition)).ToVector3();
-        else coords = tile.position.ToVector3();
+        else coords = tile.Position.ToVector3();
 
         rangePreview.transform.position = coords;
         preview.transform.position = coords;
@@ -110,6 +111,7 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
             previewRenderers.ForEach(x => x.color = Color.red);
         }
     }
+
 
     public void CancelPlacing()
     {

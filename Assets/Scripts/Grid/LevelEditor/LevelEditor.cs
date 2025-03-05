@@ -27,8 +27,8 @@ public class LevelEditor : Singleton<LevelEditor>
 
             foreach(var t in tiles)
             {
-                if (t.Key != t.Value.position)
-                    Debug.Log(t.Key + " " + t.Value.position);
+                if (t.Key != t.Value.Position)
+                    Debug.Log(t.Key + " " + t.Value.Position);
             }
         }
 
@@ -92,7 +92,7 @@ public class LevelEditor : Singleton<LevelEditor>
         //replace old tile
         if (lastHoveredTile)
         {
-            GridManager.Instance.AddTile(lastHoveredTile.position, lastHoveredTile);
+            GridManager.Instance.AddTile(lastHoveredTile.Position, lastHoveredTile);
             lastHoveredTile.gameObject.SetActive(true);
         }
 
@@ -121,7 +121,7 @@ public class LevelEditor : Singleton<LevelEditor>
         }
         if (toEnable)
         {
-            GridManager.Instance.AddTile(toEnable.position, toEnable);
+            GridManager.Instance.AddTile(toEnable.Position, toEnable);
             toEnable.gameObject.SetActive(true);
         }
     }

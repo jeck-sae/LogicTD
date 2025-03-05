@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Unlockable { ExplodingTower, FireTower, FreezeTower, StunTower, BoostTower, Potions, None }
+public enum Unlockable { ExplodingTower, FireTower, FreezeTower, StunTower, BoostTower, None }
 public class TowerDefenseUnlocks : MonoBehaviour
 {
     protected static List<Unlockable> unlocked = new List<Unlockable>();
@@ -15,7 +15,6 @@ public class TowerDefenseUnlocks : MonoBehaviour
     public GameObject freezeTower;
     public GameObject explodingTower;
 
-    public GameObject potions;
     
     public static void UnlockTower(Unlockable unlock)
     {
@@ -35,7 +34,5 @@ public class TowerDefenseUnlocks : MonoBehaviour
         boostTower.SetActive(unlocked.Contains(Unlockable.BoostTower));
         freezeTower.SetActive(unlocked.Contains(Unlockable.FreezeTower)); 
         explodingTower.SetActive(unlocked.Contains(Unlockable.ExplodingTower));
-
-        potions.SetActive(unlocked.Contains(Unlockable.Potions));
     }
 }

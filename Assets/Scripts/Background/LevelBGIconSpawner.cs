@@ -24,13 +24,13 @@ public class LevelBGIconSpawner : BGIconSpawner
 
     public void DisableBGIconsNearTile(Tile tile)
     {
-        if(grid.TryGetValue(tile.position, out var go))
+        if(grid.TryGetValue(tile.Position, out var go))
             go.gameObject.SetActive(false);
-        if (grid.TryGetValue(tile.position + Vector2Int.down, out go))
+        if (grid.TryGetValue(tile.Position + Vector2Int.down, out go))
             go.gameObject.SetActive(false);
-        if (grid.TryGetValue(tile.position + Vector2Int.left, out go))
+        if (grid.TryGetValue(tile.Position + Vector2Int.left, out go))
             go.gameObject.SetActive(false);
-        if (grid.TryGetValue(tile.position + new Vector2Int(-1, -1), out go))
+        if (grid.TryGetValue(tile.Position + new Vector2Int(-1, -1), out go))
             go.gameObject.SetActive(false);
     }
     public void OnTileRemoved(Vector2Int tile)

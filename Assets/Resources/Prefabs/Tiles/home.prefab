@@ -212,6 +212,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2391061033089007441, guid: 96fd9c819165838409c91bb7a90fcf0d, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: -4684333735789482159, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
+    - target: {fileID: 2391061033089007441, guid: 96fd9c819165838409c91bb7a90fcf0d, type: 3}
+      propertyPath: isHome
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391061033089007441, guid: 96fd9c819165838409c91bb7a90fcf0d, type: 3}
+      propertyPath: tileId
+      value: home
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391061033089007441, guid: 96fd9c819165838409c91bb7a90fcf0d, type: 3}
+      propertyPath: tileName
+      value: Home
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391061033089007441, guid: 96fd9c819165838409c91bb7a90fcf0d, type: 3}
+      propertyPath: description
+      value: Defend this from incoming waves.
+      objectReference: {fileID: 0}
     - target: {fileID: 5565925098621636288, guid: 96fd9c819165838409c91bb7a90fcf0d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -257,12 +277,24 @@ PrefabInstance:
       value: home
       objectReference: {fileID: 0}
     - target: {fileID: 8948504447832377424, guid: 96fd9c819165838409c91bb7a90fcf0d, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: -4684333735789482159, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
+    - target: {fileID: 8948504447832377424, guid: 96fd9c819165838409c91bb7a90fcf0d, type: 3}
       propertyPath: isHome
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8948504447832377424, guid: 96fd9c819165838409c91bb7a90fcf0d, type: 3}
       propertyPath: tileId
       value: home
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948504447832377424, guid: 96fd9c819165838409c91bb7a90fcf0d, type: 3}
+      propertyPath: tileName
+      value: Home
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948504447832377424, guid: 96fd9c819165838409c91bb7a90fcf0d, type: 3}
+      propertyPath: description
+      value: Protect this from the incoming waves.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

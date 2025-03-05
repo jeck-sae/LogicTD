@@ -21,9 +21,9 @@ public class BoostTower : Tower
         
         if(!Tile) return;
         
-        foreach (var t in GridManager.Instance.GetAdjacentTiles(Tile.position))
+        foreach (var t in GridManager.Instance.GetAdjacentTiles(Tile.Position))
         {
-            var tower = t.tower;
+            var tower = t.Tower;
             if (!tower) continue;
 
 

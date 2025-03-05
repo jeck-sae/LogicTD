@@ -28,14 +28,9 @@ public static class Helpers
     }
 
     //returns true if the cursor is over some UI
-    private static PointerEventData _eventDataCurrentPosition;
-    private static List<RaycastResult> _raycastResults;
     public static bool IsOverUI { 
-        get { 
-            _eventDataCurrentPosition = new PointerEventData(EventSystem.current) { position = Input.mousePosition };
-            _raycastResults = new List<RaycastResult>();
-            EventSystem.current.RaycastAll(_eventDataCurrentPosition, _raycastResults);
-            return _raycastResults.Count > 0;
+        get {
+            return EventSystem.current.IsPointerOverGameObject();
         } 
     }
     

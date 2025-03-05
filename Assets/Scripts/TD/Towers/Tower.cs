@@ -88,11 +88,15 @@ public class Tower : Interactable2D, IStatObject
         maxRangeIndicator.gameObject.SetActive(false);
         minRangeIndicator.gameObject.SetActive(false);
     }
-    
+
+    public virtual BaseDisplayInfo GetDisplayInfo()
+    {
+        return new TowerDisplayInfo(towerName, towerDescription, shopIcon, this);
+    }
 
     protected override void OnCursorSelectStart()
     {
-        DisplayInfoUI.Instance.Show(this, shopIcon, towerName, towerDescription, true, stats, upgradeHandler);
+        //DisplayInfoUI.Instance.Show(this, shopIcon, towerName, towerDescription, true, stats, upgradeHandler);
 
 
         /*if (!InputManager.Instance.acceptInput || placedThisFrame)
@@ -103,6 +107,13 @@ public class Tower : Interactable2D, IStatObject
         TowerPlacementManager.Instance.StartPlacing(this, OnMoveAway, OnCancelMoving, false);*/
     }
 
+
+    public void StartMoving()
+    {
+        InputManager.Instance.SetMovingStatus(true);
+        Tile.RemoveTower();
+        TowerPlacementManager.Instance.StartPlacing(this, OnMoveAway, OnCancelMoving, false);
+    }
 
     protected void OnMoveAway()
     {

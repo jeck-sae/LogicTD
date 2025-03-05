@@ -20,6 +20,8 @@ public class ShopItem : MonoBehaviour
 
     public void Select()
     {
+        BuyTower();
+        /*
         //If already placing, deselect instead
         if (TowerPlacementManager.Instance.placingTower == tower)
         {
@@ -39,21 +41,35 @@ public class ShopItem : MonoBehaviour
         if (TowerPlacementManager.Instance.placingTower)
             AudioController.Instance.PlaySound2D("ui_confirm");
         else
-            AudioController.Instance.PlaySound2D("ui_cancel");
+            AudioController.Instance.PlaySound2D("ui_cancel");*/
     }
 
     public void OnCursorHover()
     {
-        DisplayInfoUI.Instance.Show(this, tower.shopIcon, tower.towerName, tower.towerDescription, false, tower.GetStats(), tower.upgradeHandler);
+
+        //DisplayInfoUI.Instance.Show(this, tower.shopIcon, tower.towerName, tower.towerDescription, false, tower.GetStats(), tower.upgradeHandler);
     }
     public void OnCursorExit()
     {
-        DisplayInfoUI.Instance.Hide(this);
+        //DisplayInfoUI.Instance.Hide(this);
     }
 
     protected void OnTowerPlaced()
     {
         GameStats.Instance?.ModifyCoins(-(int)tower.Cost);
+    }
+    
+    protected void BuyTower()
+    {
+        if (GameStats.Instance && GameStats.Instance.coins < tower.Cost)
+            return;
+
+        if (TileSelectionManager.Instance.SelectedTile && TileSelectionManager.Instance.SelectedTile.Tower == null)
+        {
+            var t = Instantiate(prefab).GetComponent<Tower>();
+            GameStats.Instance.ModifyCoins(-(int)tower.Cost);
+            TileSelectionManager.Instance.SelectedTile.PlaceTower(t);
+        }
     }
 
     protected void UpdatePriceColor()
@@ -62,6 +78,5 @@ public class ShopItem : MonoBehaviour
             costUI.color = TDColors.AffordableColor;
         else
             costUI.color = TDColors.UnaffordableColor;
-
     }
 }

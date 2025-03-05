@@ -118,8 +118,8 @@ Transform:
   m_Children:
   - {fileID: 3445757535411922332}
   - {fileID: 1523283143521297874}
-  - {fileID: 7603910339534269433}
   - {fileID: 7557772974321610038}
+  - {fileID: 7603910339534269433}
   - {fileID: 4963058454833053024}
   - {fileID: 2846769532075049488}
   - {fileID: 7129986803825068811}
@@ -864,8 +864,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5670053953111379490}
-  - component: {fileID: 9196717702235523250}
+  - component: {fileID: 2495264892748742579}
   - component: {fileID: 4128463116955866609}
+  - component: {fileID: 8523523683391691954}
   m_Layer: 0
   m_Name: baseTile
   m_TagString: Untagged
@@ -889,7 +890,7 @@ Transform:
   - {fileID: 6103004098972169688}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9196717702235523250
+--- !u!114 &2495264892748742579
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -898,28 +899,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 6488037865941911809}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80675bdbccf8f544bb3d816f064922a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 92ed554f0b1fe4842a99258063d4129c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileId: ground
-  type: 1
+  tileId: 
+  icon: {fileID: 0}
+  tileName: 
+  description: 
+  type: 0
   position: {x: 0, y: 0}
-  IsWalkable: 0
+  isWalkable: 0
   isHome: 0
-  canBuildOver: 1
+  canBuildOver: 0
   tower: {fileID: 0}
-  leftBorder: {fileID: 518836264544744695}
-  rightBorder: {fileID: 2313860217326120371}
-  upBorder: {fileID: 7759487070270738649}
-  downBorder: {fileID: 5987322980779144609}
-  upShadow: {fileID: 6254699333550326044}
-  leftShadow: {fileID: 5657908277043384942}
-  downShadow: {fileID: 9118282464535235164}
-  rightShadow: {fileID: 2112985574298209966}
-  upRightShadow: {fileID: 4384669888813858959}
-  upLeftShadow: {fileID: 7296859704094806869}
-  downRightShadow: {fileID: 3521254143720834882}
-  downLeftShadow: {fileID: 5854314079771925020}
+  gfx: {fileID: 0}
 --- !u!61 &4128463116955866609
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -966,6 +959,30 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8523523683391691954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6488037865941911809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 838c0bf813bb1fd4aa8549d7903cb4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftBorder: {fileID: 518836264544744695}
+  rightBorder: {fileID: 2313860217326120371}
+  upBorder: {fileID: 7759487070270738649}
+  downBorder: {fileID: 5987322980779144609}
+  upShadow: {fileID: 6254699333550326044}
+  leftShadow: {fileID: 5657908277043384942}
+  downShadow: {fileID: 9118282464535235164}
+  rightShadow: {fileID: 2112985574298209966}
+  upRightShadow: {fileID: 4384669888813858959}
+  upLeftShadow: {fileID: 7296859704094806869}
+  downRightShadow: {fileID: 3521254143720834882}
+  downLeftShadow: {fileID: 5854314079771925020}
 --- !u!1 &7296859704094806869
 GameObject:
   m_ObjectHideFlags: 0

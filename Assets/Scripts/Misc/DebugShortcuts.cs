@@ -29,27 +29,37 @@ public class DebugShortcuts : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Comma))
             {
                 AudioListener.volume = Mathf.Clamp01(AudioListener.volume - .1f);
-
                 SaveManager.Instance.data.volume = AudioListener.volume;
                 SaveManager.SaveState();
+                Debug.Log("Volume " + AudioListener.volume);
             }
 
             //increase volume and save
             if (Input.GetKeyDown(KeyCode.Period))
             {
                 AudioListener.volume = Mathf.Clamp01(AudioListener.volume + .1f);
-
                 SaveManager.Instance.data.volume = AudioListener.volume;
                 SaveManager.SaveState();
+                Debug.Log("Volume " + AudioListener.volume);
             }
 
 
-            if (Input.GetKeyDown(KeyCode.G))
+            //Destroy selected tower
+            if (Input.GetKeyDown(KeyCode.X))
             {
-                var g = FindAnyObjectByType<LevelBGIconSpawner>(FindObjectsInactive.Include);
-                if(g) g.gameObject.SetActive(!g.isActiveAndEnabled);
+                Tower t = TileSelectionManager.Instance.SelectedTile?.Tower;
+                if (t)
+                    Destroy(t.gameObject);
             }
 
+            //Move selected tower
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                Tower t = TileSelectionManager.Instance.SelectedTile?.Tower;
+                if (t)
+                    t.StartMoving();
+            }
+            
             //+1000 coins
             if (Input.GetKeyDown(KeyCode.M))
             {
@@ -70,6 +80,15 @@ public class DebugShortcuts : MonoBehaviour
                 SceneManager.LoadScene(0);
                 Debug.Log("Loaded main scene");
             }
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                var g = FindAnyObjectByType<LevelBGIconSpawner>(FindObjectsInactive.Include);
+                if(g) g.gameObject.SetActive(!g.gameObject.activeSelf);
+                Debug.Log("Background effect: " + (g.gameObject.activeSelf ? "on" : "off"));
+            }
+
+
 
             //Speed up
             if (Input.GetKeyDown(KeyCode.RightArrow))

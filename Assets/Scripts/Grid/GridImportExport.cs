@@ -77,7 +77,7 @@ public class GridImportExport
             public SerializedTile(Tile tile)
             {
                 tileId = tile.tileId;
-                position = tile.position;
+                position = tile.Position;
                 /*IsWalkable = tile.IsWalkable;
                 isHome = tile.isHome;
                 canBuildOver = tile.canBuildOver;*/

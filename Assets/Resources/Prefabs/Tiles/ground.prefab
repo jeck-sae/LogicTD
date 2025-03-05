@@ -8,6 +8,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2495264892748742579, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: -8377130690987618698, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
+    - target: {fileID: 2495264892748742579, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495264892748742579, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: tileId
+      value: ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495264892748742579, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: tileName
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495264892748742579, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: description
+      value: You can place towers on this tile.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495264892748742579, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: canBuildOver
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5670053953111379490, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -50,7 +74,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6488037865941911809, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
       propertyPath: m_Name
-      value: ground Variant
+      value: ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196717702235523250, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: -8377130690987618698, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
+    - target: {fileID: 9196717702235523250, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: tileName
+      value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 9196717702235523250, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: description
+      value: You can place towers on this tile.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

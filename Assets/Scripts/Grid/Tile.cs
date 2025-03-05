@@ -1,89 +1,84 @@
 using Sirenix.OdinInspector;
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class Tile : MonoBehaviour
 {
-    public string tileId;
     public enum TileType { path, ground, decoration }
+    
+    public string tileId;
 
-    public TileType type;
-    public Vector2Int position;
-    public bool IsWalkable;
-    public bool isHome;
-    public bool canBuildOver;
+    [SerializeField] Sprite icon;
+    [SerializeField] string tileName;
+    [SerializeField] string description;
+    [SerializeField] protected TileType type;
 
-    public Tower tower;
+    [SerializeField] bool isWalkable;
+    [SerializeField] bool isHome;
+    [SerializeField] bool canBuildOver;
 
-    private bool setupOnEnable;
+    [SerializeField, ReadOnly] Vector2Int position;
+    [SerializeField] Tower tower;
 
-    private void OnEnable()
+    public TileType Type => type;
+    public Vector2Int Position => position;
+    public bool IsWalkable => isWalkable;
+    public bool IsHome => isHome;
+    public bool CanBuildOver => canBuildOver;
+    public Tower Tower => tower;
+
+
+    public TileGFX gfx;
+
+    private void Awake()
     {
-        if (setupOnEnable)
-            SetupTile();
+        gfx = GetComponent<TileGFX>();
     }
 
-    public virtual void SetupTile()
+    private void Start()
     {
-        if (!gameObject.activeInHierarchy)
+        if (!GridManager.Instance.Contains(this))
         {
-            setupOnEnable = true;
-            return;
+            var coords = GridManager.FixCoordinates(transform.position);
+            GridManager.Instance.AddTile(coords, this);
+        
+            var t = GetComponentInChildren<Tower>();
+            if(t != null)
+                PlaceTower(t);
         }
-        setupOnEnable = false;
-
-
-        UpdatePosition();
-
-        var t = GetComponentInChildren<Tower>();
-        if(t != null)
-            PlaceTower(t);
     }
 
-    private void OnDestroy()
+    public void InitializeTile(Vector2Int position)
     {
-        if(GridManager.Instance && GridManager.Instance.Contains(this))
-            GridManager.Instance.Remove(this);
+        this.position = position;
+        transform.parent = GridManager.Instance.transform;
+        transform.position = position.ToVector3();
+        OnNearbyTileChanged();
     }
 
-
-    [HideInPlayMode, Button("Update Tile Position")]
-    private void UpdatePositionOutsidePlayMode()
+    public virtual void OnNearbyTileChanged() 
     {
-        position = new Vector2Int(
-            Mathf.RoundToInt(transform.position.x),
-            Mathf.RoundToInt(transform.position.y));
-        transform.position = new Vector3(position.x, position.y, transform.position.z);
+        gfx.UpdateGFX();
     }
-    [HideInEditorMode, Button("Update Tile Position")]
-    protected void UpdatePosition()
+
+    public virtual bool CanPlace()
     {
-        if (GridManager.Instance.Contains(this))
-            GridManager.Instance.Remove(this);
-
-        position = new Vector2Int(
-            Mathf.RoundToInt(transform.position.x),
-            Mathf.RoundToInt(transform.position.y));
-
-        if (GridManager.Instance.Contains(position))
-            return;
-
-        transform.position = new Vector3(position.x, position.y, transform.position.z);
-
-        GridManager.Instance.AddTile(position, this);
+        return CanBuildOver && (Tower == null);
     }
 
-    public virtual void OnNearbyTileChanged()
+    public virtual BaseDisplayInfo GetDisplayInfo()
     {
+        if (tower)
+            return tower.GetDisplayInfo();
+        
+        if(canBuildOver)
+            return new ShopDisplayInfo(tileName, description, icon);
 
+        return new BaseDisplayInfo(tileName, description, icon);
     }
 
-    public bool CanPlace()
-    {
-        return canBuildOver && (tower == null);
-    }
+
     public void PlaceTower(Tower t)
     {
         if (!CanPlace())
@@ -98,8 +93,12 @@ public class Tile : MonoBehaviour
 
     public void RemoveTower()
     {
-        if(tower?.Tile == this)
-            tower.Tile = null;
         tower = null;
+    }
+
+    private void OnDestroy()
+    {
+        if(GridManager.Instance && GridManager.Instance.Contains(this))
+            GridManager.Instance.Remove(this);
     }
 }

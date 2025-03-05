@@ -24,7 +24,7 @@ public class Pathfinder
             openSet.Remove(currentTile.originalTile);
             closedSet.Add(currentTile.originalTile);
 
-            foreach (Tile neighbour in grid.GetAdjacentTiles(currentTile.originalTile.position))
+            foreach (Tile neighbour in grid.GetAdjacentTiles(currentTile.originalTile.Position))
             {
                 if (!neighbour || !neighbour.IsWalkable || closedSet.Contains(neighbour))
                     continue;
@@ -66,7 +66,7 @@ public class Pathfinder
                 return RetracePath(tileData[startTile], tileData[endTile]);
 
 
-            foreach (Tile neighbour in grid.GetAdjacentTiles(currentTile.originalTile.position))
+            foreach (Tile neighbour in grid.GetAdjacentTiles(currentTile.originalTile.Position))
             {
                 if (!neighbour || !neighbour.IsWalkable || closedSet.Contains(neighbour))
                     continue;
@@ -108,7 +108,7 @@ public class Pathfinder
 
     public static int GetDistance(Tile t1, Tile t2)
     {
-        return Mathf.RoundToInt(Mathf.Abs(t1.position.x - t2.position.x) + Mathf.Abs(t1.position.y - t2.position.y));
+        return Mathf.RoundToInt(Mathf.Abs(t1.Position.x - t2.Position.x) + Mathf.Abs(t1.Position.y - t2.Position.y));
     }
 
     class PathfinderTile
