@@ -34,6 +34,8 @@ public class DisplayInfoUI : Singleton<DisplayInfoUI>
         descriptionText.text = description;
         this.shownBy = shownBy;
 
+        statList.ForEach(x => x.gameObject.SetActive(false));
+
         if (displayStats != null)
         {
             int i = 0;
@@ -41,15 +43,15 @@ public class DisplayInfoUI : Singleton<DisplayInfoUI>
             {
                 if (!StatDisplayPreset.HasInfo(stat.Key))
                     continue;
-
+                
                 if (upgrades != null && !upgrades.IsMaxLevel)
                 {
                     var upgrade = upgrades.GetNextUpgrade().statUpgrades.FirstOrDefault(x => x.stat == stat.Key);
-                    statList[i].DisplayStat(stat.Value, 100, upgrade?.modifier);
+                    statList[i].DisplayStat(stat.Value, upgrade?.modifier, upgradeHandler: upgrades);
                 }
                 else
                 {
-                    statList[i].DisplayStat(stat.Value, 100);
+                    statList[i].DisplayStat(stat.Value, upgradeHandler: upgrades);
                 }
                 
                 i++;

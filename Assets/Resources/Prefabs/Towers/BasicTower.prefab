@@ -90,6 +90,13 @@ MonoBehaviour:
           add: 5
           multiply: 1
       flagUpgrades: []
+    - cost: 0
+      statUpgrades:
+      - stat: damage
+        modifier:
+          add: 8
+          multiply: 1
+      flagUpgrades: []
     unlockedFlagUpgrades: []
   placeSoundVolume: 0.5
   cannon: {fileID: 8523013753695896763}

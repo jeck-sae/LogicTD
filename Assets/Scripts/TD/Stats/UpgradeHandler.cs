@@ -31,6 +31,16 @@ public class UpgradeHandler
         return levels[NextUpgradeIndex];
     }
 
+    public List<Stat.StatModifier> GetAllUpgradesForStat(string stat)
+    {
+        List<Stat.StatModifier> mods = new List<Stat.StatModifier>();
+        foreach (var level in levels)
+        {
+            mods.AddRange(level.statUpgrades.Where(x => x.stat == stat).Select(x => x.modifier));
+        }
+        return mods;
+    }
+
     public float? UpgradeCost()
     {
         if (levels.Count <= NextUpgradeIndex && levels[NextUpgradeIndex] != null)

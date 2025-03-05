@@ -6,7 +6,8 @@ using Unity.VisualScripting;
 
 public class GridImportExport
 {
-    const string TILE_LOCATION = "Prefabs/Tiles/";
+    public const string TILES_PATH = "Prefabs/Tiles/";
+    public const string LEVELS_PATH = "Levels/";
 
     public static void ExportGrid(GridManager grid, string saveLocation)
     {
@@ -28,7 +29,7 @@ public class GridImportExport
         string gridData = File.ReadAllText(loadLocation);
         var levelInfo = JsonUtility.FromJson<LevelInfo>(gridData);
 
-        var splitFileName = loadLocation.Split('/').Last().Split('.');
+        var splitFileName = loadLocation.Split('/', '\\').Last().Split('.');
         levelInfo.name = splitFileName[splitFileName.Length - 2];
 
         return levelInfo;
@@ -39,7 +40,7 @@ public class GridImportExport
         grid.Clear();
         foreach (var t in levelInfo.tiles)
         {
-            var tilePath = Path.Combine(TILE_LOCATION, t.tileId);
+            var tilePath = Path.Combine(TILES_PATH, t.tileId);
             var tilePrefab = Resources.Load(tilePath);
             var go = GameObject.Instantiate(tilePrefab);
             var tile = go.GetComponent<Tile>();

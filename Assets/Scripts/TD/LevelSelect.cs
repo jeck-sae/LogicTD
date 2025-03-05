@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class LevelSelect : MonoBehaviour
@@ -22,10 +23,13 @@ public class LevelSelect : MonoBehaviour
             {
                 var level = GridImportExport.ImportGrid(f);
                 levels.Add(level);
-                if(levels.Count > 0)
-                    SelectLevel(levels[0]);
             }
         }
+
+
+        var l = levels.FirstOrDefault(x => x.name == SaveManager.Instance.data.lastSelectedLevel);
+        currentLevelIndex = (l != null) ? levels.IndexOf(l) : 0;
+        SelectLevel(levels[currentLevelIndex]);
     }
 
     void Update()
@@ -51,5 +55,8 @@ public class LevelSelect : MonoBehaviour
     {
         GridImportExport.LoadGrid(GridManager.Instance, level);
         SelectedLevel = level;
+
+        SaveManager.Instance.data.lastSelectedLevel = level.name;
+        SaveManager.SaveState();
     }
 }

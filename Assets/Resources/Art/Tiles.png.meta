@@ -240,7 +240,7 @@ TextureImporter:
         width: 46
         height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -262,7 +262,7 @@ TextureImporter:
         width: 46
         height: 46
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -271,6 +271,28 @@ TextureImporter:
       bones: []
       spriteID: 0e875ad38c559d74a880a70e114de3d7
       internalID: 1982816523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 85
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f028303706547a42a1348c5383180e0
+      internalID: -201731153
       vertices: []
       indices: 
       edges: []
@@ -289,6 +311,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      Selection: -201731153
       ShadowCorner: 1982816523
       ShadowSide: 749414209
       Tiles_0: 7223950226953391895

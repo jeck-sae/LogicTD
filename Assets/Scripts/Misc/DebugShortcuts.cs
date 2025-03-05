@@ -7,18 +7,41 @@ public class DebugShortcuts : MonoBehaviour
 
     private void Update()
     {
+        //toggle fullscreen and save
         if (Input.GetKeyDown(KeyCode.F11))
-            Screen.fullScreen = !Screen.fullScreen;
+        {
+            bool toggle = !Screen.fullScreen;
+            Screen.fullScreen = toggle;
+
+            SaveManager.Instance.data.fullscreen = toggle;
+            SaveManager.SaveState();
+        }
+
+        if (Input.GetKeyDown(KeyCode.F1))
+            SceneManager.LoadScene("LoadableLevel");
+            
+        if (Input.GetKeyDown(KeyCode.F2))
+            SceneManager.LoadScene("LevelEditor");
 
         if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift))
         {
-            if (Input.GetKeyDown(KeyCode.F1))
-                SceneManager.LoadScene("LoadableLevel");
-            
-            if (Input.GetKeyDown(KeyCode.F2))
-                SceneManager.LoadScene("LevelEditor");
+            //lower volume and save
+            if (Input.GetKeyDown(KeyCode.Comma))
+            {
+                AudioListener.volume = Mathf.Clamp01(AudioListener.volume - .1f);
 
+                SaveManager.Instance.data.volume = AudioListener.volume;
+                SaveManager.SaveState();
+            }
 
+            //increase volume and save
+            if (Input.GetKeyDown(KeyCode.Period))
+            {
+                AudioListener.volume = Mathf.Clamp01(AudioListener.volume + .1f);
+
+                SaveManager.Instance.data.volume = AudioListener.volume;
+                SaveManager.SaveState();
+            }
 
 
             if (Input.GetKeyDown(KeyCode.G))

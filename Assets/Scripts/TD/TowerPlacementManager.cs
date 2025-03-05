@@ -94,10 +94,12 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
 
     void UpdatePreview(Tile tile)
     {
-        if (!tile) return;
+        Vector3 coords = Vector3.zero;
+        if (!tile) coords = GridManager.FixCoordinates(Helpers.Camera.ScreenToWorldPoint(Input.mousePosition)).ToVector3();
+        else coords = tile.position.ToVector3();
 
-        rangePreview.transform.position = tile.transform.position;
-        preview.transform.position = tile.transform.position;
+        rangePreview.transform.position = coords;
+        preview.transform.position = coords;
 
         if (tile && tile.CanPlace())
         {

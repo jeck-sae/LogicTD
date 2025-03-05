@@ -13,20 +13,28 @@ public class StatInfoUI : MonoBehaviour
     Stat stat;
     Stat.StatModifier modifier;
     float maxValue;
-    public void DisplayStat(Stat stat, float maxValue, Stat.StatModifier previewModifier = null)
+    public void DisplayStat(Stat stat, Stat.StatModifier previewModifier = null, UpgradeHandler upgradeHandler = null)
     {
+        this.maxValue = Stat.GetValueWithModifiers(stat, upgradeHandler.GetAllUpgradesForStat(stat.Name));
+        if (maxValue <= 0)
+            return;
+
         this.stat = stat;
         this.modifier = previewModifier;
-        this.maxValue = maxValue;
         stat.OnValueChanged += UpdateValue;
+        gameObject.SetActive(true);
         UpdateValue(null);
     }
 
     public void UpdateValue(object args)
     {
+
         statName.text = StatDisplayPreset.GetInfo(stat.Name).name;
         statValue.text = stat.Value.ToString();
+
         float currentProgress = stat / maxValue;
+
+
         currentValue.transform.localScale = new Vector3(currentProgress, 1, 1);
         currentValue.color = StatDisplayPreset.GetInfo(stat.Name).color;
 
