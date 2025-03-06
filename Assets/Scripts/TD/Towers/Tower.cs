@@ -64,13 +64,13 @@ public class Tower : Interactable2D, IStatObject
         
     protected void SetupRangeIndicators()
     {
-        maxRangeIndicator = Instantiate(Resources.Load("Prefabs/RangePreview"), transform).GetComponent<ScaleWithStat>();
+        maxRangeIndicator = Instantiate(Resources.Load("Prefabs/UI/RangePreview"), transform).GetComponent<ScaleWithStat>();
         maxRangeIndicator.multiply = 2;
         maxRangeIndicator.SetStat(MaxRange);
         maxRangeIndicator.GetComponent<RangeIndicator>().SetColor(towerColor);
         maxRangeIndicator.gameObject.SetActive(false);
             
-        minRangeIndicator = Instantiate(Resources.Load("Prefabs/RangePreview"), transform).GetComponent<ScaleWithStat>();
+        minRangeIndicator = Instantiate(Resources.Load("Prefabs/UI/RangePreview"), transform).GetComponent<ScaleWithStat>();
         minRangeIndicator.multiply = 2;
         minRangeIndicator.SetStat(MinRange);
         minRangeIndicator.GetComponent<RangeIndicator>().SetColor(Color.red);

@@ -21,7 +21,7 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
 
     private void Awake()
     {
-        rangePreview = Instantiate(Resources.Load("Prefabs/RangePreview"), transform).GetComponent<RangeIndicator>();
+        rangePreview = Instantiate(Resources.Load("Prefabs/UI/RangePreview"), transform).GetComponent<RangeIndicator>();
         rangePreview.scaleWithStat.multiply = 2;
         rangePreview.gameObject.SetActive(false);
     }

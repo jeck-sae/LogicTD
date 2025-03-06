@@ -64,23 +64,15 @@ public class GridImportExport
         }
         
         
-        
-        
         [System.Serializable]
         public class SerializedTile
         {
             public string tileId;
             public Vector2Int position;
-            /*public bool IsWalkable;
-            public bool isHome;
-            public bool canBuildOver;*/
             public SerializedTile(Tile tile)
             {
                 tileId = tile.tileId;
                 position = tile.Position;
-                /*IsWalkable = tile.IsWalkable;
-                isHome = tile.isHome;
-                canBuildOver = tile.canBuildOver;*/
             }
         }
     }

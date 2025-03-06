@@ -40,8 +40,8 @@ public class Tile : MonoBehaviour
     {
         if (!GridManager.Instance.Contains(this))
         {
-            var coords = GridManager.FixCoordinates(transform.position);
-            GridManager.Instance.AddTile(coords, this);
+            /*var coords = GridManager.FixCoordinates(transform.position);
+            GridManager.Instance.AddTile(coords, this);*/
         
             var t = GetComponentInChildren<Tower>();
             if(t != null)
