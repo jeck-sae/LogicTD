@@ -201,7 +201,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2074815467
   m_SortingLayer: -1
-  m_SortingOrder: -2
+  m_SortingOrder: -1000
   m_Sprite: {fileID: 749414209, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
   m_Color: {r: 0.09224814, g: 0.085662164, b: 0.103773594, a: 1}
   m_FlipX: 0
@@ -375,7 +375,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2074815467
   m_SortingLayer: -1
-  m_SortingOrder: -2
+  m_SortingOrder: -1000
   m_Sprite: {fileID: 1982816523, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
   m_Color: {r: 0.09224814, g: 0.085662164, b: 0.103773594, a: 1}
   m_FlipX: 0
@@ -462,7 +462,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2074815467
   m_SortingLayer: -1
-  m_SortingOrder: -2
+  m_SortingOrder: -1000
   m_Sprite: {fileID: 1982816523, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
   m_Color: {r: 0.09224814, g: 0.085662164, b: 0.103773594, a: 1}
   m_FlipX: 0
@@ -549,7 +549,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2074815467
   m_SortingLayer: -1
-  m_SortingOrder: -2
+  m_SortingOrder: -1000
   m_Sprite: {fileID: 749414209, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
   m_Color: {r: 0.09224814, g: 0.085662164, b: 0.103773594, a: 1}
   m_FlipX: 0
@@ -636,7 +636,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2074815467
   m_SortingLayer: -1
-  m_SortingOrder: -2
+  m_SortingOrder: -1000
   m_Sprite: {fileID: 1982816523, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
   m_Color: {r: 0.09224814, g: 0.085662164, b: 0.103773594, a: 1}
   m_FlipX: 0
@@ -843,7 +843,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2074815467
   m_SortingLayer: -1
-  m_SortingOrder: -2
+  m_SortingOrder: -1000
   m_Sprite: {fileID: 749414209, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
   m_Color: {r: 0.09224814, g: 0.085662164, b: 0.103773594, a: 1}
   m_FlipX: 0
@@ -907,10 +907,10 @@ MonoBehaviour:
   tileName: 
   description: 
   type: 0
-  position: {x: 0, y: 0}
   isWalkable: 0
   isHome: 0
   canBuildOver: 0
+  position: {x: 0, y: 0}
   tower: {fileID: 0}
   gfx: {fileID: 0}
 --- !u!61 &4128463116955866609
@@ -1058,7 +1058,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2074815467
   m_SortingLayer: -1
-  m_SortingOrder: -2
+  m_SortingOrder: -1000
   m_Sprite: {fileID: 1982816523, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
   m_Color: {r: 0.09224814, g: 0.085662164, b: 0.103773594, a: 1}
   m_FlipX: 0
@@ -1267,7 +1267,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2074815467
   m_SortingLayer: -1
-  m_SortingOrder: -2
+  m_SortingOrder: -1000
   m_Sprite: {fileID: 749414209, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
   m_Color: {r: 0.09224814, g: 0.085662164, b: 0.103773594, a: 1}
   m_FlipX: 0

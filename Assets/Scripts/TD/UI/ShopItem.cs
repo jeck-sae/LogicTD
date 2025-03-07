@@ -46,11 +46,13 @@ public class ShopItem : MonoBehaviour
 
     public void OnCursorHover()
     {
-
+        if (TileSelectionManager.Instance.SelectedTile)
+            TowerPreviewManager.Instance.PreviewTower(tower, TileSelectionManager.Instance.SelectedTile.Position, placeCondition: () => { return GameStats.Instance.coins >= tower.Cost; });
         //DisplayInfoUI.Instance.Show(this, tower.shopIcon, tower.towerName, tower.towerDescription, false, tower.GetStats(), tower.upgradeHandler);
     }
     public void OnCursorExit()
     {
+        TowerPreviewManager.Instance.StopPreviewing();
         //DisplayInfoUI.Instance.Hide(this);
     }
 
@@ -66,9 +68,13 @@ public class ShopItem : MonoBehaviour
 
         if (TileSelectionManager.Instance.SelectedTile && TileSelectionManager.Instance.SelectedTile.Tower == null)
         {
-            var t = Instantiate(prefab).GetComponent<Tower>();
             GameStats.Instance.ModifyCoins(-(int)tower.Cost);
+            
+            var t = Instantiate(prefab).GetComponent<Tower>();
             TileSelectionManager.Instance.SelectedTile.PlaceTower(t);
+            
+            TowerPreviewManager.Instance.StopPreviewing();
+            DisplayInfoUI.Instance.Show(TileSelectionManager.Instance.SelectedTile.GetDisplayInfo());
         }
     }
 

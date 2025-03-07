@@ -13,19 +13,7 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
     protected Action onPlace;
     protected Action onCancelPlacing;
 
-    protected GameObject preview;
-    protected SpriteRenderer[] previewRenderers;
-
-    protected RangeIndicator rangePreview;
     protected bool startedPlacingThisFrame;
-
-    private void Awake()
-    {
-        rangePreview = Instantiate(Resources.Load("Prefabs/UI/RangePreview"), transform).GetComponent<RangeIndicator>();
-        rangePreview.scaleWithStat.multiply = 2;
-        rangePreview.gameObject.SetActive(false);
-    }
-
 
     public void Update()
     {
@@ -46,19 +34,14 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
             return;
         }
 
-
         Tile hoveringTile = GridManager.Instance.GetHoveringTile();
 
         //place tower
-        if (Input.GetMouseButtonDown(0) && hoveringTile && hoveringTile.CanPlace())
+        if (Input.GetMouseButtonDown(0) && hoveringTile && hoveringTile.CanPlace() && !Helpers.IsOverUI)
         {
             PlaceSelectedTower(hoveringTile);
             return;
         }
-
-
-        //draw preview
-        UpdatePreview();
     }
 
 
@@ -76,11 +59,7 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
         else
         {
             tower = placingTower;
-            preview.transform.parent = tower.transform;
-            preview.transform.localPosition = Vector3.zero;
-            preview = null;
         }
-        previewRenderers = new SpriteRenderer[0];
 
         tower.gameObject.SetActive(true);
         tower.name = placingTower.name;
@@ -90,26 +69,6 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
         AudioController.Instance.PlaySound2D("ui_confirm");
 
         StopPlacing();
-    }
-
-    void UpdatePreview()
-    {
-        Vector3 coords = Vector3.zero;
-        var tile = GridManager.Instance.GetHoveringTile();
-        if (!tile) coords = GridManager.FixCoordinates(Helpers.Camera.ScreenToWorldPoint(Input.mousePosition)).ToVector3();
-        else coords = tile.Position.ToVector3();
-
-        rangePreview.transform.position = coords;
-        preview.transform.position = coords;
-
-        if (tile && tile.CanPlace())
-        {
-            previewRenderers.ForEach(x => x.color = Color.white);
-        }
-        else
-        {
-            previewRenderers.ForEach(x => x.color = Color.red);
-        }
     }
 
 
@@ -126,10 +85,8 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
         onPlace = null;
         onCancelPlacing = null;
 
-        if(preview)
-            Destroy(preview);
-        
-        rangePreview.gameObject.SetActive(false);
+        TowerPreviewManager.Instance.StopPreviewing();
+
         InputManager.Instance.SetPlacingStatus(false);
     }
 
@@ -148,24 +105,14 @@ public class TowerPlacementManager : Singleton<TowerPlacementManager>
         this.onCancelPlacing = cancelPlacing;
         startedPlacingThisFrame = true;
 
-        //Range preview
-        var hoveringCoords = GridManager.FixCoordinates(Input.mousePosition);
-        rangePreview.transform.position = new Vector3(hoveringCoords.x, hoveringCoords.y, rangePreview.transform.position.z);
-        rangePreview.scaleWithStat.SetStat(tower.MaxRange);
-        rangePreview.gameObject.SetActive(true);
-        rangePreview.SetColor(tower.towerColor);
+        TowerPreviewManager.Instance.PreviewTower(tower, true);
 
-        //Tower preview
-        var pos = Helpers.Camera.ScreenToWorldPoint(Input.mousePosition);
-        if (instantiateNew)
-            preview = Instantiate(tower.transform.Find("GFX"), pos, Quaternion.identity).gameObject;
-        else
-        {
-            preview = tower.transform.Find("GFX").gameObject;
+        //Hide tower
+        if (!instantiateNew) 
+        { 
             tower.transform.position = Vector3.left * 10000;
             tower.Tile.RemoveTower();
         }
-        previewRenderers = preview.GetComponentsInChildren<SpriteRenderer>();
 
         AudioController.Instance.PlaySound2D("ui_confirm");
     }

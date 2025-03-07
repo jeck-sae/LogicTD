@@ -34,6 +34,7 @@ public class Tile : MonoBehaviour
     private void Awake()
     {
         gfx = GetComponent<TileGFX>();
+        name = tileName;
     }
 
     private void Start()
@@ -88,12 +89,15 @@ public class Tile : MonoBehaviour
         t.gameObject.transform.position = transform.position;
         t.gameObject.transform.parent = transform;
         t.Tile = this;
-        name = "Tile [" + t.name + "]";
+        name = $"{tileName} [" + t.towerName + "]";
     }
 
     public void RemoveTower()
     {
         tower = null;
+        if(TileSelectionManager.Instance?.SelectedTile == this)
+            DisplayInfoUI.Instance.UpdateInfo();
+        name = $"{tileName}";
     }
 
     private void OnDestroy()

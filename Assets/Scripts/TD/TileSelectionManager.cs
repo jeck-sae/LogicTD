@@ -15,14 +15,14 @@ public class TileSelectionManager : Singleton<TileSelectionManager>
     private void Update()
     {
         if (Input.GetMouseButtonDown(0)) 
-        { 
+        {
+            if (Helpers.IsOverUI)
+                return;
+
             Tile hovering = GridManager.Instance.GetHoveringTile();
 
             if(!hovering || hovering == selectedTile)
-            {
-                if(!Helpers.IsOverUI)
-                    DeselectTile();
-            }
+                DeselectTile();
             else
                 SelectTile(hovering);
         }
@@ -31,7 +31,7 @@ public class TileSelectionManager : Singleton<TileSelectionManager>
             DeselectTile();
     }
 
-    void DeselectTile()
+    public void DeselectTile()
     {
         selectedTile = null;
         selectionIndicator.gameObject.SetActive(false);

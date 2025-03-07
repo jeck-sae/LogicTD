@@ -24,6 +24,9 @@ public class DisplayInfoUI : Singleton<DisplayInfoUI>
 
     public void Show(BaseDisplayInfo info)
     {
+        if (info == null)
+            Hide();
+
         statParent.SetActive(false);
         shopParent.SetActive(false);
 
@@ -40,6 +43,12 @@ public class DisplayInfoUI : Singleton<DisplayInfoUI>
             ShowShop(info as ShopDisplayInfo);
         }
     }
+
+    public void UpdateInfo()
+    {
+        Show(TileSelectionManager.Instance?.SelectedTile?.GetDisplayInfo());
+    }
+
 
     protected void ShowShop(ShopDisplayInfo info)
     {
@@ -59,7 +68,7 @@ public class DisplayInfoUI : Singleton<DisplayInfoUI>
             int i = 0;
             foreach (var stat in stats.stats)
             {
-                if (!StatDisplayPreset.HasInfo(stat.Key))
+                if (!StatDisplayPreset.ShouldShowStat(stat.Key) || stat.Value.MaxValue == 0)
                     continue;
 
                 if (upgrades != null && !upgrades.IsMaxLevel)

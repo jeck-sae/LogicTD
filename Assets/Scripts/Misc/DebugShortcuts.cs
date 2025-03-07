@@ -49,7 +49,10 @@ public class DebugShortcuts : MonoBehaviour
             {
                 Tower t = TileSelectionManager.Instance.SelectedTile?.Tower;
                 if (t)
-                    Destroy(t.gameObject);
+                {
+                    Debug.Log("Destroyed " + t.towerName);
+                    t.DestroyTower();
+                }
             }
 
             //Move selected tower
@@ -57,7 +60,11 @@ public class DebugShortcuts : MonoBehaviour
             {
                 Tower t = TileSelectionManager.Instance.SelectedTile?.Tower;
                 if (t)
+                {
                     t.StartMoving();
+                    TileSelectionManager.Instance?.DeselectTile();
+                    Debug.Log("Moving " + t.towerName);
+                }
             }
             
             //+1000 coins

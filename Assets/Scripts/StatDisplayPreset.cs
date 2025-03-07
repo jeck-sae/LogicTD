@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,15 +19,24 @@ public class StatDisplayPreset : ScriptableObject
     }
 
     public static bool HasInfo(string id) => Instance.stats.Any(x => x.id == id);
-    public static StatDisplayInfo GetInfo(string id) => Instance.stats.FirstOrDefault(x => x.id == id);
+    public static bool ShouldShowStat(string id)
+    {
+        var i = Instance.stats.Find(x => x.id == id);
+        return i != null && i.show;
+    }
+    public static StatDisplayInfo GetInfo(string id) => Instance.stats.Find(x => x.id == id);
 
     public List<StatDisplayInfo> stats;
 
-    [Serializable]
-    public class StatDisplayInfo
-    {
-        public string id;
-        public string name;
-        public Color color;
-    }
+    
+}
+
+[Serializable]
+public class StatDisplayInfo
+{
+    public string id;
+    public string name;
+    [ColorPalette]
+    public Color color = Color.white;
+    public bool show = true;
 }

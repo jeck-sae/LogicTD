@@ -4,6 +4,7 @@ using UnityEngine;
 public class ShowSpawnEarlyButton : MonoBehaviour
 {
     bool activating = false;
+
     //late update so it doesn't trigger in the same frame as it's starting to spawn
     private void LateUpdate()
     {
@@ -19,7 +20,10 @@ public class ShowSpawnEarlyButton : MonoBehaviour
                 {
                     if (!WaveManager.Instance.isSpawningEnemies)
                         WaveManager.Instance.ShowResumeButton();
+                    activating = false;
                 });
         }
     }
+
+
 }

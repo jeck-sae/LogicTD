@@ -16,6 +16,20 @@ MonoBehaviour:
   - id: damage
     name: Damage
     color: {r: 0.4627451, g: 0.2627451, b: 0.53333336, a: 1}
+    show: 1
   - id: maxRange
     name: Max Range
     color: {r: 0.4627451, g: 0.2627451, b: 0.53333336, a: 1}
+    show: 1
+  - id: attackSpeed
+    name: Attack Speed
+    color: {r: 0.4627451, g: 0.2627451, b: 0.53333336, a: 1}
+    show: 1
+  - id: slowDuration
+    name: Slow Duration
+    color: {r: 0.4627451, g: 0.2627451, b: 0.53333336, a: 1}
+    show: 1
+  - id: slowAmount
+    name: Slow Amount
+    color: {r: 0.4627451, g: 0.2627451, b: 0.53333336, a: 1}
+    show: 1

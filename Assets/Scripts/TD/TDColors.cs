@@ -1,9 +1,10 @@
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class TDColors : Singleton<TDColors>
 {
-    public Color affordableColor;
-    public Color unaffordableColor;
+    [ColorPalette] public Color affordableColor;
+    [ColorPalette] public Color unaffordableColor;
     public static Color AffordableColor => TDColors.Instance.affordableColor;
     public static Color UnaffordableColor => TDColors.Instance.unaffordableColor;
 
