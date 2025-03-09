@@ -86,7 +86,6 @@ public class GridImportExport
             public SerializedTile(Tile tile)
             {
                 tileId = tile.tileId;
-                tileId = tile.GetComponent<Flyweight>().settings.name;
                 position = tile.Position;
             }
         }
