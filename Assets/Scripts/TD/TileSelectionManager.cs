@@ -2,66 +2,71 @@ using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 
-public class TileSelectionManager : Singleton<TileSelectionManager>
+
+namespace TowerDefense
 {
-    public Tile SelectedTile => selectedTile;
-    [ShowInInspector, ReadOnly] Tile selectedTile;
-
-    [SerializeField] Transform selectionIndicator;
-
-    private Action<Tile> specialSelectAction;
-    private bool selectTileAfterSpecialAction;
-
-    private void Update()
+    public class TileSelectionManager : Singleton<TileSelectionManager>
     {
-        if (Input.GetMouseButtonDown(0)) 
+        public Tile SelectedTile => selectedTile;
+        [ShowInInspector, ReadOnly] Tile selectedTile;
+    
+        [SerializeField] Transform selectionIndicator;
+    
+        private Action<Tile> specialSelectAction;
+        private bool selectTileAfterSpecialAction;
+    
+        private void Update()
         {
-            if (Helpers.IsOverUI)
-                return;
-
-            Tile hovering = GridManager.Instance.GetHoveringTile();
-
-            if(!hovering || hovering == selectedTile)
+            if (Input.GetMouseButtonDown(0)) 
+            {
+                if (Helpers.IsOverUI)
+                    return;
+    
+                Tile hovering = GridManager.Instance.GetHoveringTile();
+    
+                if(!hovering || hovering == selectedTile)
+                    DeselectTile();
+                else
+                    SelectTile(hovering);
+            }
+    
+            if (Input.GetMouseButtonDown(1) && selectedTile != null)
                 DeselectTile();
-            else
-                SelectTile(hovering);
         }
-
-        if (Input.GetMouseButtonDown(1) && selectedTile != null)
-            DeselectTile();
-    }
-
-    public void DeselectTile()
-    {
-        selectedTile = null;
-        selectionIndicator.gameObject.SetActive(false);
-        DisplayInfoUI.Instance.Hide();
-    }
-
-    void SelectTile(Tile tile)
-    {
-        if(specialSelectAction != null)
+    
+        public void DeselectTile()
         {
-            specialSelectAction(tile);
-            specialSelectAction = null;
-
-            if (!selectTileAfterSpecialAction)
-                return;
+            selectedTile = null;
+            selectionIndicator.gameObject.SetActive(false);
+            DisplayInfoUI.Instance.Hide();
         }
-        
-        selectionIndicator.gameObject.SetActive(true);
-        selectionIndicator.position = tile.transform.position;
-
-        DisplayInfoUI.Instance.Show(tile.GetDisplayInfo());
-
-        selectedTile = tile;
+    
+        void SelectTile(Tile tile)
+        {
+            if(specialSelectAction != null)
+            {
+                specialSelectAction(tile);
+                specialSelectAction = null;
+    
+                if (!selectTileAfterSpecialAction)
+                    return;
+            }
+            
+            selectionIndicator.gameObject.SetActive(true);
+            selectionIndicator.position = tile.transform.position;
+    
+            DisplayInfoUI.Instance.Show(tile.GetDisplayInfo());
+    
+            selectedTile = tile;
+        }
+    
+    
+        public void SetSpecialSelectAction(Action<Tile> specialSelectAction, bool selectAfterAction)
+        {
+            this.specialSelectAction = specialSelectAction;
+            this.selectTileAfterSpecialAction = selectAfterAction;
+        }
+    
     }
-
-
-    public void SetSpecialSelectAction(Action<Tile> specialSelectAction, bool selectAfterAction)
-    {
-        this.specialSelectAction = specialSelectAction;
-        this.selectTileAfterSpecialAction = selectAfterAction;
-    }
-
+    
 }

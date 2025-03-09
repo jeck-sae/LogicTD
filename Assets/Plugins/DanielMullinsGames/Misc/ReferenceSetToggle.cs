@@ -1,27 +1,32 @@
 using System.Collections.Generic;
 
-public class ReferenceSetToggle
+
+namespace TowerDefense
 {
-    private HashSet<object> references = new HashSet<object>();
-
-    public bool True    
+    public class ReferenceSetToggle
     {
-        get 
+        private HashSet<object> references = new HashSet<object>();
+    
+        public bool True    
         {
-            references.RemoveWhere(x => x == null);
-            return references.Count > 0;
+            get 
+            {
+                references.RemoveWhere(x => x == null);
+                return references.Count > 0;
+            }
         }
+    
+        public void Add(object obj)
+        {
+            references.Add(obj);
+        }
+    
+        public void Remove(object obj)
+        {
+            references.Remove(obj);
+        }
+    
+        public HashSet<object> GetReferences() => references;
     }
-
-    public void Add(object obj)
-    {
-        references.Add(obj);
-    }
-
-    public void Remove(object obj)
-    {
-        references.Remove(obj);
-    }
-
-    public HashSet<object> GetReferences() => references;
+    
 }

@@ -1,41 +1,45 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+
+namespace TowerDefense
 {
-    private static bool m_ShuttingDown = false;
-    private static object m_Lock = new object();
-    private static T m_Instance;
-
-    protected bool isInstanced => m_Instance;
-
-    public static T Instance
+    public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        get
+        private static bool m_ShuttingDown = false;
+        private static object m_Lock = new object();
+        private static T m_Instance;
+    
+        protected bool isInstanced => m_Instance;
+    
+        public static T Instance
         {
-            if (m_ShuttingDown)
+            get
             {
-                return null;
-            }
-
-            lock (m_Lock)
-            {
-                FindInstance();
-
-                return m_Instance;
+                if (m_ShuttingDown)
+                {
+                    return null;
+                }
+    
+                lock (m_Lock)
+                {
+                    FindInstance();
+    
+                    return m_Instance;
+                }
             }
         }
-    }
-
-    protected static void FindInstance()
-    {
-        if (m_Instance == null)
+    
+        protected static void FindInstance()
         {
-            m_Instance = (T)FindAnyObjectByType(typeof(T));
+            if (m_Instance == null)
+            {
+                m_Instance = (T)FindAnyObjectByType(typeof(T));
+            }
         }
-    }
-
-    private void OnApplicationQuit()
-    {
-        m_ShuttingDown = true;
+    
+        private void OnApplicationQuit()
+        {
+            m_ShuttingDown = true;
+        }
     }
 }

@@ -1,13 +1,18 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class SineWaveScale : SineWaveTransform
+
+namespace TowerDefense
 {
-    protected override Vector3 GetMagnitude()
+    public class SineWaveScale : SineWaveTransform
     {
-        return transform.localScale;
+        protected override Vector3 GetMagnitude()
+        {
+            return transform.localScale;
+        }
+        protected override void ApplyTransformation(Vector3 value)
+        {
+            transform.localScale = value;
+        }
     }
-    protected override void ApplyTransformation(Vector3 value)
-    {
-        transform.localScale = value;
-    }
+    
 }

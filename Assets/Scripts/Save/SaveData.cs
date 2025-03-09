@@ -1,9 +1,14 @@
 using System;
 
-[Serializable]
-public class SaveData 
+
+namespace TowerDefense
 {
-    public string lastSelectedLevel = "demo";
-    public bool fullscreen = true;
-    public float volume = .8f;
+    [Serializable]
+    public class SaveData 
+    {
+        public string lastSelectedLevel = "demo";
+        public bool fullscreen = true;
+        public float volume = .8f;
+    }
+    
 }

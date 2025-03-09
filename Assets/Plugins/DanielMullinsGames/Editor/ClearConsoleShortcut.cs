@@ -1,16 +1,21 @@
-﻿using UnityEditor;
+using UnityEditor;
 using System.Reflection;
 
-static class UsefulShortcuts
+
+namespace TowerDefense
 {
-#if UNITY_EDITOR
-    [MenuItem("Tools/Daniel Mullins Games/Clear Console %#c")] // CMD + SHIFT + C
-    private static void ClearConsole()
+    static class UsefulShortcuts
     {
-        var assembly = Assembly.GetAssembly(typeof(SceneView));
-        var type = assembly.GetType("UnityEditor.LogEntries");
-        var method = type.GetMethod("Clear");
-        method.Invoke(new object(), null);
+    #if UNITY_EDITOR
+        [MenuItem("Tools/Daniel Mullins Games/Clear Console %#c")] // CMD + SHIFT + C
+        private static void ClearConsole()
+        {
+            var assembly = Assembly.GetAssembly(typeof(SceneView));
+            var type = assembly.GetType("UnityEditor.LogEntries");
+            var method = type.GetMethod("Clear");
+            method.Invoke(new object(), null);
+        }
+    #endif
     }
-#endif
+    
 }

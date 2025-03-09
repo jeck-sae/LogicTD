@@ -3,137 +3,141 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Pathfinder
+
+namespace TowerDefense
 {
-    public static List<Tile> FindNearestTile(GridManager grid, Tile startTile, Func<Tile, bool> isDestination = null)
+    public class Pathfinder
     {
-        Dictionary<Tile, PathfinderTile> tileData = new Dictionary<Tile, PathfinderTile>();
-        List<Tile> openSet = new List<Tile>();
-        HashSet<Tile> closedSet = new HashSet<Tile>();
-
-        if (isDestination == null)
-            isDestination = (t) => { return t.IsHome; };
-
-        openSet.Add(startTile);
-        tileData.Add(startTile, new PathfinderTile(startTile, 0, int.MaxValue));
-
-        while (openSet.Count > 0)
+        public static List<Tile> FindNearestTile(GridManager grid, Tile startTile, Func<Tile, bool> isDestination = null)
         {
-            PathfinderTile currentTile = tileData[openSet[0]];
-
-            if (isDestination(currentTile.originalTile))
-                return RetracePath(tileData[startTile], currentTile);
-
-            openSet.Remove(currentTile.originalTile);
-            closedSet.Add(currentTile.originalTile);
-
-            foreach (Tile neighbour in grid.GetAdjacentTiles(currentTile.originalTile.Position))
+            Dictionary<Tile, PathfinderTile> tileData = new Dictionary<Tile, PathfinderTile>();
+            List<Tile> openSet = new List<Tile>();
+            HashSet<Tile> closedSet = new HashSet<Tile>();
+    
+            if (isDestination == null)
+                isDestination = (t) => { return t.IsHome; };
+    
+            openSet.Add(startTile);
+            tileData.Add(startTile, new PathfinderTile(startTile, 0, int.MaxValue));
+    
+            while (openSet.Count > 0)
             {
-                if (!neighbour || !neighbour.IsWalkable || closedSet.Contains(neighbour))
-                    continue;
-
-                int newMovementCostToNeighbour = currentTile.gCost + GetDistance(currentTile.originalTile, neighbour);
-
-                if (!tileData.ContainsKey(neighbour))
+                PathfinderTile currentTile = tileData[openSet[0]];
+    
+                if (isDestination(currentTile.originalTile))
+                    return RetracePath(tileData[startTile], currentTile);
+    
+                openSet.Remove(currentTile.originalTile);
+                closedSet.Add(currentTile.originalTile);
+    
+                foreach (Tile neighbour in grid.GetAdjacentTiles(currentTile.originalTile.Position))
                 {
-                    tileData.Add(neighbour, new PathfinderTile(neighbour, newMovementCostToNeighbour, currentTile.hCost - 1, currentTile));
-                    openSet.Add(neighbour);
+                    if (!neighbour || !neighbour.IsWalkable || closedSet.Contains(neighbour))
+                        continue;
+    
+                    int newMovementCostToNeighbour = currentTile.gCost + GetDistance(currentTile.originalTile, neighbour);
+    
+                    if (!tileData.ContainsKey(neighbour))
+                    {
+                        tileData.Add(neighbour, new PathfinderTile(neighbour, newMovementCostToNeighbour, currentTile.hCost - 1, currentTile));
+                        openSet.Add(neighbour);
+                    }
                 }
             }
+    
+            List<Tile> noPath = new List<Tile>();
+            noPath.Add(startTile);
+            return noPath;
         }
-
-        List<Tile> noPath = new List<Tile>();
-        noPath.Add(startTile);
-        return noPath;
-    }
-
-    public static List<Tile> FindPath(GridManager grid, Tile startTile, Tile endTile)
-    {
-        Dictionary<Tile, PathfinderTile> tileData = new Dictionary<Tile, PathfinderTile>();
-        List<Tile> openSet = new List<Tile>();
-        HashSet<Tile> closedSet = new HashSet<Tile>();
-
-        openSet.Add(startTile);
-        tileData.Add(startTile, new PathfinderTile(startTile, 0, GetDistance(startTile, endTile)));
-
-        while (openSet.Count > 0)
+    
+        public static List<Tile> FindPath(GridManager grid, Tile startTile, Tile endTile)
         {
-            PathfinderTile currentTile = tileData[openSet[0]];
-            for (int i = 1; i < openSet.Count; i++)
-                if (tileData[openSet[i]].fCost < currentTile.fCost || (
-                    tileData[openSet[i]].fCost == currentTile.fCost && tileData[openSet[i]].hCost < currentTile.hCost))
-                    currentTile = tileData[openSet[i]];
-
-            openSet.Remove(currentTile.originalTile);
-            closedSet.Add(currentTile.originalTile);
-
-            if (currentTile.originalTile == endTile)
-                return RetracePath(tileData[startTile], tileData[endTile]);
-
-
-            foreach (Tile neighbour in grid.GetAdjacentTiles(currentTile.originalTile.Position))
+            Dictionary<Tile, PathfinderTile> tileData = new Dictionary<Tile, PathfinderTile>();
+            List<Tile> openSet = new List<Tile>();
+            HashSet<Tile> closedSet = new HashSet<Tile>();
+    
+            openSet.Add(startTile);
+            tileData.Add(startTile, new PathfinderTile(startTile, 0, GetDistance(startTile, endTile)));
+    
+            while (openSet.Count > 0)
             {
-                if (!neighbour || !neighbour.IsWalkable || closedSet.Contains(neighbour))
-                    continue;
-                int newMovementCostToNeighbour = currentTile.gCost + GetDistance(currentTile.originalTile, neighbour);
-
-                if (!tileData.ContainsKey(neighbour))
+                PathfinderTile currentTile = tileData[openSet[0]];
+                for (int i = 1; i < openSet.Count; i++)
+                    if (tileData[openSet[i]].fCost < currentTile.fCost || (
+                        tileData[openSet[i]].fCost == currentTile.fCost && tileData[openSet[i]].hCost < currentTile.hCost))
+                        currentTile = tileData[openSet[i]];
+    
+                openSet.Remove(currentTile.originalTile);
+                closedSet.Add(currentTile.originalTile);
+    
+                if (currentTile.originalTile == endTile)
+                    return RetracePath(tileData[startTile], tileData[endTile]);
+    
+    
+                foreach (Tile neighbour in grid.GetAdjacentTiles(currentTile.originalTile.Position))
                 {
-                    tileData.Add(neighbour, new PathfinderTile(neighbour, newMovementCostToNeighbour, GetDistance(neighbour, endTile), currentTile));
-                    openSet.Add(neighbour);
-                }
-
-                if (newMovementCostToNeighbour < tileData[neighbour].gCost)
-                {
-                    tileData[neighbour].gCost = newMovementCostToNeighbour;
-                    tileData[neighbour].parent = currentTile;
+                    if (!neighbour || !neighbour.IsWalkable || closedSet.Contains(neighbour))
+                        continue;
+                    int newMovementCostToNeighbour = currentTile.gCost + GetDistance(currentTile.originalTile, neighbour);
+    
+                    if (!tileData.ContainsKey(neighbour))
+                    {
+                        tileData.Add(neighbour, new PathfinderTile(neighbour, newMovementCostToNeighbour, GetDistance(neighbour, endTile), currentTile));
+                        openSet.Add(neighbour);
+                    }
+    
+                    if (newMovementCostToNeighbour < tileData[neighbour].gCost)
+                    {
+                        tileData[neighbour].gCost = newMovementCostToNeighbour;
+                        tileData[neighbour].parent = currentTile;
+                    }
                 }
             }
+    
+            List<Tile> noPath = new List<Tile>();
+            noPath.Add(startTile);
+            return noPath;
         }
-
-        List<Tile> noPath = new List<Tile>();
-        noPath.Add(startTile);
-        return noPath;
-    }
-
-    static List<Tile> RetracePath(PathfinderTile startTile, PathfinderTile endTile)
-    {
-        List<Tile> path = new List<Tile>();
-        PathfinderTile currentTile = endTile;
-
-        while (currentTile != startTile)
+    
+        static List<Tile> RetracePath(PathfinderTile startTile, PathfinderTile endTile)
         {
-            path.Add(currentTile.originalTile);
-            currentTile = currentTile.parent;
+            List<Tile> path = new List<Tile>();
+            PathfinderTile currentTile = endTile;
+    
+            while (currentTile != startTile)
+            {
+                path.Add(currentTile.originalTile);
+                currentTile = currentTile.parent;
+            }
+            //path.Add(startTile.originalTile);
+            path.Reverse();
+            return path;
         }
-        //path.Add(startTile.originalTile);
-        path.Reverse();
-        return path;
-    }
-
-    public static int GetDistance(Tile t1, Tile t2)
-    {
-        return Mathf.RoundToInt(Mathf.Abs(t1.Position.x - t2.Position.x) + Mathf.Abs(t1.Position.y - t2.Position.y));
-    }
-
-    class PathfinderTile
-    {
-        public bool walkable;
-        public int gCost;
-        public int hCost;
-        public int fCost { get { return gCost + hCost; } }
-        public Tile originalTile;
-        public PathfinderTile parent;
-
-
-        public PathfinderTile(Tile _tile, int _gCost, int _hCost, PathfinderTile _parent = null)
+    
+        public static int GetDistance(Tile t1, Tile t2)
         {
-            originalTile = _tile;
-            walkable = _tile.IsWalkable;
-            gCost = _gCost;
-            hCost = _gCost;
-            parent = _parent;
+            return Mathf.RoundToInt(Mathf.Abs(t1.Position.x - t2.Position.x) + Mathf.Abs(t1.Position.y - t2.Position.y));
         }
-
+    
+        class PathfinderTile
+        {
+            public bool walkable;
+            public int gCost;
+            public int hCost;
+            public int fCost { get { return gCost + hCost; } }
+            public Tile originalTile;
+            public PathfinderTile parent;
+    
+    
+            public PathfinderTile(Tile _tile, int _gCost, int _hCost, PathfinderTile _parent = null)
+            {
+                originalTile = _tile;
+                walkable = _tile.IsWalkable;
+                gCost = _gCost;
+                hCost = _gCost;
+                parent = _parent;
+            }
+    
+        }
     }
 }

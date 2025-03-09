@@ -1,77 +1,82 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
-public class RenderTextureSetter : MonoBehaviour
+
+namespace TowerDefense
 {
-    public List<RenderTexture> RenderTextures => renderTextures;
-    private List<RenderTexture> renderTextures = new List<RenderTexture>();
-
-    [SerializeField]
-    private List<Camera> pixelSceneCameras = default;
-
-    [SerializeField]
-    private List<UnityEngine.UI.RawImage> renderImages = default;
-
-    private int prevScreenWidth = 0;
-    private int prevScreenHeight = 0;
-    private int prevScaleFactor = 0;
-
-    public void FormatForResolution(int width, int height, int scaleFactor)
+    public class RenderTextureSetter : MonoBehaviour
     {
-        bool createRenderTexture = prevScreenWidth != width || prevScreenHeight != height || prevScaleFactor != scaleFactor;
-
-        for (int i = 0; i < pixelSceneCameras.Count; i++)
+        public List<RenderTexture> RenderTextures => renderTextures;
+        private List<RenderTexture> renderTextures = new List<RenderTexture>();
+    
+        [SerializeField]
+        private List<Camera> pixelSceneCameras = default;
+    
+        [SerializeField]
+        private List<UnityEngine.UI.RawImage> renderImages = default;
+    
+        private int prevScreenWidth = 0;
+        private int prevScreenHeight = 0;
+        private int prevScaleFactor = 0;
+    
+        public void FormatForResolution(int width, int height, int scaleFactor)
         {
-            var pixelSceneCamera = pixelSceneCameras[i];
-            var renderImage = renderImages[i];
-
-            pixelSceneCamera.orthographicSize = (height / 2) / 100f;
-
-            if (createRenderTexture)
+            bool createRenderTexture = prevScreenWidth != width || prevScreenHeight != height || prevScaleFactor != scaleFactor;
+    
+            for (int i = 0; i < pixelSceneCameras.Count; i++)
             {
-                CleanUpCurrentRenderTexture(pixelSceneCamera);
-
-                var renderTexture = CreateRenderTexture(width, height);
-                pixelSceneCamera.targetTexture = renderTexture;
-                renderImage.texture = renderTexture;
-                renderImage.rectTransform.sizeDelta = new Vector2(width * scaleFactor, height * scaleFactor);
+                var pixelSceneCamera = pixelSceneCameras[i];
+                var renderImage = renderImages[i];
+    
+                pixelSceneCamera.orthographicSize = (height / 2) / 100f;
+    
+                if (createRenderTexture)
+                {
+                    CleanUpCurrentRenderTexture(pixelSceneCamera);
+    
+                    var renderTexture = CreateRenderTexture(width, height);
+                    pixelSceneCamera.targetTexture = renderTexture;
+                    renderImage.texture = renderTexture;
+                    renderImage.rectTransform.sizeDelta = new Vector2(width * scaleFactor, height * scaleFactor);
+                }
+    
+                Rect rect = pixelSceneCamera.pixelRect;
+                rect.width = width;
+                rect.height = height;
+                pixelSceneCamera.pixelRect = rect;
+    
+                // Don't add a new RenderTexture to list until it is initialized as the proper dimensions, which seems to take 1 frame.
+                if (!renderTextures.Contains(renderImage.texture as RenderTexture) && renderImage.texture.width == width)
+                {
+                    renderTextures.Add(renderImage.texture as RenderTexture);
+                }
             }
-
-            Rect rect = pixelSceneCamera.pixelRect;
-            rect.width = width;
-            rect.height = height;
-            pixelSceneCamera.pixelRect = rect;
-
-            // Don't add a new RenderTexture to list until it is initialized as the proper dimensions, which seems to take 1 frame.
-            if (!renderTextures.Contains(renderImage.texture as RenderTexture) && renderImage.texture.width == width)
+    
+            prevScreenWidth = width;
+            prevScreenHeight = height;
+            prevScaleFactor = scaleFactor;
+        }
+    
+        private RenderTexture CreateRenderTexture(int width, int height)
+        {
+            var renderTexture = new RenderTexture(width, height,
+                16, UnityEngine.Experimental.Rendering.DefaultFormat.HDR);
+            renderTexture.filterMode = FilterMode.Point;
+            renderTexture.useMipMap = false;
+            renderTexture.Create();
+    
+            return renderTexture;
+        }
+    
+        private void CleanUpCurrentRenderTexture(Camera cam)
+        {
+            if (cam.targetTexture != null)
             {
-                renderTextures.Add(renderImage.texture as RenderTexture);
+                var texture = cam.targetTexture;
+                cam.targetTexture = null;
+                Destroy(texture);
             }
         }
-
-        prevScreenWidth = width;
-        prevScreenHeight = height;
-        prevScaleFactor = scaleFactor;
     }
-
-    private RenderTexture CreateRenderTexture(int width, int height)
-    {
-        var renderTexture = new RenderTexture(width, height,
-            16, UnityEngine.Experimental.Rendering.DefaultFormat.HDR);
-        renderTexture.filterMode = FilterMode.Point;
-        renderTexture.useMipMap = false;
-        renderTexture.Create();
-
-        return renderTexture;
-    }
-
-    private void CleanUpCurrentRenderTexture(Camera cam)
-    {
-        if (cam.targetTexture != null)
-        {
-            var texture = cam.targetTexture;
-            cam.targetTexture = null;
-            Destroy(texture);
-        }
-    }
+    
 }

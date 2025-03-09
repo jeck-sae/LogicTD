@@ -2,115 +2,119 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactable : ManagedBehaviour
+
+namespace TowerDefense
 {
-    public bool CollisionEnabled
+    public class Interactable : ManagedBehaviour
     {
-        get
+        public bool CollisionEnabled
         {
-            if (CollisionIs2D)
+            get
             {
-                return GetComponent<Collider2D>().enabled;
+                if (CollisionIs2D)
+                {
+                    return GetComponent<Collider2D>().enabled;
+                }
+                else
+                {
+                    return GetComponent<Collider>().enabled;
+                }
+            }
+        }
+    
+        public System.Action<Interactable> CursorEntered { get; set; }
+        public System.Action<Interactable> CursorExited { get; set; }
+        public System.Action<Interactable> CursorSelectStarted { get; set; }
+        public System.Action<Interactable> CursorSelectEnded { get; set; }
+    
+        protected virtual bool CollisionIs2D { get { return false; } }
+        protected bool CursorHovering { get; private set; }
+    
+        private Collider coll;
+        private Collider2D coll2D;
+    
+        protected virtual void Start() { }
+    
+        public void SetCollisionEnabled(bool enabled)
+        {
+            if (enabled && !CanEnable())
+            {
+                return;
+            }
+    
+            if (coll2D == null && CollisionIs2D)
+            {
+                coll2D = GetComponent<Collider2D>();
+            }
+            if (coll == null && !CollisionIs2D)
+            {
+                coll = GetComponent<Collider>();
+            }
+            if (coll != null)
+            {
+                coll.enabled = enabled;
+            }
+            if (coll2D != null)
+            {
+                coll2D.enabled = enabled;
+            }
+    
+            if (enabled)
+            {
+                OnInteractionEnabled();
             }
             else
             {
-                return GetComponent<Collider>().enabled;
+                OnInteractionDisabled();
             }
         }
-    }
-
-    public System.Action<Interactable> CursorEntered { get; set; }
-    public System.Action<Interactable> CursorExited { get; set; }
-    public System.Action<Interactable> CursorSelectStarted { get; set; }
-    public System.Action<Interactable> CursorSelectEnded { get; set; }
-
-    protected virtual bool CollisionIs2D { get { return false; } }
-    protected bool CursorHovering { get; private set; }
-
-    private Collider coll;
-    private Collider2D coll2D;
-
-    protected virtual void Start() { }
-
-    public void SetCollisionEnabled(bool enabled)
-    {
-        if (enabled && !CanEnable())
+    
+        public void CursorSelectStart()
         {
-            return;
+            CursorSelectStarted?.Invoke(this);
+            OnCursorSelectStart();
         }
-
-        if (coll2D == null && CollisionIs2D)
+    
+        public void CursorSelectEnd()
         {
-            coll2D = GetComponent<Collider2D>();
+            CursorSelectEnded?.Invoke(this);
+            OnCursorSelectEnd();
         }
-        if (coll == null && !CollisionIs2D)
+    
+        public void CursorEnter()
         {
-            coll = GetComponent<Collider>();
+            CursorEntered?.Invoke(this);
+            OnCursorEnter();
         }
-        if (coll != null)
+    
+        public void CursorStay()
         {
-            coll.enabled = enabled;
+            CursorHovering = true;
+            OnCursorStay();
         }
-        if (coll2D != null)
+    
+        public void CursorExit()
         {
-            coll2D.enabled = enabled;
+            CursorExited?.Invoke(this);
+            CursorHovering = false;
+            OnCursorExit();
         }
-
-        if (enabled)
+    
+        public void CursorDragOff()
         {
-            OnInteractionEnabled();
+    
         }
-        else
-        {
-            OnInteractionDisabled();
-        }
+    
+        public virtual void ClearDelegates() { }
+    
+        protected virtual bool CanEnable() { return true; }
+        protected virtual void OnInteractionEnabled() { }
+        protected virtual void OnInteractionDisabled() { }
+        protected virtual void OnCursorEnter() { }
+        protected virtual void OnCursorStay() { }
+        protected virtual void OnCursorExit() { }
+        protected virtual void OnCursorSelectStart() { }
+        protected virtual void OnCursorSelectEnd() { }
+        protected virtual void OnCursorDrag() { }
     }
-
-    public void CursorSelectStart()
-    {
-        CursorSelectStarted?.Invoke(this);
-        OnCursorSelectStart();
-    }
-
-    public void CursorSelectEnd()
-    {
-        CursorSelectEnded?.Invoke(this);
-        OnCursorSelectEnd();
-    }
-
-    public void CursorEnter()
-    {
-        CursorEntered?.Invoke(this);
-        OnCursorEnter();
-    }
-
-    public void CursorStay()
-    {
-        CursorHovering = true;
-        OnCursorStay();
-    }
-
-    public void CursorExit()
-    {
-        CursorExited?.Invoke(this);
-        CursorHovering = false;
-        OnCursorExit();
-    }
-
-    public void CursorDragOff()
-    {
-
-    }
-
-    public virtual void ClearDelegates() { }
-
-    protected virtual bool CanEnable() { return true; }
-    protected virtual void OnInteractionEnabled() { }
-    protected virtual void OnInteractionDisabled() { }
-    protected virtual void OnCursorEnter() { }
-    protected virtual void OnCursorStay() { }
-    protected virtual void OnCursorExit() { }
-    protected virtual void OnCursorSelectStart() { }
-    protected virtual void OnCursorSelectEnd() { }
-    protected virtual void OnCursorDrag() { }
 }

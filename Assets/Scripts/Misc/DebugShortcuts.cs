@@ -1,150 +1,155 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DebugShortcuts : MonoBehaviour
+
+namespace TowerDefense
 {
-    float timeScaleBeforePausing;
-
-    private void Update()
+    public class DebugShortcuts : MonoBehaviour
     {
-        //toggle fullscreen and save
-        if (Input.GetKeyDown(KeyCode.F11))
+        float timeScaleBeforePausing;
+    
+        private void Update()
         {
-            bool toggle = !Screen.fullScreen;
-            Screen.fullScreen = toggle;
-
-            SaveManager.Instance.data.fullscreen = toggle;
-            SaveManager.SaveState();
-        }
-
-        if (Input.GetKeyDown(KeyCode.F1))
-            SceneManager.LoadScene("LoadableLevel");
-            
-        if (Input.GetKeyDown(KeyCode.F2))
-            SceneManager.LoadScene("LevelEditor");
-
-        if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift))
-        {
-            //lower volume and save
-            if (Input.GetKeyDown(KeyCode.Comma))
+            //toggle fullscreen and save
+            if (Input.GetKeyDown(KeyCode.F11))
             {
-                AudioListener.volume = Mathf.Clamp01(AudioListener.volume - .1f);
-                SaveManager.Instance.data.volume = AudioListener.volume;
+                bool toggle = !Screen.fullScreen;
+                Screen.fullScreen = toggle;
+    
+                SaveManager.Instance.data.fullscreen = toggle;
                 SaveManager.SaveState();
-                Debug.Log("Volume " + AudioListener.volume);
             }
-
-            //increase volume and save
-            if (Input.GetKeyDown(KeyCode.Period))
+    
+            if (Input.GetKeyDown(KeyCode.F1))
+                SceneManager.LoadScene("LoadableLevel");
+                
+            if (Input.GetKeyDown(KeyCode.F2))
+                SceneManager.LoadScene("LevelEditor");
+    
+            if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift))
             {
-                AudioListener.volume = Mathf.Clamp01(AudioListener.volume + .1f);
-                SaveManager.Instance.data.volume = AudioListener.volume;
-                SaveManager.SaveState();
-                Debug.Log("Volume " + AudioListener.volume);
-            }
-
-
-            //Destroy hovering tile
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                var t = GridManager.Instance.GetHoveringTile();
-                if (t)
+                //lower volume and save
+                if (Input.GetKeyDown(KeyCode.Comma))
                 {
-                    GridManager.Instance.Remove(t);
-                    Destroy(t.gameObject);
-                    Debug.Log("Destroyed " + t.name);
+                    AudioListener.volume = Mathf.Clamp01(AudioListener.volume - .1f);
+                    SaveManager.Instance.data.volume = AudioListener.volume;
+                    SaveManager.SaveState();
+                    Debug.Log("Volume " + AudioListener.volume);
                 }
-            }
-
-            //Destroy selected tower
-            if (Input.GetKeyDown(KeyCode.X))
-            {
-                Tower t = TileSelectionManager.Instance.SelectedTile?.Tower;
-                if (t)
+    
+                //increase volume and save
+                if (Input.GetKeyDown(KeyCode.Period))
                 {
-                    Debug.Log("Destroyed " + t.towerName);
-                    t.DestroyTower();
+                    AudioListener.volume = Mathf.Clamp01(AudioListener.volume + .1f);
+                    SaveManager.Instance.data.volume = AudioListener.volume;
+                    SaveManager.SaveState();
+                    Debug.Log("Volume " + AudioListener.volume);
                 }
-            }
-
-            //Move selected tower
-            if (Input.GetKeyDown(KeyCode.V))
-            {
-                Tower t = TileSelectionManager.Instance.SelectedTile?.Tower;
-                if (t)
+    
+    
+                //Destroy hovering tile
+                if (Input.GetKeyDown(KeyCode.D))
                 {
-                    t.StartMoving();
-                    TileSelectionManager.Instance?.DeselectTile();
-                    Debug.Log("Moving " + t.towerName);
+                    var t = GridManager.Instance.GetHoveringTile();
+                    if (t)
+                    {
+                        GridManager.Instance.Remove(t);
+                        Destroy(t.gameObject);
+                        Debug.Log("Destroyed " + t.name);
+                    }
                 }
-            }
-            
-            //+1000 coins
-            if (Input.GetKeyDown(KeyCode.M))
-            {
-                GameStats.Instance?.ModifyCoins(1000);
-                Debug.Log("+1000 coins");
-            }
-
-            //Kill enemies
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                GameManager.Instance?.enemies.ForEach(x => x.Damage(10000));
-                Debug.Log("Killed all enemies");
-            }
-
-            //Load main scene
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                SceneManager.LoadScene(0);
-                Debug.Log("Loaded main scene");
-            }
-
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                var g = FindAnyObjectByType<LevelBGIconSpawner>(FindObjectsInactive.Include);
-                if(g) g.gameObject.SetActive(!g.gameObject.activeSelf);
-                Debug.Log("Background effect: " + (g.gameObject.activeSelf ? "on" : "off"));
-            }
-
-
-
-            //Speed up
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                Time.timeScale *= 2;
-                Debug.Log($"TimeScale: {Time.timeScale}");
-            }
-            
-            //Slow down
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                Time.timeScale /= 2;
-                Debug.Log($"TimeScale: {Time.timeScale}");
-            }
-
-            //Reset time scale
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                Time.timeScale = 1;
-                Debug.Log($"TimeScale: {Time.timeScale}");
-            }
-
-            //Toggle pause
-            if (Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                if (Time.timeScale > 0f)
+    
+                //Destroy selected tower
+                if (Input.GetKeyDown(KeyCode.X))
                 {
-                    timeScaleBeforePausing = Time.timeScale;
-                    Time.timeScale = 0;
-                    Debug.Log("Paused");
+                    Tower t = TileSelectionManager.Instance.SelectedTile?.Tower;
+                    if (t)
+                    {
+                        Debug.Log("Destroyed " + t.towerName);
+                        t.DestroyTower();
+                    }
                 }
-                else
+    
+                //Move selected tower
+                if (Input.GetKeyDown(KeyCode.V))
                 {
-                    Time.timeScale = timeScaleBeforePausing;
-                    Debug.Log("Resumed");
+                    Tower t = TileSelectionManager.Instance.SelectedTile?.Tower;
+                    if (t)
+                    {
+                        t.StartMoving();
+                        TileSelectionManager.Instance?.DeselectTile();
+                        Debug.Log("Moving " + t.towerName);
+                    }
+                }
+                
+                //+1000 coins
+                if (Input.GetKeyDown(KeyCode.M))
+                {
+                    GameStats.Instance?.ModifyCoins(1000);
+                    Debug.Log("+1000 coins");
+                }
+    
+                //Kill enemies
+                if (Input.GetKeyDown(KeyCode.K))
+                {
+                    GameManager.Instance?.enemies.ForEach(x => x.Damage(10000));
+                    Debug.Log("Killed all enemies");
+                }
+    
+                //Load main scene
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    SceneManager.LoadScene(0);
+                    Debug.Log("Loaded main scene");
+                }
+    
+                if (Input.GetKeyDown(KeyCode.G))
+                {
+                    var g = FindAnyObjectByType<LevelBGIconSpawner>(FindObjectsInactive.Include);
+                    if(g) g.gameObject.SetActive(!g.gameObject.activeSelf);
+                    Debug.Log("Background effect: " + (g.gameObject.activeSelf ? "on" : "off"));
+                }
+    
+    
+    
+                //Speed up
+                if (Input.GetKeyDown(KeyCode.RightArrow))
+                {
+                    Time.timeScale *= 2;
+                    Debug.Log($"TimeScale: {Time.timeScale}");
+                }
+                
+                //Slow down
+                if (Input.GetKeyDown(KeyCode.LeftArrow))
+                {
+                    Time.timeScale /= 2;
+                    Debug.Log($"TimeScale: {Time.timeScale}");
+                }
+    
+                //Reset time scale
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    Time.timeScale = 1;
+                    Debug.Log($"TimeScale: {Time.timeScale}");
+                }
+    
+                //Toggle pause
+                if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    if (Time.timeScale > 0f)
+                    {
+                        timeScaleBeforePausing = Time.timeScale;
+                        Time.timeScale = 0;
+                        Debug.Log("Paused");
+                    }
+                    else
+                    {
+                        Time.timeScale = timeScaleBeforePausing;
+                        Debug.Log("Resumed");
+                    }
                 }
             }
         }
     }
+    
 }

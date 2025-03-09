@@ -1,23 +1,28 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlinkGameObjectActive : TimedBehaviour
+
+namespace TowerDefense
 {
-    [Header("Blink")]
-    [SerializeField]
-    private GameObject objectToBlink = default;
-
-    [SerializeField]
-    private string blinkSound = default;
-
-    protected override void OnTimerReached()
+    public class BlinkGameObjectActive : TimedBehaviour
     {
-        objectToBlink.SetActive(!objectToBlink.activeSelf);
-
-        if (objectToBlink.activeSelf && !string.IsNullOrEmpty(blinkSound))
+        [Header("Blink")]
+        [SerializeField]
+        private GameObject objectToBlink = default;
+    
+        [SerializeField]
+        private string blinkSound = default;
+    
+        protected override void OnTimerReached()
         {
-            AudioController.Instance.PlaySound2D(blinkSound, volume: 0.25f);
+            objectToBlink.SetActive(!objectToBlink.activeSelf);
+    
+            if (objectToBlink.activeSelf && !string.IsNullOrEmpty(blinkSound))
+            {
+                AudioController.Instance.PlaySound2D(blinkSound, volume: 0.25f);
+            }
         }
     }
+    
 }

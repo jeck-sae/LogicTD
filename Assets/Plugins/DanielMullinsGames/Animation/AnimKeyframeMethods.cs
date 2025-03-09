@@ -1,15 +1,20 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
-public class AnimKeyframeMethods : MonoBehaviour
-{
-    void SendMessageUp(string message)
-    {
-        gameObject.SendMessageUpwards(message, SendMessageOptions.DontRequireReceiver);
-    }
 
-    void Destroy()
+namespace TowerDefense
+{
+    public class AnimKeyframeMethods : MonoBehaviour
     {
-        Destroy(transform.parent.gameObject);
+        void SendMessageUp(string message)
+        {
+            gameObject.SendMessageUpwards(message, SendMessageOptions.DontRequireReceiver);
+        }
+    
+        void Destroy()
+        {
+            Destroy(transform.parent.gameObject);
+        }
     }
+    
 }

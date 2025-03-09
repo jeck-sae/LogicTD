@@ -1,4 +1,9 @@
-public interface IStatObject
+
+namespace TowerDefense
 {
-    public abstract Stats GetStats();
+    public interface IStatObject
+    {
+        public abstract Stats GetStats();
+    }
+    
 }

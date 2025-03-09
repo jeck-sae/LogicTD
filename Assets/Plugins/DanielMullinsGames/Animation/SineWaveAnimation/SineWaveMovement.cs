@@ -1,13 +1,18 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class SineWaveMovement : SineWaveTransform
+
+namespace TowerDefense
 {
-    protected override Vector3 GetMagnitude()
+    public class SineWaveMovement : SineWaveTransform
     {
-        return transform.localPosition;
+        protected override Vector3 GetMagnitude()
+        {
+            return transform.localPosition;
+        }
+        protected override void ApplyTransformation(Vector3 value)
+        {
+            transform.localPosition = value;
+        }
     }
-    protected override void ApplyTransformation(Vector3 value)
-    {
-        transform.localPosition = value;
-    }
+    
 }

@@ -1,20 +1,25 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class AutoRotate : ManagedBehaviour
+
+namespace TowerDefense
 {
-    public Vector3 rotationSpeed = default;
-    public bool local = default;
-
-    public override void ManagedUpdate()
+    public class AutoRotate : ManagedBehaviour
     {
-        Vector3 rotateAmount = rotationSpeed * Time.deltaTime;
-        if (local)
+        public Vector3 rotationSpeed = default;
+        public bool local = default;
+    
+        public override void ManagedUpdate()
         {
-            transform.localRotation = Quaternion.Euler(transform.localEulerAngles + rotateAmount);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(transform.localEulerAngles + rotateAmount);
+            Vector3 rotateAmount = rotationSpeed * Time.deltaTime;
+            if (local)
+            {
+                transform.localRotation = Quaternion.Euler(transform.localEulerAngles + rotateAmount);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(transform.localEulerAngles + rotateAmount);
+            }
         }
     }
+    
 }

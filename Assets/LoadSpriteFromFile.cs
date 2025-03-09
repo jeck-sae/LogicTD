@@ -5,33 +5,38 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class LoadSpriteFromFile : MonoBehaviour
+
+namespace TowerDefense
 {
-    [SerializeField] string textureName;
-    [SerializeField] bool loadedTexture;
-
-    private void Awake()
+    public class LoadSpriteFromFile : MonoBehaviour
     {
-        if (loadedTexture)
-            return;
-
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        StartCoroutine(GetSpriteFromFile(sr, Path.Combine(Application.streamingAssetsPath, textureName)));
-    }
-
-    protected IEnumerator GetSpriteFromFile(SpriteRenderer r, string file)
-    {
-        UnityWebRequest textureRequest = UnityWebRequestTexture.GetTexture(file);
-        yield return textureRequest.SendWebRequest();
-
-        if (textureRequest.result == UnityWebRequest.Result.ConnectionError || textureRequest.result == UnityWebRequest.Result.ProtocolError)
+        [SerializeField] string textureName;
+        [SerializeField] bool loadedTexture;
+    
+        private void Awake()
         {
-            Debug.LogError($"Could not load the texture: {file} ({textureRequest.result}) {name}", gameObject);
-            yield break;
+            if (loadedTexture)
+                return;
+    
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            StartCoroutine(GetSpriteFromFile(sr, Path.Combine(Application.streamingAssetsPath, textureName)));
         }
-
-        loadedTexture = true;
-        var tex = DownloadHandlerTexture.GetContent(textureRequest);
-        r.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.one / 2, 32);
+    
+        protected IEnumerator GetSpriteFromFile(SpriteRenderer r, string file)
+        {
+            UnityWebRequest textureRequest = UnityWebRequestTexture.GetTexture(file);
+            yield return textureRequest.SendWebRequest();
+    
+            if (textureRequest.result == UnityWebRequest.Result.ConnectionError || textureRequest.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.LogError($"Could not load the texture: {file} ({textureRequest.result}) {name}", gameObject);
+                yield break;
+            }
+    
+            loadedTexture = true;
+            var tex = DownloadHandlerTexture.GetContent(textureRequest);
+            r.sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), Vector2.one / 2, 32);
+        }
     }
+    
 }

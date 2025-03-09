@@ -1,33 +1,38 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
-public class AnimatingSprite : FrameByFrameAnimation
+
+namespace TowerDefense
 {
-    protected override int FrameCount => frames.Count;
-
-    [SerializeField]
-    private List<Sprite> frames = new List<Sprite>();
-
-    private SpriteRenderer sR;
-
-    protected override void FindRendererComponent()
+    public class AnimatingSprite : FrameByFrameAnimation
     {
-        sR = GetComponent<SpriteRenderer>();
-    }
-
-    protected override void DisplayFrame(int frameIndex)
-    {
-        if (sR != null)
+        protected override int FrameCount => frames.Count;
+    
+        [SerializeField]
+        private List<Sprite> frames = new List<Sprite>();
+    
+        private SpriteRenderer sR;
+    
+        protected override void FindRendererComponent()
         {
-            sR.sprite = frames[frameIndex];
+            sR = GetComponent<SpriteRenderer>();
+        }
+    
+        protected override void DisplayFrame(int frameIndex)
+        {
+            if (sR != null)
+            {
+                sR.sprite = frames[frameIndex];
+            }
+        }
+    
+        protected override void Clear()
+        {
+            if (sR != null)
+            {
+                sR.sprite = null;
+            }
         }
     }
-
-    protected override void Clear()
-    {
-        if (sR != null)
-        {
-            sR.sprite = null;
-        }
-    }
+    
 }

@@ -2,20 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageOverTImeEffect : Effect
+
+namespace TowerDefense
 {
-    public Targetable target;
-    public float damagePerSecond;
-
-    public DamageOverTImeEffect(Targetable target, float damagePerSecond)
+    public class DamageOverTImeEffect : Effect
     {
-        this.target = target;
-        this.damagePerSecond = damagePerSecond;
+        public Targetable target;
+        public float damagePerSecond;
+    
+        public DamageOverTImeEffect(Targetable target, float damagePerSecond)
+        {
+            this.target = target;
+            this.damagePerSecond = damagePerSecond;
+        }
+    
+        public override void UpdateEffect()
+        {
+            target.Damage(damagePerSecond / GameManager.gameTickFrequency);
+        }
+    
     }
-
-    public override void UpdateEffect()
-    {
-        target.Damage(damagePerSecond / GameManager.gameTickFrequency);
-    }
-
 }

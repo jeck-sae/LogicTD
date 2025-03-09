@@ -5,37 +5,41 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class ProjectileTower : AttackingTower
+
+namespace TowerDefense
 {
-    [Header("Projectile")]
-    public GameObject projectilePrefab;
-    public Transform bulletSpawnpoint;
-    public bool destroyProjectileOnTargetDeath = true;
-
-    public Stat ProjectileSpeed;
-    public Stat SplashDamageArea;
-    public Stat ProjectileLifetime;
-
-    [BoxGroup("Sound")]
-    [Range(0f, 1f)]
-    public float projectileHitSoundVolume = .5f;
-
-    public override Stats GetStats()
+    public class ProjectileTower : AttackingTower
     {
-        if (stats != null)
-            return stats;
-
-        var tempStats = base.GetStats();
-        tempStats.AddStat("projectileSpeed", ProjectileSpeed);
-        tempStats.AddStat("SplashDamageArea", SplashDamageArea);
-        tempStats.AddStat("ProjectileLifetime", ProjectileLifetime);
-        return tempStats;
-    }
-
-    protected override void Attack()
-    {
-        GameObject go = Instantiate(projectilePrefab, bulletSpawnpoint.position, bulletSpawnpoint.rotation);
-        string hitSFX = $"tower_{towerName}_hit";
-        go.GetComponent<Projectile>().Initialize(Damage, ProjectileSpeed, ProjectileLifetime, SplashDamageArea, target, destroyProjectileOnTargetDeath, hitSFX, projectileHitSoundVolume);
+        [Header("Projectile")]
+        public GameObject projectilePrefab;
+        public Transform bulletSpawnpoint;
+        public bool destroyProjectileOnTargetDeath = true;
+    
+        public Stat ProjectileSpeed;
+        public Stat SplashDamageArea;
+        public Stat ProjectileLifetime;
+    
+        [BoxGroup("Sound")]
+        [Range(0f, 1f)]
+        public float projectileHitSoundVolume = .5f;
+    
+        public override Stats GetStats()
+        {
+            if (stats != null)
+                return stats;
+    
+            var tempStats = base.GetStats();
+            tempStats.AddStat("projectileSpeed", ProjectileSpeed);
+            tempStats.AddStat("SplashDamageArea", SplashDamageArea);
+            tempStats.AddStat("ProjectileLifetime", ProjectileLifetime);
+            return tempStats;
+        }
+    
+        protected override void Attack()
+        {
+            GameObject go = Instantiate(projectilePrefab, bulletSpawnpoint.position, bulletSpawnpoint.rotation);
+            string hitSFX = $"tower_{towerName}_hit";
+            go.GetComponent<Projectile>().Initialize(Damage, ProjectileSpeed, ProjectileLifetime, SplashDamageArea, target, destroyProjectileOnTargetDeath, hitSFX, projectileHitSoundVolume);
+        }
     }
 }

@@ -1,13 +1,18 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-public class SineWaveRotation : SineWaveTransform
+
+namespace TowerDefense
 {
-    protected override Vector3 GetMagnitude()
+    public class SineWaveRotation : SineWaveTransform
     {
-        return transform.localEulerAngles;
+        protected override Vector3 GetMagnitude()
+        {
+            return transform.localEulerAngles;
+        }
+        protected override void ApplyTransformation(Vector3 value)
+        {
+            transform.localEulerAngles = value;
+        }
     }
-    protected override void ApplyTransformation(Vector3 value)
-    {
-        transform.localEulerAngles = value;
-    }
+    
 }

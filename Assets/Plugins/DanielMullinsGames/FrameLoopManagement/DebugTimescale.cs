@@ -1,27 +1,32 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DebugTimescale : MonoBehaviour
+
+namespace TowerDefense
 {
-#if UNITY_EDITOR
-    private void Update()
+    public class DebugTimescale : MonoBehaviour
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+    #if UNITY_EDITOR
+        private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKey(KeyCode.LeftShift))
             {
-                Time.timeScale *= 0.5f;
-            }
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                Time.timeScale = 1f;
-            }
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                Time.timeScale *= 2f;
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    Time.timeScale *= 0.5f;
+                }
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    Time.timeScale = 1f;
+                }
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    Time.timeScale *= 2f;
+                }
             }
         }
+    #endif
     }
-#endif
+    
 }

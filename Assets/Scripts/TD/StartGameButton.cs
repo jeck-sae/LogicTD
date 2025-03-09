@@ -1,11 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartGameButton : MonoBehaviour
+
+namespace TowerDefense
 {
-    [SerializeField] string sceneName = "SelectableLevel";
-    public void StartGame()
+    public class StartGameButton : MonoBehaviour
     {
-        SceneManager.LoadScene(sceneName);
+        [SerializeField] string sceneName = "SelectableLevel";
+        public void StartGame()
+        {
+            SceneManager.LoadScene(sceneName);
+        }
     }
+    
 }

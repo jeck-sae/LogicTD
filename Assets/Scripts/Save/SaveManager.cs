@@ -1,49 +1,54 @@
 using System.IO;
 using UnityEngine;
 
-public class SaveManager : Singleton<SaveManager>
+
+namespace TowerDefense
 {
-    public SaveData data;
-    const string SAVE_FILE_NAME = "SaveData.txt";
-
-    private void Awake()
+    public class SaveManager : Singleton<SaveManager>
     {
-        if(isInstanced) 
+        public SaveData data;
+        const string SAVE_FILE_NAME = "SaveData.txt";
+    
+        private void Awake()
         {
-            Destroy(gameObject);
-            return;
+            if(isInstanced) 
+            {
+                Destroy(gameObject);
+                return;
+            }
+    
+            LoadState();
+            DontDestroyOnLoad(gameObject);
         }
-
-        LoadState();
-        DontDestroyOnLoad(gameObject);
-    }
-
-    public static void SaveState()
-    {
-        string saveJson = JsonUtility.ToJson(Instance.data);
-        string savePath = Path.Combine(Application.dataPath, SAVE_FILE_NAME);
-        File.WriteAllText(savePath, saveJson);
-    }
-
-    public static void LoadState() 
-    {
-        string savePath = Path.Combine(Application.dataPath, SAVE_FILE_NAME);
-        if (File.Exists(savePath))
+    
+        public static void SaveState()
         {
-            string json = File.ReadAllText(savePath);
-            Instance.data = JsonUtility.FromJson<SaveData>(json);
+            string saveJson = JsonUtility.ToJson(Instance.data);
+            string savePath = Path.Combine(Application.dataPath, SAVE_FILE_NAME);
+            File.WriteAllText(savePath, saveJson);
         }
-        else
+    
+        public static void LoadState() 
         {
-            Instance.data = new SaveData();
-            SaveState();
+            string savePath = Path.Combine(Application.dataPath, SAVE_FILE_NAME);
+            if (File.Exists(savePath))
+            {
+                string json = File.ReadAllText(savePath);
+                Instance.data = JsonUtility.FromJson<SaveData>(json);
+            }
+            else
+            {
+                Instance.data = new SaveData();
+                SaveState();
+            }
+            Instance.ApplySettings();
         }
-        Instance.ApplySettings();
+    
+        void ApplySettings()
+        {
+            AudioListener.volume = data.volume;
+            Screen.fullScreen = data.fullscreen;
+        }
     }
-
-    void ApplySettings()
-    {
-        AudioListener.volume = data.volume;
-        Screen.fullScreen = data.fullscreen;
-    }
+    
 }

@@ -1,26 +1,30 @@
 using TMPro;
 using UnityEngine;
 
-public class WaveCountdown : MonoBehaviour
-{
-    TMP_Text timerText;
-    private void Start()
-    {
-        timerText = GetComponent<TMP_Text>();
-    }
 
-    private void Update()
+namespace TowerDefense
+{
+    public class WaveCountdown : MonoBehaviour
     {
-        if (WaveManager.Instance.NextWaveTime > Time.time
-            && !WaveManager.Instance.SpawningPaused
-            && !WaveManager.Instance.isSpawningEnemies)
+        TMP_Text timerText;
+        private void Start()
         {
-            float timeLeft = Mathf.Round(WaveManager.Instance.NextWaveTime - Time.time);
-            timerText.text = "New wave in " + timeLeft + "s";
+            timerText = GetComponent<TMP_Text>();
         }
-        else
+    
+        private void Update()
         {
-            timerText.text = "";
+            if (WaveManager.Instance.NextWaveTime > Time.time
+                && !WaveManager.Instance.SpawningPaused
+                && !WaveManager.Instance.isSpawningEnemies)
+            {
+                float timeLeft = Mathf.Round(WaveManager.Instance.NextWaveTime - Time.time);
+                timerText.text = "New wave in " + timeLeft + "s";
+            }
+            else
+            {
+                timerText.text = "";
+            }
         }
     }
 }
