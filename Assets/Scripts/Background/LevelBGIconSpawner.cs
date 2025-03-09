@@ -11,7 +11,7 @@ public class LevelBGIconSpawner : BGIconSpawner
         base.SpawnTiles();
 
         foreach (var tile in GridManager.Instance.GetAll())
-            DisableBGIconsNearTile(tile.Value);
+            DisableBGIconsNearTile(tile);
     }
 
     private void OnDestroy()

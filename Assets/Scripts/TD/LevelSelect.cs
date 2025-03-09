@@ -5,28 +5,18 @@ using UnityEngine;
 
 public class LevelSelect : MonoBehaviour
 {
-    [SerializeField] List<GridImportExport.LevelInfo> levels = new ();
+    [SerializeField] List<GridImportExport.LevelInfo> levels;
     public string levelsPath;
     int currentLevelIndex = 0;
-
     public static GridImportExport.LevelInfo SelectedLevel;
+
+    private void Awake()
+    {
+        ImportLevels();
+    }
 
     void Start()
     {
-        string path = Path.Combine(Application.streamingAssetsPath, levelsPath);
-        if (!Directory.Exists(path))
-            Directory.CreateDirectory(path);
-
-        foreach (var f in Directory.GetFiles(path))
-        {
-            if (f.EndsWith(".td"))
-            {
-                var level = GridImportExport.ImportGrid(f);
-                levels.Add(level);
-            }
-        }
-
-
         var l = levels.FirstOrDefault(x => x.name == SaveManager.Instance.data.lastSelectedLevel);
         currentLevelIndex = (l != null) ? levels.IndexOf(l) : 0;
         SelectLevel(levels[currentLevelIndex]);
@@ -47,6 +37,23 @@ public class LevelSelect : MonoBehaviour
             if (currentLevelIndex >= levels.Count)
                 currentLevelIndex = 0;
             SelectLevel(levels[currentLevelIndex]);
+        }
+    }
+
+    public void ImportLevels()
+    {
+        levels = new();
+        string path = Path.Combine(Application.streamingAssetsPath, levelsPath);
+        if (!Directory.Exists(path))
+            Directory.CreateDirectory(path);
+
+        foreach (var f in Directory.GetFiles(path))
+        {
+            if (f.EndsWith(".td"))
+            {
+                var level = GridImportExport.ImportGrid(f);
+                levels.Add(level);
+            }
         }
     }
 

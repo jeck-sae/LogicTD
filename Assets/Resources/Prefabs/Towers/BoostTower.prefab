@@ -52,7 +52,7 @@ MonoBehaviour:
   shopIcon: {fileID: -452126304, guid: 58437be6c97c11b4c938fc8f5c4cdf84, type: 3}
   towerName: Boost
   towerDescription: Boosts the range and attack speed of adjacent towers.
-  towerColor: {r: 0.40784317, g: 0.7686275, b: 0.38431376, a: 1}
+  towerColor: {r: 0.40784314, g: 0.76862746, b: 0.38431373, a: 1}
   Cost:
     m_name: 
     m_baseValue: 100
@@ -80,6 +80,10 @@ MonoBehaviour:
     tempMax: 0
     m_minValue: 0
     m_maxValue: 0
+  upgradeHandler:
+    nextUpgradeIndex: 0
+    levels: []
+    unlockedFlagUpgrades: []
   placeSoundVolume: 0.4
   modifierName: boostTower
   buffs:

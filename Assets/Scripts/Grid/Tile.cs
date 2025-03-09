@@ -28,6 +28,8 @@ public class Tile : MonoBehaviour
     public bool CanBuildOver => canBuildOver;
     public Tower Tower => tower;
 
+    //called when the tile is moved or removed
+    public event Action OnTileChanged;
 
     public TileGFX gfx;
 
@@ -104,5 +106,6 @@ public class Tile : MonoBehaviour
     {
         if(GridManager.Instance && GridManager.Instance.Contains(this))
             GridManager.Instance.Remove(this);
+        OnTileChanged?.Invoke();
     }
 }

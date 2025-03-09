@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class Pathfinder
 {
-    public static List<Tile> FindNearestTile(GridManager grid, Tile startTile, Func<Tile, bool> isDestination)
+    public static List<Tile> FindNearestTile(GridManager grid, Tile startTile, Func<Tile, bool> isDestination = null)
     {
         Dictionary<Tile, PathfinderTile> tileData = new Dictionary<Tile, PathfinderTile>();
         List<Tile> openSet = new List<Tile>();
         HashSet<Tile> closedSet = new HashSet<Tile>();
+
+        if (isDestination == null)
+            isDestination = (t) => { return t.IsHome; };
 
         openSet.Add(startTile);
         tileData.Add(startTile, new PathfinderTile(startTile, 0, int.MaxValue));
@@ -39,7 +42,9 @@ public class Pathfinder
             }
         }
 
-        return closedSet.ToList();
+        List<Tile> noPath = new List<Tile>();
+        noPath.Add(startTile);
+        return noPath;
     }
 
     public static List<Tile> FindPath(GridManager grid, Tile startTile, Tile endTile)

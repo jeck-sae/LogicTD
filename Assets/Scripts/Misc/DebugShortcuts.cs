@@ -44,6 +44,18 @@ public class DebugShortcuts : MonoBehaviour
             }
 
 
+            //Destroy hovering tile
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                var t = GridManager.Instance.GetHoveringTile();
+                if (t)
+                {
+                    GridManager.Instance.Remove(t);
+                    Destroy(t.gameObject);
+                    Debug.Log("Destroyed " + t.name);
+                }
+            }
+
             //Destroy selected tower
             if (Input.GetKeyDown(KeyCode.X))
             {

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System;
 using UnityEngine;
 
@@ -27,21 +28,11 @@ public class Enemy : Targetable
             UnityEngine.Random.Range(-maxPositionOffset, maxPositionOffset),
             UnityEngine.Random.Range(-maxPositionOffset, maxPositionOffset));
         movement.SetPositionOffset(positionOffset);
-
-        UpdateDestination();
+        movement.OnArrive += ReachedHomeTile;
 
         GameManager.AddEnemy(this);
     }
-
-    public void UpdateDestination()
-    {
-        movement.SetDestinationCriteria((Tile t) => t.IsHome);
-        movement.OnArrive += ReachedHomeTile;
-        if (movement.path?.Count <= 1)
-            Debug.LogError($"Path not found ({name})", gameObject);
-    }
-
-
+    
     public override Stats GetStats()
     {
         if(stats != null) return stats;

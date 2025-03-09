@@ -54,17 +54,6 @@ public class LevelEditorShortcuts : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.LeftControl))
         {
-            //Ctrl+Shift+F > Fix broken tiles
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                Tile[] tiles = FindObjectsByType(typeof(Tile), FindObjectsSortMode.None) as Tile[];
-                foreach (var t in tiles)
-                {
-                    if (!GridManager.Instance.Contains(t) && LevelEditor.Instance.lastHoveredTile != t)
-                        Destroy(t.gameObject);
-                }
-            }
-
             //Ctrl+Shift+C+A > Clear grid
             if (Input.GetKey(KeyCode.C) && Input.GetKeyDown(KeyCode.A))
             {

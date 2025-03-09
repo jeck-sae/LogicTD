@@ -21,18 +21,6 @@ public class LevelEditor : Singleton<LevelEditor>
 
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            var tiles = GridManager.Instance.GetAll();
-
-            foreach(var t in tiles)
-            {
-                if (t.Key != t.Value.Position)
-                    Debug.Log(t.Key + " " + t.Value.Position);
-            }
-        }
-
-
         //get current tile
         var mousePos = Helpers.Camera.ScreenToWorldPoint(Input.mousePosition);
         var intCoords = GridManager.FixCoordinates(mousePos);

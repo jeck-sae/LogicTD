@@ -10,12 +10,11 @@ public class Tower : Interactable2D, IStatObject
 
     [HideInInspector] public EffectHandler effects;
 
-    public Sprite shopIcon;
     [Header("General")]
+    public Sprite shopIcon;
     public string towerName;
-    [TextArea]
-    public string towerDescription;
-    public Color towerColor;
+    [TextArea] public string towerDescription;
+    [ColorPalette] public Color towerColor;
 
     public Stat Cost;
     public Stat MaxRange;

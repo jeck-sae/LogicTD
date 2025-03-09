@@ -5,44 +5,26 @@ using UnityEngine;
 
 public class FollowPathMovement : MonoBehaviour
 {
-    [ReadOnly] public Tile startTile;
-    [ReadOnly] public Tile destinationTile;
     [DisableInEditorMode] public Vector3 positionOffset;
 
     public event Action OnArrive;
-    public List<Tile> path;
 
+    protected List<Tile> path;
     protected int currentTileIndex;
     protected Vector3 nextTargetPosition;
 
-    Tile CurrentTile => GridManager.Instance.Get(transform.position);
-
+    bool reachedTarget;
 
     public void SetPositionOffset(Vector2 positionOffset)
     {
         this.positionOffset = positionOffset;
     }
 
-
-    public void SetDestination(Tile destination)
-    {
-        destinationTile = destination;
-
-        if (destination == null)
-        {
-            path = null;
-            return;
-        }
-
-        UpdatePath();
-    }
-
     protected void UpdatePath()
     {
-        if (destinationTile == null)
-            return;
-
-        path = Pathfinder.FindPath(GridManager.Instance, CurrentTile, destinationTile);
+        if (reachedTarget) return;
+        var currentTile = GridManager.Instance.Get(transform.position);
+        path = PathManager.Instance.GetPath(currentTile.Position);
         
         if (path == null || path.Count == 0) 
             return;
@@ -51,17 +33,17 @@ public class FollowPathMovement : MonoBehaviour
         nextTargetPosition = path[0].transform.position + positionOffset;
     }
 
-    public void SetDestinationCriteria(Func<Tile, bool> criteria)
+    public void SetPath(List<Tile> path)
     {
-        path = Pathfinder.FindNearestTile(GridManager.Instance, CurrentTile, criteria);
-            
+        this.path = path;
         if(path == null || path.Count == 0)
             return;
 
+        reachedTarget = false;
         currentTileIndex = 0;
-        destinationTile = path[path.Count - 1];
         nextTargetPosition = path[0].transform.position + positionOffset;
     }
+
         
     public void Move(float amount)
     {
@@ -84,14 +66,12 @@ public class FollowPathMovement : MonoBehaviour
 
             currentTileIndex++;
 
-            if (currentTileIndex == path.Count)
+            if (currentTileIndex == path.Count && path[currentTileIndex - 1].IsHome)
             {
                 OnArrive?.Invoke();
-                SetDestination(null);
+                reachedTarget = true;
                 return;
             }
-
-            nextTargetPosition = path[currentTileIndex].transform.position + positionOffset;
 
             if (path.Count <= 1 || path[currentTileIndex] == null || !path[currentTileIndex].IsWalkable)
             {
@@ -99,6 +79,8 @@ public class FollowPathMovement : MonoBehaviour
                 if (path == null)
                     return;
             }
+
+            nextTargetPosition = path[currentTileIndex].transform.position + positionOffset;
         }
 
         Vector3 dir = (nextTargetPosition - transform.position).normalized;

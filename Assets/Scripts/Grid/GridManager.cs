@@ -64,7 +64,7 @@ public class GridManager : Singleton<GridManager>
         return null;
     }
 
-    public Dictionary<Vector2Int, Tile> GetAll() => tiles;
+    public IEnumerable<Tile> GetAll() => tiles.Values;
 
     public void Remove(Tile tile)
         => Remove(tiles.FirstOrDefault(x => x.Value == tile).Key);
