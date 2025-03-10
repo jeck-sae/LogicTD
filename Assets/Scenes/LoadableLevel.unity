@@ -4031,7 +4031,6 @@ GameObject:
   - component: {fileID: 1174921159}
   - component: {fileID: 1174921160}
   - component: {fileID: 1174921162}
-  - component: {fileID: 1174921161}
   m_Layer: 0
   m_Name: DontDestroyOnLoad
   m_TagString: Untagged
@@ -4070,21 +4069,6 @@ MonoBehaviour:
     lastSelectedLevel: demo
     fullscreen: 1
     volume: 0.8
---- !u!114 &1174921161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174921158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 685405293ae2d204aaba31f89033969b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collectionCheck: 1
-  defaultCapacity: 4
-  maxPoolSize: 100
 --- !u!114 &1174921162
 MonoBehaviour:
   m_ObjectHideFlags: 0
