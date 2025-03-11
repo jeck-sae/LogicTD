@@ -8,15 +8,15 @@ using UnityEngine;
 namespace TowerDefense
 {
     [Serializable, CreateAssetMenu(fileName = "StatDisplayOptions", menuName = "StatDisplayOptions")]
-    public class StatDisplayPreset : ScriptableObject
+    public class StatDisplayOptions : ScriptableObject
     {
-        private static StatDisplayPreset instance;
-        public static StatDisplayPreset Instance
+        private static StatDisplayOptions instance;
+        public static StatDisplayOptions Instance
         {
             get
             {
                 if (instance == null)
-                    instance = (StatDisplayPreset)Resources.Load("StatDisplayOptions");
+                    instance = (StatDisplayOptions)Resources.Load("Settings/StatDisplayOptions");
                 return instance;
             }
         }

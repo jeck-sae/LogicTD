@@ -35,9 +35,9 @@ namespace TowerDefense
     
                 if (Random.Range(0, 1f) > StunChance) continue;
     
-                StatModifierEffect stunEffect = new StatModifierEffect("stun", e.stats);
+                StatModifierEffect stunEffect = new StatModifierEffect("stun", EffectType.stun, "stun", e.stats);
                 stunEffect.AddModifier("moveSpeed", multiply: 0);
-                e.EffectHandler.AddEffect("stun", stunEffect, StunDuration);
+                e.EffectHandler.AddEffect(stunEffect, StunDuration);
             }
             StartCoroutine(AttackEffect());
         }

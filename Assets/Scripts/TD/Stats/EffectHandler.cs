@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,32 +11,41 @@ namespace TowerDefense
     {
         [ShowInInspector, ReadOnly]
         public Dictionary<string, ActiveEffect> effects;
-    
+
+        public Action<Effect> OnEffectAdded;
+        public Action<Effect> OnEffectRemoved;
     
         private void Awake()
         {
             effects = new();
         }
     
-        public void AddEffect(string name, Effect effect, float duration, bool forceUpdateDuration = false)
+        public void AddEffect(Effect effect, float duration, bool forceUpdateDuration = false)
         {
-            if (effects.ContainsKey(name)) 
+            if (effects.ContainsKey(effect.Name)) 
             {
-                if (effects[name].activeUntil < Time.time + duration || forceUpdateDuration)
-                    effects[name].activeUntil = Time.time + duration;
+                if (effects[effect.Name].activeUntil < Time.time + duration || forceUpdateDuration)
+                    effects[effect.Name].activeUntil = Time.time + duration;
                 return;
             }
     
-            effects.Add(name, new ActiveEffect(effect, Time.time + duration));
+            effects.Add(effect.Name, new ActiveEffect(effect, Time.time + duration));
             effect.handler = this;
-            effects[name].StartEffect();
+            effect.StartEffect();
+            OnEffectAdded?.Invoke(effect);
         }
     
+        public bool HasEffect(string name)
+        {
+            return effects.ContainsKey(name);
+        }
+
         public void RemoveEffect(string name)
         {
             if (!effects.ContainsKey(name))
                 return;
             effects[name].EndEffect();
+            OnEffectRemoved?.Invoke(effects[name].effect);
             effects.Remove(name);
         }
     
@@ -82,10 +92,22 @@ namespace TowerDefense
     
     public abstract class Effect
     {
+        public string Name => name;
+        private string name;
+        public EffectType Type => type;
+        EffectType type;
+
         public EffectHandler handler;
+        
+        public Effect(string name, EffectType type) 
+        { 
+            this.name = name; 
+            this.type = type;
+        }
+        
         public virtual void StartEffect() { }
         public virtual void UpdateEffect() { }
         public virtual void EndEffect() { }
     }
-    
+    public enum EffectType { stun, slow, fire, special }
 }

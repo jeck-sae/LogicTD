@@ -10,7 +10,7 @@ namespace TowerDefense
         protected List<StatModifier> modifiers;
         protected string modifierName;
     
-        public StatModifierEffect(string modifierName, Stats target)
+        public StatModifierEffect(string effectName, EffectType type, string modifierName, Stats target) : base(effectName, type)
         {
             modifiers = new();
             this.target = target;

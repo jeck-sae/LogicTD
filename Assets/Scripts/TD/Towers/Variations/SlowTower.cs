@@ -33,10 +33,10 @@ namespace TowerDefense
                 e.Damage(Damage / AttackSpeed.BaseValue);
     
     
-                if (e.stats.HasModifier("moveSpeed", "burn")) continue;
-                StatModifierEffect slowEffect = new StatModifierEffect("freeze", e.stats);
+                if (e.EffectHandler.HasEffect("burn")) continue;
+                StatModifierEffect slowEffect = new StatModifierEffect("freeze", EffectType.slow, "freeze", e.stats);
                 slowEffect.AddModifier("moveSpeed", multiply: SlowAmount);
-                e.EffectHandler.AddEffect("freeze", slowEffect, SlowDuration);
+                e.EffectHandler.AddEffect(slowEffect, SlowDuration);
             }
         }
     

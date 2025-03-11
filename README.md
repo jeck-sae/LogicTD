@@ -12,6 +12,12 @@ F1 > Play level<br>
 F2 > Open level editor<br>
 Ctrl+Shift+W > Open main menu<br>
 
+Level Editor:<br>
+Numbers 1-4 > select tiles<br>
+Ctrl+S > Save level<br>
+Ctrl+L > Load level <br>
+Ctrl+Shift+C+A > Clear grid<br>
+
 
 ## Debug shortcuts
 Cheats:<br>
@@ -33,9 +39,3 @@ Ctrl+Shift+Right Arrow > 2x time scale (stacks)<br>
 Ctrl+Shift+Left Arrow > .5x time scale (stacks)<br>
 Ctrl+Shift+Down Arrow > toggle pause<br>
 Ctrl+Shift+Up Arrow > reset time scale (1x)<br>
-
-Level Editor:<br>
-Numbers 1-4 > select tiles<br>
-Ctrl+S > Save level<br>
-Ctrl+L > Load level <br>
-Ctrl+Shift+C+A > Clear grid<br>

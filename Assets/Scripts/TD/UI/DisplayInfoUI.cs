@@ -71,7 +71,7 @@ namespace TowerDefense
                 int i = 0;
                 foreach (var stat in stats.stats)
                 {
-                    if (!StatDisplayPreset.ShouldShowStat(stat.Key) || stat.Value.MaxValue == 0)
+                    if (!StatDisplayOptions.ShouldShowStat(stat.Key) || stat.Value.MaxValue == 0)
                         continue;
     
                     if (upgrades != null && !upgrades.IsMaxLevel)

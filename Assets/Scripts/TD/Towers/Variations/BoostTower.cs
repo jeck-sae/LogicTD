@@ -30,12 +30,12 @@ namespace TowerDefense
                 if (!tower) continue;
     
     
-                StatModifierEffect boostEffect = new StatModifierEffect(modifierName, tower.stats);
+                StatModifierEffect boostEffect = new StatModifierEffect("boostTowerEffect", EffectType.special, modifierName, tower.stats);
                 foreach(var buff in buffs)
                     boostEffect.AddModifier(buff.stat, buff.add, buff.multiply);
                     
     
-                tower.effects?.AddEffect("boostTowerEffect", boostEffect, boostDuration);
+                tower.effects?.AddEffect(boostEffect, boostDuration);
             }
         }
     

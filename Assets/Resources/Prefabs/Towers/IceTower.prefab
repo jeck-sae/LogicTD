@@ -130,6 +130,10 @@ MonoBehaviour:
     tempMax: 0
     m_minValue: 0
     m_maxValue: 3.4028235e+38
+  upgradeHandler:
+    nextUpgradeIndex: 0
+    levels: []
+    unlockedFlagUpgrades: []
   placeSoundVolume: 0.5
   cannon: {fileID: 1999829596359873009}
   attackAngleThreshold: 360

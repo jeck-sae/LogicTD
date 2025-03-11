@@ -32,14 +32,14 @@ namespace TowerDefense
         public void UpdateValue(object args)
         {
     
-            statName.text = StatDisplayPreset.GetInfo(stat.Name).name;
+            statName.text = StatDisplayOptions.GetInfo(stat.Name).name;
             statValue.text = stat.Value.ToString();
     
             float currentProgress = stat / maxValue;
     
     
             currentValue.transform.localScale = new Vector3(currentProgress, 1, 1);
-            currentValue.color = StatDisplayPreset.GetInfo(stat.Name).color;
+            currentValue.color = StatDisplayOptions.GetInfo(stat.Name).color;
     
             if (modifier != null)
             {

@@ -7,7 +7,7 @@ namespace TowerDefense
 {
     public class PoisonEffect : DamageOverTImeEffect
     {
-        public PoisonEffect(Targetable target, float damagePerSecond) : base(target, damagePerSecond) { }
+        public PoisonEffect(string effectName, EffectType type, Targetable target, float damagePerSecond) : base(effectName, type, target, damagePerSecond) { }
     
         public override void UpdateEffect()
         {

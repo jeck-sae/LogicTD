@@ -45,8 +45,8 @@ namespace TowerDefense
     
                 t.Damage(Damage / AttackSpeed.BaseValue);
     
-                DamageOverTImeEffect burnEffect = new DamageOverTImeEffect(t, BurnDPS);
-                e.AddEffect("burn", burnEffect, BurnDuration);
+                DamageOverTImeEffect burnEffect = new DamageOverTImeEffect("burn", EffectType.fire, t, BurnDPS);
+                e.AddEffect(burnEffect, BurnDuration);
                 e.RemoveEffect("freeze");
             }
         }

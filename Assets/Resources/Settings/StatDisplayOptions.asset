@@ -9,27 +9,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52d0767a3e3019e4295676dbdcd17053, type: 3}
+  m_Script: {fileID: 11500000, guid: 80485bf9ea2184b4ca20984a4f2a2af8, type: 3}
   m_Name: StatDisplayOptions
   m_EditorClassIdentifier: 
   stats:
-  - id: damage
-    name: Damage
-    color: {r: 0.4627451, g: 0.2627451, b: 0.53333336, a: 1}
-    show: 1
   - id: maxRange
     name: Max Range
     color: {r: 0.4627451, g: 0.25882354, b: 0.5411765, a: 1}
     show: 1
+  - id: damage
+    name: Damage
+    color: {r: 0.4627451, g: 0.25882354, b: 0.5411765, a: 1}
+    show: 1
   - id: attackSpeed
     name: Attack Speed
-    color: {r: 0.4627451, g: 0.2627451, b: 0.53333336, a: 1}
-    show: 1
-  - id: slowDuration
-    name: Slow Duration
-    color: {r: 0.4627451, g: 0.2627451, b: 0.53333336, a: 1}
+    color: {r: 0.4627451, g: 0.25882354, b: 0.5411765, a: 1}
     show: 1
   - id: slowAmount
     name: Slow Amount
-    color: {r: 0.4627451, g: 0.2627451, b: 0.53333336, a: 1}
+    color: {r: 0.4627451, g: 0.25882354, b: 0.5411765, a: 1}
+    show: 1
+  - id: stunDuration
+    name: Stun Duration
+    color: {r: 0.4627451, g: 0.25882354, b: 0.5411765, a: 1}
+    show: 1
+  - id: stunChance
+    name: Stun Chance
+    color: {r: 0.4627451, g: 0.25882354, b: 0.5411765, a: 1}
     show: 1
