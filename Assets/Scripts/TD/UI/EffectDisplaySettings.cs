@@ -26,8 +26,6 @@ namespace TowerDefense
         public static EffectSettings GetInfo(EffectType id) => Instance.effectInfo.Find(x => x.type == id);
 
         public List<EffectSettings> effectInfo;
-
-
     }
 
     [Serializable]

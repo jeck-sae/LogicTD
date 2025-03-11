@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fb764163af77434ab9963980b2a59f0, type: 3}
   m_Name: EffectDisplaySettings
   m_EditorClassIdentifier: 
-  stats: []
+  effectInfo:
+  - type: 0
+    id: 
+    color: {r: 0.7372549, g: 0.7058824, b: 0.75686276, a: 1}
+  - type: 1
+    id: 
+    color: {r: 0.5529412, g: 0.89411765, b: 1, a: 1}
+  - type: 2
+    id: 
+    color: {r: 0.75686276, g: 0.56078434, b: 0.37254903, a: 1}
