@@ -17,13 +17,16 @@ namespace TowerDefense
         [SerializeField] List<FlagUpgrade> unlockedFlagUpgrades;
     
         public bool IsMaxLevel => NextUpgradeIndex >= levels.Count;
-        protected Stats stats;
-        public UpgradeHandler(Stats stats)
+        public Action OnLevelChanged;
+
+        protected Tower tower;
+
+        public void SetTower(Tower tower)
         {
-            this.stats = stats;
-            stats.AddStat("upgradeCost", UpgradeCost() ?? 0, 0);
+            this.tower = tower;
+            tower.stats.AddStat("upgradeCost", UpgradeCost() ?? 0, 0);
         }
-    
+
         public bool UnlockedFlagUpgrade(string flag) => unlockedFlagUpgrades.Any(x => x.flag.Equals(flag));
     
         public UpgradeLevel GetNextUpgrade()
@@ -46,7 +49,7 @@ namespace TowerDefense
     
         public float? UpgradeCost()
         {
-            if (levels.Count <= NextUpgradeIndex && levels[NextUpgradeIndex] != null)
+            if (NextUpgradeIndex >= levels.Count || levels[NextUpgradeIndex] == null)
                 return null;
     
     
@@ -56,16 +59,19 @@ namespace TowerDefense
         public void LevelUp()
         {
             if (NextUpgradeIndex >= levels.Count) return;
-            nextUpgradeIndex++;
     
+            tower.stats["upgradeCost"].SetBaseValue(levels[nextUpgradeIndex].cost);
             foreach (var statUpgrade in levels[NextUpgradeIndex].statUpgrades)
             {
-                stats.AddModifier(statUpgrade.stat, "upgradeLevel" + CurrentLevel, statUpgrade.modifier.add, statUpgrade.modifier.multiply);
+                tower.stats.AddModifier(statUpgrade.stat, "upgradeLevel" + CurrentLevel, statUpgrade.modifier.add, statUpgrade.modifier.multiply);
             }
             foreach (var flagUpgrade in levels[NextUpgradeIndex].flagUpgrades)
             {
                 unlockedFlagUpgrades.Add(flagUpgrade);
             }
+            nextUpgradeIndex++;
+
+            OnLevelChanged?.Invoke();
         }
     
     

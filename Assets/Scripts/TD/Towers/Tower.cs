@@ -39,11 +39,11 @@ namespace TowerDefense
                 effects = gameObject.AddComponent<EffectHandler>();
     
             stats = GetStats();
+            upgradeHandler.SetTower(this);
     
             SetupRangeIndicators();
     
             AudioController.Instance.PlaySound2D("tower_" + towerName + "_place", placeSoundVolume);
-    
         }
     
         private void OnEnable()

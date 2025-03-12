@@ -59,10 +59,10 @@ namespace TowerDefense
                     }
                 }
     
-                //Destroy selected tower
+                //Destroy hovering tower
                 if (Input.GetKeyDown(KeyCode.X))
                 {
-                    Tower t = TileSelectionManager.Instance.SelectedTile?.Tower;
+                    Tower t = GridManager.Instance.GetHoveringTile()?.Tower;
                     if (t)
                     {
                         Debug.Log("Destroyed " + t.towerName);

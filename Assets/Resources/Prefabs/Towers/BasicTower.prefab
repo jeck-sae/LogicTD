@@ -83,14 +83,14 @@ MonoBehaviour:
   upgradeHandler:
     nextUpgradeIndex: 0
     levels:
-    - cost: 0
+    - cost: 25
       statUpgrades:
       - stat: damage
         modifier:
           add: 5
           multiply: 1
       flagUpgrades: []
-    - cost: 0
+    - cost: 40
       statUpgrades:
       - stat: damage
         modifier:

@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace LeTai.Asset.TranslucentImage.Editor
 {
-    [Serializable]
 public class EditorProperty
 {
     public readonly SerializedProperty serializedProperty;
