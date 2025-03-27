@@ -102,7 +102,7 @@ namespace TowerDefense
             tower = null;
             if(TileSelectionManager.Instance?.SelectedTile == this)
                 DisplayInfoUI.Instance.UpdateInfo();
-            name = $"{tileName}";
+            name = tileName;
         }
     
         private void OnDestroy()

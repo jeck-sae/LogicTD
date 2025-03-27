@@ -50,7 +50,6 @@ namespace TowerDefense
         {
             UpdateUpgradeButton();
             sellText.text = $"[{10}] Sell";
-
         }
 
         void UpdateUpgradeButton()
@@ -58,10 +57,10 @@ namespace TowerDefense
             var cost = tower.upgradeHandler.UpgradeCost();
             if(cost == null)
             {
-                upgradeOutline.gameObject.SetActive(false);
+                upgradeButton.gameObject.SetActive(false);
                 return;
             }
-            upgradeOutline.gameObject.SetActive(true);
+            upgradeButton.gameObject.SetActive(true);
 
             if(cost < GameStats.Instance.coins)
             {

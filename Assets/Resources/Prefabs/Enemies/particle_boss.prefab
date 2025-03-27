@@ -9788,7 +9788,7 @@ MonoBehaviour:
   isAlive: 1
   MaxHealth:
     m_name: 
-    m_baseValue: 250
+    m_baseValue: 300
     min: 1
     max: 0
     tempMin: 0
@@ -9846,10 +9846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1bcdfcd66c45c4d81702d39f21bdf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startTile: {fileID: 0}
-  destinationTile: {fileID: 0}
   positionOffset: {x: 0, y: 0, z: 0}
-  path: []
 --- !u!58 &633048045297551352
 CircleCollider2D:
   m_ObjectHideFlags: 0

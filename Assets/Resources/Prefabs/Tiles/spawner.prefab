@@ -451,6 +451,29 @@ MonoBehaviour:
     - prefab: {fileID: 1688420020465270672, guid: 9c1df5c20003fa046b612c98ba73274b, type: 3}
       delay: 0.5
     amount: 5
+  - advancedSettings:
+      customDelayAfterWave: -1
+      hpMultiplier: 1
+    enemies:
+    - prefab: {fileID: 594665036030294627, guid: afea5ae91713a294d83dda422aa324f2, type: 3}
+      delay: 0.6
+    amount: 4
+  - advancedSettings:
+      customDelayAfterWave: -1
+      hpMultiplier: 1
+    enemies:
+    - prefab: {fileID: 8946779635213610928, guid: 94b3019504d0fca4ebf2fd1a976af69e, type: 3}
+      delay: 0.5
+    - prefab: {fileID: 1688420020465270672, guid: 9c1df5c20003fa046b612c98ba73274b, type: 3}
+      delay: 0.5
+    amount: 4
+  - advancedSettings:
+      customDelayAfterWave: 15
+      hpMultiplier: 1
+    enemies:
+    - prefab: {fileID: 274225467547040574, guid: 720c8c3c513287b48a532fbd2c845c47, type: 3}
+      delay: 0.5
+    amount: 1
   isSpawning: 0
   multiplyHpPerWave: 1.2
   multiplyHpBase: 1

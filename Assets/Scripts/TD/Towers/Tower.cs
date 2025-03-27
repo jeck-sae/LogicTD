@@ -3,6 +3,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using System.Collections.Generic;
+using System.Drawing;
 
 
 namespace TowerDefense
@@ -17,7 +18,7 @@ namespace TowerDefense
         public Sprite shopIcon;
         public string towerName;
         [TextArea] public string towerDescription;
-        [ColorPalette] public Color towerColor;
+        [ColorPalette] public UnityEngine.Color towerColor;
     
         public Stat Cost;
         public Stat MaxRange;
@@ -29,10 +30,11 @@ namespace TowerDefense
         [BoxGroup("Sound"), Range(0f, 1f)]
         public float placeSoundVolume = .5f;
     
-        protected ScaleWithStat minRangeIndicator;
-        protected ScaleWithStat maxRangeIndicator;
-        protected bool placedThisFrame = true;
-    
+        protected RangeIndicator minRangeIndicator;
+        protected RangeIndicator maxRangeIndicator;
+
+        protected bool isSelected;
+
         protected override void ManagedInitialize()
         {
             if(!effects)
@@ -42,16 +44,18 @@ namespace TowerDefense
             upgradeHandler.SetTower(this);
     
             SetupRangeIndicators();
-    
+
+
             AudioController.Instance.PlaySound2D("tower_" + towerName + "_place", placeSoundVolume);
         }
-    
-        private void OnEnable()
+
+        protected override void Start()
         {
-            placedThisFrame = true;
-            CustomCoroutine.WaitThenExecute(0, () => { placedThisFrame = false; }, true);
+            base.Start();
+            if (TileSelectionManager.Instance?.SelectedTile == Tile)
+                OnTileSelected();
         }
-    
+
         public virtual Stats GetStats()
         {
             if (stats != null)
@@ -66,29 +70,33 @@ namespace TowerDefense
             
         protected void SetupRangeIndicators()
         {
-            maxRangeIndicator = Instantiate(Resources.Load("Prefabs/UI/RangePreview"), transform).GetComponent<ScaleWithStat>();
-            maxRangeIndicator.multiply = 2;
-            maxRangeIndicator.SetStat(MaxRange);
-            maxRangeIndicator.GetComponent<RangeIndicator>().SetColor(towerColor);
-            maxRangeIndicator.gameObject.SetActive(false);
+            maxRangeIndicator = Instantiate(Resources.Load("Prefabs/UI/RangePreview"), transform).GetComponent<RangeIndicator>();
+            maxRangeIndicator.scaleWithStat.multiply = 2;
+            maxRangeIndicator.scaleWithStat.SetStat(MaxRange);
+            maxRangeIndicator.Hide();
                 
-            minRangeIndicator = Instantiate(Resources.Load("Prefabs/UI/RangePreview"), transform).GetComponent<ScaleWithStat>();
-            minRangeIndicator.multiply = 2;
-            minRangeIndicator.SetStat(MinRange);
-            minRangeIndicator.GetComponent<RangeIndicator>().SetColor(Color.red);
-            minRangeIndicator.gameObject.SetActive(false);
+            minRangeIndicator = Instantiate(Resources.Load("Prefabs/UI/RangePreview"), transform).GetComponent<RangeIndicator>();
+            minRangeIndicator.scaleWithStat.multiply = 2;
+            minRangeIndicator.scaleWithStat.SetStat(MinRange);
+            minRangeIndicator.Hide();
         }
     
         protected override void OnCursorEnter()
         {
-            maxRangeIndicator.gameObject.SetActive(true);
-            minRangeIndicator.gameObject.SetActive(true);
+            if (!isSelected)
+            {
+                maxRangeIndicator.ShowColor(new UnityEngine.Color(1, 1, 1, 0.3f));
+                minRangeIndicator.ShowColor(new UnityEngine.Color(1, 0, 0, 0.3f));
+            }
         }
-    
+
         protected override void OnCursorExit()
         {
-            maxRangeIndicator.gameObject.SetActive(false);
-            minRangeIndicator.gameObject.SetActive(false);
+            if (!isSelected)
+            {
+                maxRangeIndicator.Hide();
+                minRangeIndicator.Hide();
+            }
         }
     
         protected override void OnCursorSelectStart()
@@ -104,7 +112,21 @@ namespace TowerDefense
             TowerPlacementManager.Instance.StartPlacing(this, OnMoveAway, OnCancelMoving, false);*/
         }
     
+
+        public void OnTileSelected()
+        {
+            isSelected = true;
+            maxRangeIndicator.ShowColor(towerColor);
+            minRangeIndicator.ShowColor(UnityEngine.Color.red);
+        }
     
+        public void OnTileDeselected()
+        {
+            isSelected = false;
+            maxRangeIndicator.Hide();
+            minRangeIndicator.Hide();
+        }
+
         public virtual BaseDisplayInfo GetDisplayInfo()
         {
             return new TowerDisplayInfo(towerName, towerDescription, shopIcon, this);
@@ -119,22 +141,20 @@ namespace TowerDefense
     
         public void StartMoving()
         {
-            InputManager.Instance.SetMovingStatus(true);
             Tile.RemoveTower();
             TowerPlacementManager.Instance.StartPlacing(this, OnMoveAway, OnCancelMoving, false);
         }
     
         protected void OnMoveAway()
         {
-            //Destroy(gameObject);
-            InputManager.Instance.SetMovingStatus(false);
+            isSelected = TileSelectionManager.Instance?.SelectedTile == Tile;
         }
     
         protected void OnCancelMoving()
         {
+            isSelected = TileSelectionManager.Instance?.SelectedTile == Tile;
             gameObject.SetActive(true);
             this.Tile.PlaceTower(this);
-            InputManager.Instance.SetMovingStatus(false);
         }
     }
 }

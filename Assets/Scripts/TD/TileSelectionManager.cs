@@ -36,13 +36,20 @@ namespace TowerDefense
     
         public void DeselectTile()
         {
+            if (!selectedTile)
+                return;
+            
+            SetTileDeselected(selectedTile);
             selectedTile = null;
             selectionIndicator.gameObject.SetActive(false);
             DisplayInfoUI.Instance.Hide();
         }
-    
+        
         void SelectTile(Tile tile)
         {
+            if(selectedTile)
+                SetTileDeselected(selectedTile);
+
             if(specialSelectAction != null)
             {
                 specialSelectAction(tile);
@@ -58,8 +65,13 @@ namespace TowerDefense
             DisplayInfoUI.Instance.Show(tile.GetDisplayInfo());
     
             selectedTile = tile;
+            tile.Tower?.OnTileSelected();
         }
-    
+
+        void SetTileDeselected(Tile tile)
+        {
+            tile?.Tower?.OnTileDeselected();
+        }        
     
         public void SetSpecialSelectAction(Action<Tile> specialSelectAction, bool selectAfterAction)
         {

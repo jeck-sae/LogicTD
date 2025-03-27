@@ -51,11 +51,13 @@ namespace TowerDefense
         {
             if (TileSelectionManager.Instance.SelectedTile)
                 TowerPreviewManager.Instance.PreviewTower(tower, TileSelectionManager.Instance.SelectedTile.Position, placeCondition: () => { return GameStats.Instance.coins >= tower.Cost; });
+            DisplayInfoUI.Instance.Preview(tower.GetDisplayInfo());
             //DisplayInfoUI.Instance.Show(this, tower.shopIcon, tower.towerName, tower.towerDescription, false, tower.GetStats(), tower.upgradeHandler);
         }
         public void OnCursorExit()
         {
             TowerPreviewManager.Instance.StopPreviewing();
+            DisplayInfoUI.Instance.StopPreview();
             //DisplayInfoUI.Instance.Hide(this);
         }
     

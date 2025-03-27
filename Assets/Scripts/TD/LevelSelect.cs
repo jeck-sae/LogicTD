@@ -29,17 +29,11 @@ namespace TowerDefense
         {
             if(Input.GetKeyDown(KeyCode.LeftArrow))
             {
-                currentLevelIndex--;
-                if (currentLevelIndex < 0)
-                    currentLevelIndex = levels.Count - 1;
-                SelectLevel(levels[currentLevelIndex]);
+                PreviousLevel();
             }
             if(Input.GetKeyDown(KeyCode.RightArrow))
             {
-                currentLevelIndex++;
-                if (currentLevelIndex >= levels.Count)
-                    currentLevelIndex = 0;
-                SelectLevel(levels[currentLevelIndex]);
+                NextLevel();
             }
         }
     
@@ -61,6 +55,22 @@ namespace TowerDefense
         }
     
     
+        public void NextLevel()
+        {
+            currentLevelIndex++;
+            if (currentLevelIndex >= levels.Count)
+                currentLevelIndex = 0;
+            SelectLevel(levels[currentLevelIndex]);
+        }
+        
+        public void PreviousLevel()
+        {
+            currentLevelIndex--;
+            if (currentLevelIndex < 0)
+                currentLevelIndex = levels.Count - 1;
+            SelectLevel(levels[currentLevelIndex]);
+        }
+
         public void SelectLevel(GridImportExport.LevelInfo level)
         {
             GridImportExport.LoadGrid(GridManager.Instance, level);

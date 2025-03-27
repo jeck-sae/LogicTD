@@ -55,13 +55,13 @@ namespace TowerDefense
     
         private void PanCamera()
         {
-            if (Input.GetMouseButtonDown(2))
+            if (Input.GetMouseButtonDown(2) || Input.GetMouseButtonDown(1))
             {
                 dragOrigin = cam.ScreenToWorldPoint(Input.mousePosition);
                 return;
             }
     
-            if(Input.GetMouseButton(2))
+            if(Input.GetMouseButton(2) || Input.GetMouseButton(1))
             {
                 Vector3 diff = dragOrigin - cam.ScreenToWorldPoint(Input.mousePosition);
     

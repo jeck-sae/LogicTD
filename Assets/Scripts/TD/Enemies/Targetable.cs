@@ -52,7 +52,7 @@ namespace TowerDefense
     
             HealthChanged?.Invoke();
     
-            if (currentHealth <= 0)
+            if (currentHealth < .001f)
                 isAlive = false;
         }
     

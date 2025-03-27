@@ -55,12 +55,12 @@ namespace TowerDefense
             if (tile && tile.CanPlace() && conditionMet)
             {
                 previewRenderers.ForEach(x => x.color = Color.white);
-                rangePreview.SetColor(previewingTower.towerColor);
+                rangePreview.ShowColor(previewingTower.towerColor);
             }
             else
             {
                 previewRenderers.ForEach(x => x.color = Color.red);
-                rangePreview.SetColor(Color.red);
+                rangePreview.ShowColor(Color.red);
             }
         }
     
@@ -105,7 +105,7 @@ namespace TowerDefense
             rangePreview.transform.position = pos;
             rangePreview.scaleWithStat.SetStat(tower.MaxRange);
             rangePreview.gameObject.SetActive(true);
-            rangePreview.SetColor(tower.towerColor);
+            rangePreview.ShowColor(tower.towerColor);
     
             //Tower preview
             var gfx = tower.transform.Find("GFX");

@@ -7,19 +7,34 @@ namespace TowerDefense
     {
         [SerializeField] SpriteRenderer sr;
         [SerializeField] LineRenderer lr;
+        float maxSpriteOpacity;
+        float maxLineOpacity;
+        
         public ScaleWithStat scaleWithStat;
-    
-    
-        public void SetColor(Color color)
+
+        private void Awake()
         {
+            maxSpriteOpacity = sr.color.a;
+            maxLineOpacity =  lr.startColor.a;
+        }
+
+        public void ShowColor(Color color)
+        {
+            gameObject.SetActive(true);
+
             Color srColor = color;
-            srColor.a = sr.color.a;
+            srColor.a = color.a * maxSpriteOpacity;
             sr.color = srColor;
     
             Color lrColor = color;
-            lrColor.a = lr.startColor.a;
+            lrColor.a = color.a * maxLineOpacity;
             lr.startColor = lrColor;
             lr.endColor = lrColor;
+        }
+
+        public void Hide()
+        {
+            gameObject.SetActive(false);
         }
     }
     
