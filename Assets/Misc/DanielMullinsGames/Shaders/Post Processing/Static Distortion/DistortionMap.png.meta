@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-guid: 0ee0b44b8c03546a392c57dc59d85589
-AssetOrigin:
-  serializedVersion: 1
-  productId: 254677
-  packageName: Text Animator for Unity
-  packageVersion: 2.2.1
-  assetPath: Assets/Plugins/Febucci/Text Animator/Example/Sprites/example_dialoguebox_body.png
-  uploadId: 710156
+guid: 5ec58a9426482db4895317893ef21f4b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -52,11 +45,11 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 1
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 166, y: 211, z: 133, w: 137}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
