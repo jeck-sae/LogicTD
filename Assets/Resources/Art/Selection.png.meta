@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 3e2df8027b631074e898c6391a8558dd
+guid: da7f995a6e2880e4f923e391d11001d6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7223950226953391895
-    second: Tiles_0
+      213: 765154081351103428
+    second: Selection_0
   - first:
-      213: -8377130690987618698
-    second: Tiles_1
+      213: -823361620510505896
+    second: Selection_1
   - first:
-      213: -4684333735789482159
-    second: Tiles_2
+      213: -3662674932490810945
+    second: Selection_2
   - first:
-      213: -5062486230716756072
-    second: Tiles_3
+      213: 2818092533467383978
+    second: Selection_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +55,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -122,67 +122,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tiles_0
+      name: Selection_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 124
-        width: 38
-        height: 3
-      alignment: 9
-      pivot: {x: 0.5, y: -5.3333335}
+        x: 0
+        y: 29
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 71fc8a01570a04460800000000000000
-      internalID: 7223950226953391895
+      spriteID: 4c37f51459f5e9a00800000000000000
+      internalID: 765154081351103428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShadowSide
+      name: Selection_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 99
-        width: 36
-        height: 4
-      alignment: 9
-      pivot: {x: 0.5, y: -4.75}
+        x: 29
+        y: 29
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a1caedb8261265a45b51fd390c052d84
-      internalID: 749414209
+      spriteID: 85408cfe7f4d294f0800000000000000
+      internalID: -823361620510505896
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShadowCorner
+      name: Selection_2
       rect:
         serializedVersion: 2
-        x: 37
-        y: 98
-        width: 5
-        height: 5
-      alignment: 9
-      pivot: {x: -3.6000001, y: -3.6000001}
+        x: 0
+        y: 0
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0e875ad38c559d74a880a70e114de3d7
-      internalID: 1982816523
+      spriteID: fb94829fd809b2dc0800000000000000
+      internalID: -3662674932490810945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Selection_3
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 0
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa801817a30eb1720800000000000000
+      internalID: 2818092533467383978
       vertices: []
       indices: 
       edges: []
@@ -191,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 35688a17b4cb6c243bd3012e0b3ad99c
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -201,14 +223,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Selection: -201731153
-      ShadowCorner: 1982816523
-      ShadowSide: 749414209
-      Tiles_0: 7223950226953391895
-      Tiles_1: -8377130690987618698
-      Tiles_2: -4684333735789482159
-      Tiles_3: -5062486230716756072
-      Tiles_4: 1181286424
+      Selection_0: 765154081351103428
+      Selection_1: -823361620510505896
+      Selection_2: -3662674932490810945
+      Selection_3: 2818092533467383978
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

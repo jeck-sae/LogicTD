@@ -26,11 +26,8 @@ namespace TowerDefense
     
         protected override void Attack()
         {
-            foreach (Enemy e in GameManager.Enemies)
+            foreach (Enemy e in GetEnemiesInRange())
             {
-                var dist = Vector2.Distance(transform.position, e.transform.position);
-                if (dist < MinRange || dist > MaxRange) continue;
-    
                 e.Damage(Damage);
     
                 if (Random.Range(0, 1f) > StunChance) continue;

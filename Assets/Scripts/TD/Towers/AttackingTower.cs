@@ -1,6 +1,7 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
-
+using System.Collections.Generic;
+using System.Linq;
 
 namespace TowerDefense
 {
@@ -60,7 +61,8 @@ namespace TowerDefense
                 hadTargetLastFrame = true;
             }
     
-            RotateTowards(target.transform.position);
+            if(rotateTowardsTarget)
+                RotateTowards(target.transform.position);
     
             if (!FacingTarget()) return;
     
@@ -110,7 +112,8 @@ namespace TowerDefense
         {
             Enemy bestEnemy = null;
             float bestDistance = float.MaxValue;
-            foreach (Enemy e in GameManager.Enemies)
+
+            foreach (var e in GetEnemiesInRange())
             {
                 if (!IsValidTarget(e))
                     continue;
@@ -125,6 +128,15 @@ namespace TowerDefense
     
             target = bestEnemy;
             return target != null;
+        }
+
+        protected List<Enemy> GetEnemiesInRange()
+        {
+            var hit = Physics2D.CircleCastAll(transform.position, MaxRange, 
+                Vector2.zero, 0, layerMask: LayerMask.GetMask("Targetable"));
+
+            hit.Where(x => Vector3.Distance(x.collider.transform.position, transform.position) >= MinRange);
+            return hit.Select(x => x.collider.GetComponent<Enemy>()).Where(x => x != null && x.isAlive).ToList();
         }
     
         protected virtual void OnTargetFound() { }

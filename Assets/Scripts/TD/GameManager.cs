@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,20 +17,29 @@ namespace TowerDefense
         public int winGameAtWave;
     
         public static List<Enemy> Enemies => Instance.enemies;
-        public List<Enemy> enemies = new List<Enemy>();
-    
+        public List<Enemy> enemies = new();
+
+        protected static List<Enemy> newEnemies = new();
         public static void AddEnemy(Enemy enemy)
         {
-            if (!Instance.enemies.Contains(enemy))
-                Instance.enemies.Add(enemy);
+            if (!Instance.enemies.Contains(enemy) || newEnemies.Contains(enemy))
+                newEnemies.Add(enemy);
         }
     
         public static void RemoveEnemy(Enemy enemy)
         {
             if (Instance.enemies.Contains(enemy))
                 Instance.enemies.Remove(enemy);
+            if (newEnemies.Contains(enemy))
+                newEnemies.Remove(enemy);
         }
-    
+
+        private void LateUpdate()
+        {
+            enemies.AddRange(newEnemies);
+            newEnemies.Clear();
+        }
+
         private void Awake()
         {
             GameStats.Instance.livesChanged += CheckGameOver;

@@ -56,31 +56,28 @@ namespace TowerDefense
         protected void ReachedHomeTile()
         {
             GameStats.Instance?.LoseHP((int)DamageToTower);
-            Kill();
+            Kill(true);
         }
     
-        protected override void Kill()
-        {
-            isAlive = false;
-        }
-    
-        protected void Die()
-        {
-            GameStats.Instance.ModifyCoins((int)MoneyReward);
-    
-            var pitch = new AudioParams.Pitch(AudioParams.Pitch.Variation.Small);
-            var repetition = new AudioParams.Repetition(.05f);
-            AudioController.Instance.PlaySound2D("enemy_death", .2f, pitch: pitch, repetition: repetition);
-    
-            GameManager.RemoveEnemy(this);
-            Destroy(gameObject);
-        }
-    
+        protected override void OnKill() { } //destroy in LateUpdate
+
         public override void ManagedLateUpdate()
         {
             if (!isAlive)
             {
                 Die();
+            }
+
+            void Die()
+            {
+                GameStats.Instance.ModifyCoins((int)MoneyReward);
+    
+                var pitch = new AudioParams.Pitch(AudioParams.Pitch.Variation.Small);
+                var repetition = new AudioParams.Repetition(.05f);
+                AudioController.Instance.PlaySound2D("enemy_death", .2f, pitch: pitch, repetition: repetition);
+    
+                GameManager.RemoveEnemy(this);
+                Destroy(gameObject);
             }
         }
     }

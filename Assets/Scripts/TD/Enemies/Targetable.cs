@@ -9,12 +9,13 @@ namespace TowerDefense
     {
         [HideInEditorMode]
         public float currentHealth = 0;
-        public bool isAlive = true;
+        public bool isAlive { private set; get; } = true;
     
         public Stat MaxHealth;
         public Stat DamageTakenMultiplier;
     
         public event Action HealthChanged;
+        public event Action<OnDeathArgs> OnDeath;
     
         [HideInInspector]
         public Stats stats;
@@ -53,7 +54,7 @@ namespace TowerDefense
             HealthChanged?.Invoke();
     
             if (currentHealth < .001f)
-                isAlive = false;
+                Kill();
         }
     
         public void Heal(float amount)
@@ -68,12 +69,24 @@ namespace TowerDefense
             if (currentHealth > MaxHealth)
                 currentHealth = MaxHealth;
         }
-    
-    
-    
-        protected virtual void Kill()
+
+        public void Kill() => Kill(false);
+        protected void Kill(bool reachedHomeTile)
         {
+            isAlive = false;
+            OnDeath?.Invoke(new OnDeathArgs() { reachedHomeTile = reachedHomeTile });
+            OnKill();
+        }
+
+        protected virtual void OnKill()
+        {
+            Debug.Log(name);
             Destroy(gameObject);
+        }
+
+        public class OnDeathArgs
+        {
+            public bool reachedHomeTile;
         }
     }
 }

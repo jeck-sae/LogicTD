@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -99
-  m_Sprite: {fileID: -5062486230716756072, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
+  m_Sprite: {fileID: 1466225807714370887, guid: 4b72945de2f7ce34fb2199048dc26d93, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.75, y: 0.75}
+  m_Size: {x: 0.8888889, y: 0.8888889}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -423,7 +423,7 @@ MonoBehaviour:
       customDelayAfterWave: -1
       hpMultiplier: 1
     enemies:
-    - prefab: {fileID: 1688420020465270672, guid: 9c1df5c20003fa046b612c98ba73274b, type: 3}
+    - prefab: {fileID: 3549164798031268841, guid: ae0122777609ac54295590fbb164cd3f, type: 3}
       delay: 0.5
     amount: 6
   - advancedSettings:

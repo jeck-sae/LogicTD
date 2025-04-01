@@ -26,7 +26,10 @@ namespace TowerDefense
     
         protected void UpdateWave(int wave)
         {
-            waves.text = (wave + 1).ToString() + "/" + GameManager.Instance.winGameAtWave;
+            if(GameManager.Instance.winGameAtWave == -1)
+                waves.text = (wave + 1).ToString();
+            else
+                waves.text = (wave + 1).ToString() + "/" + GameManager.Instance.winGameAtWave;
         }
         protected void UpdateLives()
         {

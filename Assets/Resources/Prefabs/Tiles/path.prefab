@@ -12,10 +12,34 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7223950226953391895, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
+    - target: {fileID: 180457931428360483, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 180457931428360483, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.g
+      value: 0.25882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 180457931428360483, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4627451
+      objectReference: {fileID: 0}
     - target: {fileID: 1852489450744821735, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7223950226953391895, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
+    - target: {fileID: 1852489450744821735, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852489450744821735, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.g
+      value: 0.25882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 1852489450744821735, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4627451
+      objectReference: {fileID: 0}
     - target: {fileID: 2495264892748742579, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
       propertyPath: icon
       value: 
@@ -80,6 +104,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7223950226953391895, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
+    - target: {fileID: 6156686804129636328, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156686804129636328, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.g
+      value: 0.25882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 6156686804129636328, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4627451
+      objectReference: {fileID: 0}
     - target: {fileID: 6488037865941911809, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
       propertyPath: m_Name
       value: path
@@ -88,6 +124,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 7223950226953391895, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
+    - target: {fileID: 7159591352902367505, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5411765
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159591352902367505, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.g
+      value: 0.25882354
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159591352902367505, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4627451
+      objectReference: {fileID: 0}
     - target: {fileID: 9196717702235523250, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
       propertyPath: icon
       value: 

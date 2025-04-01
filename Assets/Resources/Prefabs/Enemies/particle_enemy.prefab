@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4246279655356832671}
   - component: {fileID: 3552611617496687487}
   - component: {fileID: -5187076376351603388}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: particle_enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4870,7 +4870,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 50
-  isAlive: 1
   MaxHealth:
     m_name: 
     m_baseValue: 40
