@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using System.Linq;
-using JetBrains.Annotations;
 
 
 namespace TowerDefense
@@ -171,7 +170,7 @@ namespace TowerDefense
             }
             else
             {
-                modifiers[id] = new StatModifier(add, multiply);
+                modifiers[id] = new StatModifier(id, add, multiply);
             }
             UpdateValue();
         }
@@ -223,11 +222,13 @@ namespace TowerDefense
         [Serializable]
         public class StatModifier
         {
+            public string name;
             public float add;
             public float multiply = 1;
             public StatModifier() { }
-            public StatModifier(float add, float multiply)
+            public StatModifier(string name, float add, float multiply)
             {
+                this.name = name;
                 this.add = add;
                 this.multiply = multiply;
             }

@@ -3,12 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags:
-  - fire
-  - debris
-  - AetherFruit
-  - Elixir Berries
-  - Philosopher's Core
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -17,7 +12,7 @@ TagManager:
   - Water
   - UI
   - NonInteractable
-  - 
+  - Targetable
   - 
   - 
   - 

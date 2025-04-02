@@ -46,6 +46,7 @@ namespace TowerDefense
         {
             isSpawning = true;
             Wave wave = waves[currentWaveIndex];
+
             for (int i = 0; i < wave.amount; i++)
             {
                 foreach (Wave.WaveEnemy e in wave.enemies)
@@ -54,10 +55,10 @@ namespace TowerDefense
                         
                     enemy.Initialize();
                     if (wave.advancedSettings.hpMultiplier != 1)
-                        enemy.stats.AddModifier("maxHealth", "waveCustomHealth", multiply: wave.advancedSettings.hpMultiplier);
+                        enemy.AddBaseModifier("maxHealth", "waveCustomHealth", multiply: wave.advancedSettings.hpMultiplier);
                         
                     float waveScaling = 1 + (WaveManager.Instance.CurrentWave * (multiplyHpPerWave - 1));
-                    enemy.stats.AddModifier("maxHealth", "waveScaling", multiply: waveScaling * multiplyHpBase);
+                    enemy.AddBaseModifier("maxHealth", "waveScaling", multiply: waveScaling * multiplyHpBase);
     
                     yield return Helpers.GetWait(e.delay);
                 }

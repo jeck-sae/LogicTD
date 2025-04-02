@@ -37,7 +37,7 @@ namespace TowerDefense
                     UnityEngine.Random.Range(-1, 1);
                     Vector3 pos = transform.position + UnityEngine.Random.onUnitSphere * s.distance;
                     var go = Instantiate(s.prefab, pos, Quaternion.identity);
-                    go.GetComponent<Enemy>().Initialize();
+                    go.GetComponent<Enemy>().AddBaseModifiers(enemy.startModifiers);
                 }
             }
         }
