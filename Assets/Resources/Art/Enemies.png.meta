@@ -63,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 36
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -125,15 +125,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemies_0
+      name: Basic
       rect:
         serializedVersion: 2
-        x: 0
-        y: 53
-        width: 11
-        height: 11
+        x: 1
+        y: 54
+        width: 9
+        height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -147,15 +147,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemies_1
+      name: Fast
       rect:
         serializedVersion: 2
-        x: 11
-        y: 52
-        width: 11
-        height: 12
+        x: 12
+        y: 53
+        width: 9
+        height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -169,15 +169,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemies_2
+      name: Tank
       rect:
         serializedVersion: 2
         x: 23
-        y: 52
-        width: 12
-        height: 12
+        y: 53
+        width: 10
+        height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -191,15 +191,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemies_3
+      name: SlimeBig
       rect:
         serializedVersion: 2
-        x: 0
-        y: 37
-        width: 15
-        height: 15
+        x: 1
+        y: 38
+        width: 13
+        height: 13
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -213,15 +213,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemies_4
+      name: SlimeSmall
       rect:
         serializedVersion: 2
-        x: 15
-        y: 44
-        width: 8
-        height: 8
+        x: 16
+        y: 45
+        width: 6
+        height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -234,11 +234,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Healer
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 41
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 959ee5415b9c2894d957335fb69759f4
+      internalID: -1049251486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 204741755944871468bc2606b078356d
     internalID: 0
     vertices: []
     indices: 
@@ -248,11 +270,12 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Enemies_0: 2192450021786810173
-      Enemies_1: -7537196482120660328
-      Enemies_2: -860468679390908754
-      Enemies_3: -7945901444079236628
-      Enemies_4: -8421458170528590454
+      Basic: 2192450021786810173
+      Fast: -7537196482120660328
+      Healer: -1049251486
+      SlimeBig: -7945901444079236628
+      SlimeSmall: -8421458170528590454
+      Tank: -860468679390908754
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

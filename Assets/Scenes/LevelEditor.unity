@@ -280,7 +280,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5062486230716756072, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
+  m_Sprite: {fileID: 1466225807714370887, guid: 4b72945de2f7ce34fb2199048dc26d93, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -465,7 +465,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4684333735789482159, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
+  m_Sprite: {fileID: -2708668868464357419, guid: 4b72945de2f7ce34fb2199048dc26d93, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -572,6 +572,7 @@ MonoBehaviour:
   offset: {x: 0.5, y: 0.5}
   ignoreTiles: []
   size: {x: 48, y: 32}
+  color: {r: 0.4627451, g: 0.2588235, b: 0.5411765, a: 1}
 --- !u!1 &540568109
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,7 +802,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1181286424, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
+  m_Sprite: {fileID: 1628593483751695657, guid: 58437be6c97c11b4c938fc8f5c4cdf84, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1179,7 +1180,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1554471120

@@ -125,7 +125,6 @@ namespace TowerDefense
                     bestEnemy = e;
                 }
             }
-    
             target = bestEnemy;
             return target != null;
         }

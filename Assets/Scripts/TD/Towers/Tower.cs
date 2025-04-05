@@ -92,6 +92,9 @@ namespace TowerDefense
 
         protected override void OnCursorExit()
         {
+            if (Input.GetMouseButton(0))
+                StartMoving();
+
             if (!isSelected)
             {
                 maxRangeIndicator.Hide();
@@ -141,6 +144,8 @@ namespace TowerDefense
     
         public void StartMoving()
         {
+            if (!InputManager.Instance.acceptInput)
+                return;
             Tile.RemoveTower();
             TowerPlacementManager.Instance.StartPlacing(this, OnMoveAway, OnCancelMoving, false);
         }

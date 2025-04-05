@@ -1627,6 +1627,7 @@ MonoBehaviour:
   offset: {x: 0.5, y: 0.5}
   ignoreTiles: []
   size: {x: 48, y: 32}
+  color: {r: 0.4627451, g: 0.25882354, b: 0.5411765, a: 1}
 --- !u!1001 &376402797
 PrefabInstance:
   m_ObjectHideFlags: 0

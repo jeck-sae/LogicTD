@@ -1,6 +1,6 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -14,9 +14,10 @@ namespace TowerDefense
         [SerializeField] protected List<Vector2Int> ignoreTiles;
         [SerializeField] protected Vector2Int size;
         [SerializeField] protected Dictionary<Vector2Int, BackgroundItem> grid = new();
-    
+        [SerializeField, ColorPalette] protected Color color = new Color(0.4627451f, 0.2588235f, 0.5411765f); 
         void Start()
         {
+            col = color;
             SpawnTiles();
         }
     
@@ -37,19 +38,23 @@ namespace TowerDefense
                     UpdateTile(tile.Key, tile.Value, cursorPos);
             }
         }
-    
+
+        protected Color col;
         protected virtual void UpdateTile(Vector2Int pos, BackgroundItem item, Vector3 cursorPos)
         {
             var dir = (cursorPos - item.transform.position).normalized;
             var dist = Vector3.Distance(item.transform.position, cursorPos);
     
             item.icon.transform.localScale = Vector3.one * item.scaleCurve.Evaluate(dist);
+
+            col.a = item.alphaCurve.Evaluate(dist);
+            item.icon.color = col;
     
             //icon.transform.rotation = Quaternion.Euler(0, 0, rotationCurve.Evaluate(dist) * 90);
     
             item.icon.transform.localPosition = dir * item.positionCurve.Evaluate(dist);
     
-            item.icon.color = item.colorGradient.Evaluate(dist / item.colorMaxDist);
+            //item.icon.color = item.colorGradient.Evaluate(dist / item.colorMaxDist);
         }
     
         protected virtual void SpawnTiles()

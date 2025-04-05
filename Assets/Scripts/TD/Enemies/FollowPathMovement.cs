@@ -17,7 +17,12 @@ namespace TowerDefense
         protected Vector3 nextTargetPosition;
     
         bool reachedTarget;
-    
+
+        private void Awake()
+        {
+            UpdatePath();
+        }
+
         public void SetPositionOffset(Vector2 positionOffset)
         {
             this.positionOffset = positionOffset;

@@ -13,7 +13,6 @@ namespace TowerDefense
         public Stat MoneyReward;
         public Stat DamageToTower;
     
-    
         public FollowPathMovement movement;
     
         [HideInInspector]
@@ -31,11 +30,11 @@ namespace TowerDefense
             startModifiers.Add(stat, new Stat.StatModifier(modName, add, multiply));
             stats.AddModifier(stat, modName, add, multiply);
         }
-
+        
         protected override void ManagedInitialize()
         {
             base.ManagedInitialize();
-    
+
             if(!TryGetComponent(out EffectHandler))
                 EffectHandler = gameObject.AddComponent<EffectHandler>();
                 

@@ -70,8 +70,12 @@ namespace TowerDefense
     
             if (preview)
             {
-                if(usingOriginalGFX)
+                if (usingOriginalGFX)
+                {
                     preview.transform.localPosition = Vector3.zero;
+                    previewRenderers.ForEach(x => x.color = Color.white);
+                    rangePreview.ShowColor(previewingTower.towerColor);
+                }
                 else
                     Destroy(preview);
             }
