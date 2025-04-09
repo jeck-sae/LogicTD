@@ -15,7 +15,8 @@ namespace TowerDefense
         [SerializeField] private float WASDSpeed;
     
         [SerializeField] private float lerpAmount;
-    
+        [SerializeField] private bool moveWithRMB = true;
+
         private Vector3 dragOrigin;
     
         private static Camera cam => Helpers.Camera;
@@ -61,7 +62,7 @@ namespace TowerDefense
                 return;
             }
     
-            if(Input.GetMouseButton(2) || Input.GetMouseButton(1))
+            if(Input.GetMouseButton(2) || (moveWithRMB && Input.GetMouseButton(1)))
             {
                 Vector3 diff = dragOrigin - cam.ScreenToWorldPoint(Input.mousePosition);
     

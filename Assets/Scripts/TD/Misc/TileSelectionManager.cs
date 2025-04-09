@@ -30,19 +30,19 @@ namespace TowerDefense
                     SelectTile(hovering);
             }
     
-            if (Input.GetMouseButtonDown(1) && selectedTile != null)
+            if (Input.GetMouseButtonDown(1))
                 DeselectTile();
         }
     
         public void DeselectTile()
         {
-            if (!selectedTile)
-                return;
-            
-            SetTileDeselected(selectedTile);
-            selectedTile = null;
             selectionIndicator.gameObject.SetActive(false);
             DisplayInfoUI.Instance.Hide();
+            
+            if (!selectedTile)
+                return;
+            SetTileDeselected(selectedTile);
+            selectedTile = null;
         }
         
         void SelectTile(Tile tile)

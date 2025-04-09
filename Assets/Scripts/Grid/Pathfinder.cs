@@ -8,26 +8,26 @@ namespace TowerDefense
 {
     public class Pathfinder
     {
+
         public static List<Tile> FindNearestTile(GridManager grid, Tile startTile, Func<Tile, bool> isDestination = null)
         {
             Dictionary<Tile, PathfinderTile> tileData = new Dictionary<Tile, PathfinderTile>();
-            List<Tile> openSet = new List<Tile>();
+            Heap<PathfinderTile> openSet = new Heap<PathfinderTile>(GridManager.Instance.Count);
             HashSet<Tile> closedSet = new HashSet<Tile>();
     
             if (isDestination == null)
                 isDestination = (t) => { return t.IsHome; };
     
-            openSet.Add(startTile);
             tileData.Add(startTile, new PathfinderTile(startTile, 0, int.MaxValue));
+            openSet.Add(tileData[startTile]);
     
             while (openSet.Count > 0)
             {
-                PathfinderTile currentTile = tileData[openSet[0]];
-    
+                PathfinderTile currentTile = openSet.RemoveFirst();
+
                 if (isDestination(currentTile.originalTile))
                     return RetracePath(tileData[startTile], currentTile);
     
-                openSet.Remove(currentTile.originalTile);
                 closedSet.Add(currentTile.originalTile);
     
                 foreach (Tile neighbour in grid.GetAdjacentTiles(currentTile.originalTile.Position))
@@ -40,7 +40,7 @@ namespace TowerDefense
                     if (!tileData.ContainsKey(neighbour))
                     {
                         tileData.Add(neighbour, new PathfinderTile(neighbour, newMovementCostToNeighbour, currentTile.hCost - 1, currentTile));
-                        openSet.Add(neighbour);
+                        openSet.Add(tileData[neighbour]);
                     }
                 }
             }
@@ -52,26 +52,22 @@ namespace TowerDefense
     
         public static List<Tile> FindPath(GridManager grid, Tile startTile, Tile endTile)
         {
+
             Dictionary<Tile, PathfinderTile> tileData = new Dictionary<Tile, PathfinderTile>();
-            List<Tile> openSet = new List<Tile>();
+            Heap<PathfinderTile> openSet = new Heap<PathfinderTile>(GridManager.Instance.Count);
             HashSet<Tile> closedSet = new HashSet<Tile>();
-    
-            openSet.Add(startTile);
-            tileData.Add(startTile, new PathfinderTile(startTile, 0, GetDistance(startTile, endTile)));
-    
+
+            tileData.Add(startTile, new PathfinderTile(startTile, 0, GetDistance(startTile, endTile), null));
+            openSet.Add(tileData[startTile]);
+
             while (openSet.Count > 0)
             {
-                PathfinderTile currentTile = tileData[openSet[0]];
-                for (int i = 1; i < openSet.Count; i++)
-                    if (tileData[openSet[i]].fCost < currentTile.fCost || (
-                        tileData[openSet[i]].fCost == currentTile.fCost && tileData[openSet[i]].hCost < currentTile.hCost))
-                        currentTile = tileData[openSet[i]];
-    
-                openSet.Remove(currentTile.originalTile);
+                PathfinderTile currentTile = openSet.RemoveFirst();
+                currentTile.open = false;
                 closedSet.Add(currentTile.originalTile);
-    
+
                 if (currentTile.originalTile == endTile)
-                    return RetracePath(tileData[startTile], tileData[endTile]);
+                    return RetracePath(tileData[startTile], currentTile);
     
     
                 foreach (Tile neighbour in grid.GetAdjacentTiles(currentTile.originalTile.Position))
@@ -79,13 +75,13 @@ namespace TowerDefense
                     if (!neighbour || !neighbour.IsWalkable || closedSet.Contains(neighbour))
                         continue;
                     int newMovementCostToNeighbour = currentTile.gCost + GetDistance(currentTile.originalTile, neighbour);
-    
+
                     if (!tileData.ContainsKey(neighbour))
                     {
                         tileData.Add(neighbour, new PathfinderTile(neighbour, newMovementCostToNeighbour, GetDistance(neighbour, endTile), currentTile));
-                        openSet.Add(neighbour);
+                        openSet.Add(tileData[neighbour]);
                     }
-    
+                    
                     if (newMovementCostToNeighbour < tileData[neighbour].gCost)
                     {
                         tileData[neighbour].gCost = newMovementCostToNeighbour;
@@ -114,17 +110,22 @@ namespace TowerDefense
             return path;
         }
     
-        public static int GetDistance(Tile t1, Tile t2)
+        public static int GetDistance(Tile t1, Tile t2) => GetDistance(t1.Position, t2.Position);
+        public static int GetDistance(Vector2Int t1, Vector2Int t2)
         {
-            return Mathf.RoundToInt(Mathf.Abs(t1.Position.x - t2.Position.x) + Mathf.Abs(t1.Position.y - t2.Position.y));
+            return Mathf.RoundToInt(Mathf.Abs(t1.x - t2.x) + Mathf.Abs(t1.y - t2.y));
         }
-    
-        class PathfinderTile
+
+        class PathfinderTile : IHeapItem<PathfinderTile>
         {
-            public bool walkable;
+            public int HeapIndex { get; set; }
+            public bool walkable => originalTile != null && originalTile.IsWalkable;
             public int gCost;
             public int hCost;
             public int fCost { get { return gCost + hCost; } }
+
+            public bool open = true;
+
             public Tile originalTile;
             public PathfinderTile parent;
     
@@ -132,12 +133,20 @@ namespace TowerDefense
             public PathfinderTile(Tile _tile, int _gCost, int _hCost, PathfinderTile _parent = null)
             {
                 originalTile = _tile;
-                walkable = _tile.IsWalkable;
                 gCost = _gCost;
                 hCost = _gCost;
                 parent = _parent;
             }
     
+            public int CompareTo(PathfinderTile other)
+            {
+                int compare = fCost.CompareTo(other.fCost);
+                if (compare == 0)
+                {
+                    compare = hCost.CompareTo(other.hCost);
+                }
+                return -compare;
+            }
         }
     }
 }

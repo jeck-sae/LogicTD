@@ -12,7 +12,9 @@ namespace TowerDefense
         [ShowInInspector] Dictionary<Vector2Int, Tile> tiles;
         public Action<Tile> OnTileAdded;
         public Action<Vector2Int> OnTileRemoved;
-    
+
+        public int Count => tiles.Count;
+
         protected void Awake()
         {
             tiles = new Dictionary<Vector2Int, Tile>();

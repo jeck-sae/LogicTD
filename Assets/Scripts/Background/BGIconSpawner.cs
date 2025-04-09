@@ -22,7 +22,7 @@ namespace TowerDefense
         }
     
     
-        private void Update()
+        private void LateUpdate()
         {
             UpdateTiles();
         }
