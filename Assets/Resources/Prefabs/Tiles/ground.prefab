@@ -43,7 +43,7 @@ PrefabInstance:
     - target: {fileID: 2495264892748742579, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: -8377130690987618698, guid: 3e2df8027b631074e898c6391a8558dd, type: 3}
+      objectReference: {fileID: 1449704800, guid: b77cfe2e5c80654478fad10249648232, type: 3}
     - target: {fileID: 2495264892748742579, guid: 0752b906e0030454dacabec1ec15ecef, type: 3}
       propertyPath: type
       value: 1

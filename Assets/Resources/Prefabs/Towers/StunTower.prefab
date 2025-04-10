@@ -83,7 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortOrder: 0
   effects: {fileID: 0}
-  shopIcon: {fileID: -875105382, guid: 58437be6c97c11b4c938fc8f5c4cdf84, type: 3}
+  shopIcon: {fileID: -6240021825540437177, guid: b77cfe2e5c80654478fad10249648232, type: 3}
   towerName: Stun
   towerDescription: Damages nearby enemies, and has a chance to stun them for a short
     time.
@@ -122,6 +122,7 @@ MonoBehaviour:
       statUpgrades:
       - stat: damage
         modifier:
+          name: 
           add: 3
           multiply: 1
       flagUpgrades: []

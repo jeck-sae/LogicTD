@@ -300,7 +300,7 @@ PrefabInstance:
     - target: {fileID: 2391061033089007441, guid: 96fd9c819165838409c91bb7a90fcf0d, type: 3}
       propertyPath: icon
       value: 
-      objectReference: {fileID: 1466225807714370887, guid: 4b72945de2f7ce34fb2199048dc26d93, type: 3}
+      objectReference: {fileID: -413214005, guid: b77cfe2e5c80654478fad10249648232, type: 3}
     - target: {fileID: 2391061033089007441, guid: 96fd9c819165838409c91bb7a90fcf0d, type: 3}
       propertyPath: tileId
       value: spawner

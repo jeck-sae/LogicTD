@@ -11,6 +11,7 @@ namespace TowerDefense
     public class WaveManager : Singleton<WaveManager>
     {
         public float defaultWaveDelay;
+        [SerializeField] bool spawnOnStart;
         [SerializeField] GameObject resumeSpawningButton;
         public bool SpawningPaused => spawningPaused;
         [SerializeField] protected bool spawningPaused;
@@ -32,6 +33,8 @@ namespace TowerDefense
             StartGame();
             GridManager.Instance.OnTileAdded += t => { if (t.tileId == "spawner") spawners.Add(t.GetComponent<Spawner>()); };
             GridManager.Instance.OnTileRemoved += p => { spawners.RemoveAll(x => x?.GetComponent<Tile>()?.Position == p); };
+            if (spawnOnStart)
+                ResumeSpawning();
         }
     
     
@@ -53,12 +56,14 @@ namespace TowerDefense
     
         public void ShowResumeButton()
         {
-            resumeSpawningButton?.SetActive(true);
+            if(resumeSpawningButton)
+                resumeSpawningButton.SetActive(true);
         }
     
         protected void HideResumeBUtton()
         {
-            resumeSpawningButton?.SetActive(false);
+            if(resumeSpawningButton)
+                resumeSpawningButton.SetActive(false);
         }
     
         public void ResumeSpawning()

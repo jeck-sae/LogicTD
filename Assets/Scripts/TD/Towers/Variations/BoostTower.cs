@@ -26,7 +26,7 @@ namespace TowerDefense
             
             foreach (var t in GridManager.Instance.GetAdjacentTiles(Tile.Position))
             {
-                var tower = t.Tower;
+                var tower = t.Tower as AttackingTower;
                 if (!tower) continue;
     
     

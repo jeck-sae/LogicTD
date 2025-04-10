@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortOrder: 0
   effects: {fileID: 0}
-  shopIcon: {fileID: -3495968029663358996, guid: 58437be6c97c11b4c938fc8f5c4cdf84, type: 3}
+  shopIcon: {fileID: -8546000511252593766, guid: b77cfe2e5c80654478fad10249648232, type: 3}
   towerName: Flamethrower
   towerDescription: Burns enemies over time.
   towerColor: {r: 0.7607844, g: 0.6745098, b: 0.3803922, a: 1}
@@ -82,7 +82,7 @@ MonoBehaviour:
     m_minValue: 0
     m_maxValue: 3.4028235e+38
   upgradeHandler:
-    currentLevel: 0
+    nextUpgradeIndex: 0
     levels: []
     unlockedFlagUpgrades: []
   placeSoundVolume: 0.5

@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortOrder: 0
   effects: {fileID: 0}
-  shopIcon: {fileID: -452126304, guid: 58437be6c97c11b4c938fc8f5c4cdf84, type: 3}
+  shopIcon: {fileID: 6618166012049062949, guid: b77cfe2e5c80654478fad10249648232, type: 3}
   towerName: Boost
   towerDescription: Boosts the range and attack speed of adjacent towers.
   towerColor: {r: 0.40784314, g: 0.76862746, b: 0.38431373, a: 1}

@@ -74,9 +74,32 @@ namespace TowerDefense
             public LevelInfo(Tile[] tiles)
             {
                 var serializedTiles = new List<SerializedTile>();
+
+                int minX = int.MaxValue;
+                int minY = int.MaxValue;
+                int maxX = int.MinValue;
+                int maxY = int.MinValue;
+
                 foreach (var tile in tiles)
+                {
+                    if (tile.Position.x < minX) minX = tile.Position.x;
+                    if (tile.Position.y < minY) minY = tile.Position.y;
+                    if (tile.Position.x > maxX) maxX = tile.Position.x;
+                    if (tile.Position.y > maxY) maxY = tile.Position.y;
                     serializedTiles.Add(new SerializedTile(tile));
-    
+                }
+                
+                int width = maxX - minX;
+                int height = maxY - minY;
+
+                int offsetX = - (width / 2) - minX;
+                int offsetY = - (height / 2) - minY;
+
+                Vector2Int offset = new Vector2Int(offsetX, offsetY);
+
+                foreach(var tile in serializedTiles)
+                    tile.position += offset;
+
                 this.tiles = serializedTiles;
             }
             

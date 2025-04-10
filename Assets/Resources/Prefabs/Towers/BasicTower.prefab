@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortOrder: 0
   effects: {fileID: 0}
-  shopIcon: {fileID: -1075722017825404786, guid: 58437be6c97c11b4c938fc8f5c4cdf84, type: 3}
+  shopIcon: {fileID: -6232723913722592379, guid: b77cfe2e5c80654478fad10249648232, type: 3}
   towerName: Basic
   towerDescription: Shoots at a single target. Has average stats.
   towerColor: {r: 0.7294118, g: 0.37254903, b: 0.7568628, a: 1}
@@ -87,6 +87,7 @@ MonoBehaviour:
       statUpgrades:
       - stat: damage
         modifier:
+          name: 
           add: 5
           multiply: 1
       flagUpgrades: []
@@ -94,6 +95,7 @@ MonoBehaviour:
       statUpgrades:
       - stat: damage
         modifier:
+          name: 
           add: 8
           multiply: 1
       flagUpgrades: []

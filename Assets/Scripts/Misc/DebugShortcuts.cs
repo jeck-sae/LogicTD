@@ -25,6 +25,9 @@ namespace TowerDefense
                 
             if (Input.GetKeyDown(KeyCode.F2))
                 SceneManager.LoadScene("LevelEditor");
+
+            if (Input.GetKeyDown(KeyCode.F3))
+                SceneManager.LoadScene("ProceduralLevel");
     
             if(Input.GetKey(KeyCode.LeftControl) && Input.GetKey(KeyCode.LeftShift))
             {

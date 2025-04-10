@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortOrder: 0
   effects: {fileID: 0}
-  shopIcon: {fileID: 6137813302077351160, guid: 58437be6c97c11b4c938fc8f5c4cdf84, type: 3}
+  shopIcon: {fileID: 487614300551021084, guid: b77cfe2e5c80654478fad10249648232, type: 3}
   towerName: Cannon
   towerDescription: Shoots at a single target dealing splash damage.
   towerColor: {r: 0.7607844, g: 0.3803922, b: 0.43529415, a: 1}
