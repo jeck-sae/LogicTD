@@ -26,8 +26,8 @@ namespace TowerDefense
     
             var tempStats = base.GetStats();
             tempStats.AddStat("projectileSpeed", ProjectileSpeed);
-            tempStats.AddStat("SplashDamageArea", SplashDamageArea);
-            tempStats.AddStat("ProjectileLifetime", ProjectileLifetime);
+            tempStats.AddStat("splashDamageArea", SplashDamageArea);
+            tempStats.AddStat("projectileLifetime", ProjectileLifetime);
             return tempStats;
         }
     

@@ -52,7 +52,7 @@ MonoBehaviour:
   effects: {fileID: 0}
   shopIcon: {fileID: -8546000511252593766, guid: b77cfe2e5c80654478fad10249648232, type: 3}
   towerName: Flamethrower
-  towerDescription: Burns enemies over time.
+  towerDescription: Burns enemies over time. Burning enemies can't be frozen.
   towerColor: {r: 0.7607844, g: 0.6745098, b: 0.3803922, a: 1}
   Cost:
     m_name: 
@@ -83,7 +83,38 @@ MonoBehaviour:
     m_maxValue: 3.4028235e+38
   upgradeHandler:
     nextUpgradeIndex: 0
-    levels: []
+    levels:
+    - cost: 80
+      statUpgrades:
+      - stat: damage
+        modifier:
+          name: 
+          add: 3
+          multiply: 1
+      - stat: burnDuration
+        modifier:
+          name: 
+          add: 1
+          multiply: 1
+      flagUpgrades: []
+    - cost: 125
+      statUpgrades:
+      - stat: damage
+        modifier:
+          name: 
+          add: 3
+          multiply: 1
+      - stat: burnDPS
+        modifier:
+          name: 
+          add: 3
+          multiply: 1
+      - stat: maxRange
+        modifier:
+          name: 
+          add: 0.3
+          multiply: 1
+      flagUpgrades: []
     unlockedFlagUpgrades: []
   placeSoundVolume: 0.5
   cannon: {fileID: 8711475530282827606}

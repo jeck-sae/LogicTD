@@ -82,7 +82,61 @@ MonoBehaviour:
     m_maxValue: 3.4028235e+38
   upgradeHandler:
     nextUpgradeIndex: 0
-    levels: []
+    levels:
+    - cost: 40
+      statUpgrades:
+      - stat: damage
+        modifier:
+          name: 
+          add: 3
+          multiply: 1
+      - stat: attackSpeed
+        modifier:
+          name: 
+          add: 0.3
+          multiply: 1
+      flagUpgrades: []
+    - cost: 80
+      statUpgrades:
+      - stat: damage
+        modifier:
+          name: 
+          add: 4
+          multiply: 1
+      - stat: maxRange
+        modifier:
+          name: 
+          add: 0.5
+          multiply: 1
+      - stat: splashDamageArea
+        modifier:
+          name: 
+          add: 0.2
+          multiply: 1
+      flagUpgrades: []
+    - cost: 125
+      statUpgrades:
+      - stat: damage
+        modifier:
+          name: 
+          add: 3
+          multiply: 1
+      - stat: attackSpeed
+        modifier:
+          name: 
+          add: 0.2
+          multiply: 1
+      - stat: projectileSpeed
+        modifier:
+          name: 
+          add: 0.8
+          multiply: 1
+      - stat: splashDamageArea
+        modifier:
+          name: 
+          add: 0.2
+          multiply: 1
+      flagUpgrades: []
     unlockedFlagUpgrades: []
   placeSoundVolume: 0.5
   cannon: {fileID: 6944747023187206097}

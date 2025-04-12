@@ -51,7 +51,8 @@ MonoBehaviour:
   effects: {fileID: 0}
   shopIcon: {fileID: 6618166012049062949, guid: b77cfe2e5c80654478fad10249648232, type: 3}
   towerName: Boost
-  towerDescription: Boosts the range and attack speed of adjacent towers.
+  towerDescription: Boosts the range and attack speed of adjacent towers. Does not
+    stack.
   towerColor: {r: 0.40784314, g: 0.76862746, b: 0.38431373, a: 1}
   Cost:
     m_name: 

@@ -118,12 +118,48 @@ MonoBehaviour:
   upgradeHandler:
     nextUpgradeIndex: 0
     levels:
-    - cost: 0
+    - cost: 40
       statUpgrades:
       - stat: damage
         modifier:
           name: 
+          add: 2
+          multiply: 1
+      - stat: stunChance
+        modifier:
+          name: 
+          add: 0.05
+          multiply: 1
+      flagUpgrades: []
+    - cost: 80
+      statUpgrades:
+      - stat: maxRange
+        modifier:
+          name: 
+          add: 0.2
+          multiply: 1
+      - stat: damage
+        modifier:
+          name: 
+          add: 2
+          multiply: 1
+      flagUpgrades: []
+    - cost: 120
+      statUpgrades:
+      - stat: stunChance
+        modifier:
+          name: 
+          add: 0.05
+          multiply: 1
+      - stat: damage
+        modifier:
+          name: 
           add: 3
+          multiply: 1
+      - stat: attackSpeed
+        modifier:
+          name: 
+          add: 0.2
           multiply: 1
       flagUpgrades: []
     unlockedFlagUpgrades: []

@@ -98,6 +98,24 @@ MonoBehaviour:
           name: 
           add: 8
           multiply: 1
+      - stat: maxRange
+        modifier:
+          name: 
+          add: 0.5
+          multiply: 1
+      flagUpgrades: []
+    - cost: 100
+      statUpgrades:
+      - stat: damage
+        modifier:
+          name: 
+          add: 10
+          multiply: 1
+      - stat: attackSpeed
+        modifier:
+          name: 
+          add: 0.5
+          multiply: 1
       flagUpgrades: []
     unlockedFlagUpgrades: []
   placeSoundVolume: 0.5

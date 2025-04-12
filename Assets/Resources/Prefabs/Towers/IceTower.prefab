@@ -101,7 +101,7 @@ MonoBehaviour:
   effects: {fileID: 0}
   shopIcon: {fileID: -2825653136060754799, guid: b77cfe2e5c80654478fad10249648232, type: 3}
   towerName: Ice
-  towerDescription: Slows enemies in an area.
+  towerDescription: Slows enemies in an area. Does not stack.
   towerColor: {r: 0.3803922, g: 0.7294118, b: 0.7607844, a: 1}
   Cost:
     m_name: 
@@ -114,7 +114,7 @@ MonoBehaviour:
     m_maxValue: 3.4028235e+38
   MaxRange:
     m_name: 
-    m_baseValue: 3
+    m_baseValue: 2.5
     min: 1
     max: 0
     tempMin: 0
@@ -132,7 +132,43 @@ MonoBehaviour:
     m_maxValue: 3.4028235e+38
   upgradeHandler:
     nextUpgradeIndex: 0
-    levels: []
+    levels:
+    - cost: 50
+      statUpgrades:
+      - stat: maxRange
+        modifier:
+          name: 
+          add: 0.3
+          multiply: 1
+      - stat: slowAmount
+        modifier:
+          name: 
+          add: -0.1
+          multiply: 1
+      - stat: damage
+        modifier:
+          name: 
+          add: 2
+          multiply: 1
+      flagUpgrades: []
+    - cost: 120
+      statUpgrades:
+      - stat: maxRange
+        modifier:
+          name: 
+          add: 0.5
+          multiply: 1
+      - stat: damage
+        modifier:
+          name: 
+          add: 3
+          multiply: 1
+      - stat: slowAmount
+        modifier:
+          name: 
+          add: -0.1
+          multiply: 1
+      flagUpgrades: []
     unlockedFlagUpgrades: []
   placeSoundVolume: 0.5
   cannon: {fileID: 1999829596359873009}

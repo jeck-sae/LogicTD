@@ -15,6 +15,8 @@ namespace TowerDefense
         public Stat HealFrequency;
         public Stat HealRange;
 
+        public Transform healRangeVFX;
+
         Stats stats;
         private void Awake()
         {
@@ -41,6 +43,9 @@ namespace TowerDefense
                     enemy.Heal(addPercent * enemy.MaxHealth * HealEffectiveness);
                     enemy.Heal(enemy.MaxHealth * (1 - perc) * addMissingPercent * HealEffectiveness);
                 }
+
+                healRangeVFX.gameObject.SetActive(false);
+                healRangeVFX.gameObject.SetActive(true);
             }
         }
     }
