@@ -1,4 +1,3 @@
-using Febucci.UI.Core.Parsing;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,10 +5,11 @@ using UnityEngine;
 namespace TowerDefense
 {
     [RequireComponent (typeof (IStatObject))]
-    public class HealNearbyEnemies : MonoBehaviour
+    public class HealNearbyEnemies : MonoBehaviour, IStatComponent, IScalable
     {
-        public float addPercent;
+        public float baseHeal;
         public float addMissingPercent;
+        public float missingPercentCap;
 
         public Stat HealEffectiveness;
         public Stat HealFrequency;
@@ -21,9 +21,6 @@ namespace TowerDefense
         private void Awake()
         {
             stats = GetComponent<IStatObject>()?.GetStats();
-            stats.AddStat("healRange", HealFrequency);
-            stats.AddStat("healFrequency", HealFrequency);
-            stats.AddStat("healEffectiveness", HealEffectiveness);
         }
 
         float nextHealTime;
@@ -39,14 +36,29 @@ namespace TowerDefense
 
                 foreach (Enemy enemy in enemies)
                 {
-                    float perc = enemy.currentHealth / enemy.MaxHealth;
-                    enemy.Heal(addPercent * enemy.MaxHealth * HealEffectiveness);
-                    enemy.Heal(enemy.MaxHealth * (1 - perc) * addMissingPercent * HealEffectiveness);
+                    float perc = baseHeal * HealEffectiveness;
+                    perc += Mathf.Clamp((enemy.MaxHealth - enemy.currentHealth) * addMissingPercent, 0, missingPercentCap * HealEffectiveness);
+
+                    enemy.Heal(perc);
                 }
 
                 healRangeVFX.gameObject.SetActive(false);
                 healRangeVFX.gameObject.SetActive(true);
             }
+        }
+
+        public void ApplyScaling(Stats stats, float scaling)
+        {
+            stats.AddModifier("healEffectiveness", "scaling", 0, scaling);
+        }
+
+        public Stats GetStats()
+        {
+            Stats s = new();
+            s.AddStat("healRange", HealRange);
+            s.AddStat("healFrequency", HealFrequency);
+            s.AddStat("healEffectiveness", HealEffectiveness);
+            return s;
         }
     }
 }

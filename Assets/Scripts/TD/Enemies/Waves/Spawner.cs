@@ -52,13 +52,13 @@ namespace TowerDefense
                 foreach (Wave.WaveEnemy e in wave.enemies)
                 {
                     var enemy = Instantiate(e.prefab, transform.position, Quaternion.identity).GetComponent<Enemy>();
-                        
                     enemy.Initialize();
+
+                    float scaling = 1 + (WaveManager.Instance.CurrentWave * (multiplyHpPerWave - 1)) + (multiplyHpBase - 1);
                     if (wave.advancedSettings.hpMultiplier != 1)
-                        enemy.AddBaseModifier("maxHealth", "waveCustomHealth", multiply: wave.advancedSettings.hpMultiplier);
+                        scaling +=  1 - wave.advancedSettings.hpMultiplier;
                         
-                    float waveScaling = 1 + (WaveManager.Instance.CurrentWave * (multiplyHpPerWave - 1));
-                    enemy.AddBaseModifier("maxHealth", "waveScaling", multiply: waveScaling * multiplyHpBase);
+                    enemy.SetScaling(scaling);
     
                     yield return Helpers.GetWait(e.delay);
                 }

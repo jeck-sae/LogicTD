@@ -18,17 +18,16 @@ namespace TowerDefense
         [HideInInspector]
         public EffectHandler EffectHandler;
 
+        public float scaling { protected set; get; } = 1;
         public Dictionary<string, Stat.StatModifier> startModifiers { get; private set; } = new();
 
-        public void AddBaseModifiers(Dictionary<string, Stat.StatModifier> mods)
+        public virtual void SetScaling(float scaling)
         {
-            foreach (var modifier in mods)
-                AddBaseModifier(modifier.Key, modifier.Value.name, modifier.Value.add, modifier.Value.multiply);
-        }
-        public void AddBaseModifier(string stat, string modName, float add = 0, float multiply = 1) 
-        {
-            startModifiers.Add(stat, new Stat.StatModifier(modName, add, multiply));
-            stats.AddModifier(stat, modName, add, multiply);
+            stats.AddModifier("maxHealth", "scaling", 0, scaling);
+            
+            var scalable = GetComponents<IScalable>();
+            foreach (var s in scalable)
+                s.ApplyScaling(stats, scaling);
         }
         
         protected override void ManagedInitialize()

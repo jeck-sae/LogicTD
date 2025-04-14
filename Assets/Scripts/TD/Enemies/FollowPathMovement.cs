@@ -67,6 +67,7 @@ namespace TowerDefense
                 return;
     
             float distance = Vector3.Distance(transform.position, nextTargetPosition);
+
             if (amount >= distance)
             {
                 transform.position = nextTargetPosition;
@@ -89,6 +90,9 @@ namespace TowerDefense
                 }
     
                 nextTargetPosition = path[currentTileIndex].transform.position + positionOffset;
+
+                Move(amount);
+                return;
             }
     
             Vector3 dir = (nextTargetPosition - transform.position).normalized;

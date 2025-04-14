@@ -17,13 +17,13 @@ namespace TowerDefense
             var tiles = FindObjectsByType<Tile>(FindObjectsSortMode.None);
             foreach(var t in tiles)
             {
-                if (t.CanBuildOver)
+                if (!t.CanBuildOver)
+                    continue;
+
+                if(Random.Range(0, 100) < spawnChance)
                 {
-                    if(Random.Range(0, 100) < spawnChance)
-                    {
-                        var tower = Instantiate((GameObject)towers[Random.Range(0, towers.Count() - 1)]);
-                        t.PlaceTower(tower.GetComponent<Tower>());
-                    }
+                    var tower = Instantiate((GameObject)towers[Random.Range(0, towers.Count() - 1)]);
+                    t.PlaceTower(tower.GetComponent<Tower>());
                 }
             }
         }

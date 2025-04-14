@@ -101,7 +101,11 @@ namespace TowerDefense
         {
             tower = null;
             if(TileSelectionManager.Instance?.SelectedTile == this)
-                DisplayInfoUI.Instance.UpdateInfo();
+            {
+                //DisplayInfoUI.Instance.UpdateInfo();
+                DisplayInfoUI.Instance?.Hide();
+                TileSelectionManager.Instance?.DeselectTile();
+            }
             name = tileName;
         }
     

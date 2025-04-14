@@ -1595,6 +1595,7 @@ GameObject:
   - component: {fileID: 1246364680}
   - component: {fileID: 1246364679}
   - component: {fileID: 1246364681}
+  - component: {fileID: 1246364682}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1741,6 +1742,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lives: 10000000
   coins: 50
+--- !u!114 &1246364682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246364667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03eb90e41e6f5c5418ba8515e027d9ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1281540969
 GameObject:
   m_ObjectHideFlags: 0

@@ -425,7 +425,7 @@ MonoBehaviour:
     enemies:
     - prefab: {fileID: 3549164798031268841, guid: ae0122777609ac54295590fbb164cd3f, type: 3}
       delay: 0.5
-    amount: 6
+    amount: 4
   - advancedSettings:
       customDelayAfterWave: -1
       hpMultiplier: 1

@@ -99,6 +99,7 @@ MonoBehaviour:
     m_maxValue: 3.4028235e+38
   movement: {fileID: 0}
   EffectHandler: {fileID: 0}
+  scaling: 1
 --- !u!114 &8919899857084007778
 MonoBehaviour:
   m_ObjectHideFlags: 0

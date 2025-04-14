@@ -1,4 +1,5 @@
 using Sirenix.OdinInspector;
+using Sirenix.Utilities;
 using System;
 using UnityEngine;
 
@@ -32,10 +33,18 @@ namespace TowerDefense
         public virtual Stats GetStats() 
         {
             if (stats != null) return stats;
-    
+
             var tempStats = new Stats();
             tempStats.AddStat("maxHealth", MaxHealth);
             tempStats.AddStat("damageTakenMultiplier", DamageTakenMultiplier, 0);
+
+            var components = GetComponents<IStatComponent>();
+            foreach (var component in components)
+            {
+                var s = component.GetStats();
+                s.stats.ForEach(x => tempStats.AddStat(x.Value.Name, x.Value));
+            }
+
             return tempStats;
         }
     
