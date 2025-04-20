@@ -19,8 +19,6 @@ namespace TowerDefense
         public EffectHandler EffectHandler;
 
         public float scaling { protected set; get; } = 1;
-        public Dictionary<string, Stat.StatModifier> startModifiers { get; private set; } = new();
-
         public virtual void SetScaling(float scaling)
         {
             stats.AddModifier("maxHealth", "scaling", 0, scaling);

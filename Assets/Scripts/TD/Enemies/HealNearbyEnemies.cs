@@ -10,6 +10,8 @@ namespace TowerDefense
         public float baseHeal;
         public float addMissingPercent;
         public float missingPercentCap;
+        public bool healSelf;
+
 
         public Stat HealEffectiveness;
         public Stat HealFrequency;
@@ -36,6 +38,9 @@ namespace TowerDefense
 
                 foreach (Enemy enemy in enemies)
                 {
+                    if (!healSelf && enemy.gameObject == gameObject)
+                        continue;
+
                     float perc = baseHeal * HealEffectiveness;
                     perc += Mathf.Clamp((enemy.MaxHealth - enemy.currentHealth) * addMissingPercent, 0, missingPercentCap * HealEffectiveness);
 
