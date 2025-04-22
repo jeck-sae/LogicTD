@@ -210,7 +210,6 @@ MonoBehaviour:
     m_maxValue: 3.4028235e+38
   movement: {fileID: 0}
   EffectHandler: {fileID: 0}
-  scaling: 1
 --- !u!114 &7132385745665702943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,9 +222,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffd798de89450d468e8a30c605ef1f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHeal: 4
-  addMissingPercent: 0.05
-  missingPercentCap: 5
+  baseHeal: 2
+  addMissingPercent: 0.03
+  missingPercentCap: 3
+  healSelf: 0
   HealEffectiveness:
     m_name: 
     m_baseValue: 1
@@ -237,7 +237,7 @@ MonoBehaviour:
     m_maxValue: 3.4028235e+38
   HealFrequency:
     m_name: 
-    m_baseValue: 0.5
+    m_baseValue: 1
     min: 1
     max: 0
     tempMin: 0
