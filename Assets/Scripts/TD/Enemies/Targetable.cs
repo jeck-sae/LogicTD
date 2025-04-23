@@ -53,17 +53,19 @@ namespace TowerDefense
             currentHealth = currentHealth / args.previousValue * args.newValue;
         }
     
-        public void Damage(float amount)
+        public void Damage(float amount, Tower attacker = null)
         {
             if (amount <= 0)
                 return;
     
-            currentHealth -= amount * stats["damageTakenMultiplier"];
+            float damage = amount * stats["damageTakenMultiplier"];
+            currentHealth -= damage;
     
             HealthChanged?.Invoke();
-    
+            GameEvents.DamageDealt(this, damage, attacker);
+
             if (currentHealth < .001f)
-                Kill();
+                Kill(attacker);
         }
     
         public void Heal(float amount)
@@ -79,11 +81,12 @@ namespace TowerDefense
                 currentHealth = MaxHealth;
         }
 
-        public void Kill() => Kill(false);
-        protected void Kill(bool reachedHomeTile)
+        public void Kill(Tower attacker = null) => Kill(false, attacker);
+        protected void Kill(bool reachedHomeTile, Tower attacker = null)
         {
             isAlive = false;
             OnDeath?.Invoke(new OnDeathArgs() { reachedHomeTile = reachedHomeTile });
+            GameEvents.EnemyKilled(this, attacker);
             OnKill();
         }
 

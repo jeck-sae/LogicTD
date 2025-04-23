@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -71,6 +72,7 @@ namespace TowerDefense
             Time.timeScale = 0;
             gameOverUI.SetActive(true);
             ManagedBehaviour.PauseAll.Add(this);
+            GameEvents.GameOver();
         }
     
         public void WinGame()
@@ -78,6 +80,7 @@ namespace TowerDefense
             Time.timeScale = 0;
             victoryUI.SetActive(true);
             ManagedBehaviour.PauseAll.Add(this);
+            GameEvents.GameOver();
         }
     
         public void ReloadScene()

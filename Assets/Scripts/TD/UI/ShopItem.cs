@@ -61,10 +61,11 @@ namespace TowerDefense
             //DisplayInfoUI.Instance.Hide(this);
         }
     
-        protected void OnTowerPlaced()
+        /*protected void OnTowerPlaced()
         {
             GameStats.Instance?.ModifyCoins(-(int)tower.Cost);
-        }
+            GameEvents.TowerPlayed(tower);
+        }*/
         
         protected void BuyTower()
         {
@@ -74,6 +75,7 @@ namespace TowerDefense
             if (TileSelectionManager.Instance.SelectedTile && TileSelectionManager.Instance.SelectedTile.Tower == null)
             {
                 GameStats.Instance.ModifyCoins(-(int)tower.Cost);
+                GameEvents.TowerPlayed(tower);
                 
                 var t = Instantiate(prefab).GetComponent<Tower>();
                 TileSelectionManager.Instance.SelectedTile.PlaceTower(t);

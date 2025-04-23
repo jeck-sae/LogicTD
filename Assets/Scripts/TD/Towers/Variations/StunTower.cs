@@ -28,7 +28,7 @@ namespace TowerDefense
         {
             foreach (Enemy e in GetEnemiesInRange())
             {
-                e.Damage(Damage);
+                e.Damage(Damage, this);
     
                 if (Random.Range(0, 1f) > StunChance) continue;
     

@@ -43,7 +43,7 @@ namespace TowerDefense
                 if (!hit[i].collider.TryGetComponent(out Targetable t)) continue;
                 if (!hit[i].collider.TryGetComponent(out EffectHandler e)) continue;
     
-                t.Damage(Damage / AttackSpeed.BaseValue);
+                t.Damage(Damage / AttackSpeed.BaseValue, this);
     
                 DamageOverTImeEffect burnEffect = new DamageOverTImeEffect("burn", EffectType.fire, t, BurnDPS);
                 e.AddEffect(burnEffect, BurnDuration);

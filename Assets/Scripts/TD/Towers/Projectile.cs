@@ -14,6 +14,7 @@ namespace TowerDefense
         [DisableInEditorMode, SerializeField] private float splashArea;
         [DisableInEditorMode, SerializeField] private Targetable target;
         [DisableInEditorMode, SerializeField] private bool destroyIfTargetDied;
+        [DisableInEditorMode, SerializeField] private Tower attacker;
     
         [SerializeField] string hitSoundEffect = "";
         [SerializeField] float hitSoundVolume = 1;
@@ -23,7 +24,7 @@ namespace TowerDefense
     
         protected Vector3 lastTargetPosition;
         private bool isInitialized;
-        public void Initialize(float damage, float speed, float lifetime, float splashArea, Targetable target, bool destroyIfTargetDied, string hitSoundEffect = null, float hitSoundVolume = -1f)
+        public void Initialize(float damage, float speed, float lifetime, float splashArea, Targetable target, bool destroyIfTargetDied, Tower attacker = null, string hitSoundEffect = null, float hitSoundVolume = -1f)
         {
             isInitialized = true;
             this.damage = damage;
@@ -32,6 +33,7 @@ namespace TowerDefense
             this.splashArea = splashArea;
             this.target = target;
             this.destroyIfTargetDied = destroyIfTargetDied;
+            this.attacker = attacker;
             lastTargetPosition = target.transform.position;
     
             if (!string.IsNullOrEmpty(hitSoundEffect))
@@ -108,7 +110,7 @@ namespace TowerDefense
     
             if (splashArea <= 0)
             {
-                target.Damage(damage);
+                target.Damage(damage, attacker);
             }
             else
             {
@@ -117,7 +119,7 @@ namespace TowerDefense
                 {
                     var targetable = h.transform.GetComponent<Targetable>();
                     if (targetable)
-                        targetable.Damage(damage);
+                        targetable.Damage(damage, attacker);
                 }
     
                 if(impactGO)

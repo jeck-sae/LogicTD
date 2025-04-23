@@ -27,7 +27,7 @@ namespace TowerDefense
         {
             foreach(Enemy e in GetEnemiesInRange())
             {
-                e.Damage(Damage / AttackSpeed.BaseValue);
+                e.Damage(Damage / AttackSpeed.BaseValue, this);
     
                 if (e.EffectHandler.HasEffect("burn")) continue;
                 StatModifierEffect slowEffect = new StatModifierEffect("freeze", EffectType.slow, "freeze", e.stats);

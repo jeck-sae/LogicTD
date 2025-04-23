@@ -3491,6 +3491,7 @@ GameObject:
   - component: {fileID: 948418056}
   - component: {fileID: 948418057}
   - component: {fileID: 948418058}
+  - component: {fileID: 948418059}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3669,6 +3670,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheDuration: 10
+--- !u!114 &948418059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948418044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44670f189896a4243a48886712cfe169, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats:
+    totalDamage: 0
+    enemiesKilled: 0
 --- !u!1001 &991983586
 PrefabInstance:
   m_ObjectHideFlags: 0
