@@ -6,7 +6,46 @@ namespace TowerDefense
 {
     public class ProceduralMapGeneration : MonoBehaviour
     {
+        public static List<Vector2Int> PlaceGroundTiles(Vector2Int minCoords, Vector2Int maxCoords, HashSet<Vector2Int> existingPath, float density, float nearGroundBonus, float nearPathBonus)
+        {
+            List<Vector2Int> positions = new List<Vector2Int>();
+            Vector2Int current = Vector2Int.zero;
+            float chance = 0;
+            for (int x = minCoords.x; x <= maxCoords.x; x++) 
+            {
+                for (int y = minCoords.y; y <= maxCoords.y; y++)
+                {
+                    chance = density;
+                    current.x = x;
+                    current.y = y;
+
+                    if (existingPath.Contains(current)) 
+                        continue;
+
+                    if (positions.Contains(current + Vector2Int.up))
+                        chance += nearGroundBonus;
+                    if (positions.Contains(current + Vector2Int.left))
+                        chance += nearGroundBonus;
+                    
+                    if (existingPath.Contains(current + Vector2Int.up))
+                        chance += nearPathBonus;
+                    if (existingPath.Contains(current + Vector2Int.left))
+                        chance += nearPathBonus;
+                    if (existingPath.Contains(current + Vector2Int.down))
+                        chance += nearPathBonus;
+                    if (existingPath.Contains(current + Vector2Int.right))
+                        chance += nearPathBonus;
+
+                    if(Random.Range(0f,1f) < chance)
+                        positions.Add(current);
+                }
+            }
+            return positions;
+        }
         
+
+
+
         public static List<Vector2Int> GeneratePath(Vector2Int minCoords, Vector2Int maxCoords, Vector2Int startTile, Vector2Int endTile, AnimationCurve weightCurve, HashSet<Vector2Int> existingPath)
         {
             Dictionary<Vector2Int, PathGenerationTile> tileData = new Dictionary<Vector2Int, PathGenerationTile>();

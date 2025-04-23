@@ -3283,9 +3283,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathTilePrefab: {fileID: 6450301955935209955, guid: 96fd9c819165838409c91bb7a90fcf0d, type: 3}
+  groundTilePrefab: {fileID: 7481382868539990814, guid: 68dc7b149b01d6a49a618f1b88b4f6fb, type: 3}
   expandButtonPrefab: {fileID: 4815995255832938182, guid: 92a7a7a3ed7a01a4dab5c6eac2150263, type: 3}
   chunkSize: 5
   branchFrequency: 5
+  groundDensity: 0.05
+  nearGroundBonus: 0.4
+  nearPathBonus: 0.2
   weightCurve:
     serializedVersion: 2
     m_Curve:

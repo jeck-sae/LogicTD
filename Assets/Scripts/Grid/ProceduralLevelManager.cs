@@ -10,6 +10,7 @@ namespace TowerDefense
     public class ProceduralLevelManager : MonoBehaviour
     {
         public GameObject pathTilePrefab;
+        public GameObject groundTilePrefab;
         public GameObject expandButtonPrefab;
         
         [ShowInInspector]
@@ -17,6 +18,9 @@ namespace TowerDefense
         
         public int chunkSize = 5;
         public int branchFrequency;
+        public float groundDensity = .4f;
+        public float nearGroundBonus = .1f;
+        public float nearPathBonus = .1f;
         public AnimationCurve weightCurve;
 
         //HashSet<Vector2Int> nearPath = new();
@@ -141,7 +145,8 @@ namespace TowerDefense
         void GenerateChunk(MapChunk chunkInfo)
         {
             Vector2Int startPos = GetPointOnSide(chunkInfo.chunkCoordinates, chunkInfo.from, chunkInfo.fromOffset);
-            Vector2Int chunkCoords = chunkInfo.chunkCoordinates * chunkSize;
+            Vector2Int minCoords = chunkInfo.chunkCoordinates * chunkSize;
+            Vector2Int maxCoords = minCoords + Vector2Int.one * (chunkSize - 1);
 
             HashSet<Vector2Int> path = new();
 
@@ -149,16 +154,21 @@ namespace TowerDefense
             {
                 Vector2Int endPos = GetPointOnSide(chunkInfo.chunkCoordinates, dir.Key, dir.Value);
                 path.AddRange(ProceduralMapGeneration.GeneratePath(
-                    chunkCoords, chunkCoords + Vector2Int.one * (chunkSize - 1), 
-                    startPos, endPos, weightCurve, path));
+                    minCoords, maxCoords, startPos, endPos, weightCurve, path));
             }
+
+            var ground = ProceduralMapGeneration.PlaceGroundTiles(minCoords, maxCoords, path, groundDensity, nearGroundBonus, nearPathBonus);
 
             foreach (var t in path)
             {
                 var tile = Instantiate(pathTilePrefab).GetComponent<Tile>();
                 GridManager.Instance.AddTile(t, tile);
             }
-
+            foreach (var t in ground)
+            {
+                var tile = Instantiate(groundTilePrefab).GetComponent<Tile>();
+                GridManager.Instance.AddTile(t, tile);
+            }
         }
 
 
