@@ -4,9 +4,9 @@ AssetOrigin:
   serializedVersion: 1
   productId: 254677
   packageName: Text Animator for Unity
-  packageVersion: 2.2.1
+  packageVersion: 2.3.1
   assetPath: Assets/Plugins/Febucci/Text Animator/Example/Sprites/Example_sprites.png
-  uploadId: 710156
+  uploadId: 740466
 TextureImporter:
   internalIDToNameTable:
   - first:

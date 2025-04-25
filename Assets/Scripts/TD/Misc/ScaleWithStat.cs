@@ -54,7 +54,7 @@ namespace TowerDefense
                 return;
             }
     
-            transform.localScale = Vector3.one * (stat + offset) * multiply;
+            transform.localScale = Vector3.one * ((stat + offset) * multiply);
         }
     
     }
