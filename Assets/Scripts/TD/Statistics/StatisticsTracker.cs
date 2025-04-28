@@ -7,8 +7,7 @@ namespace TowerDefense
 {
     public class StatisticsTracker : MonoBehaviour
     {
-        [SerializeField]
-        GameStats stats = new();
+        public GameStats stats = new();
 
         private void Start()
         {

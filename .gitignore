@@ -2,7 +2,8 @@
 /Assets/SaveData.txt
 /Assets/SaveData.txt.meta
 
-
+*GoogleDriveSettings.asset
+*GoogleDriveSettings.asset.meta
 
 # This .gitignore file should be placed at the root of your Unity project directory
 #

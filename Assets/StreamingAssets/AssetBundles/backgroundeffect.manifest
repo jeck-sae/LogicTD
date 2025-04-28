@@ -1,0 +1,33 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.0.24f1
+CRC: 72503093
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 5334b9b9ca195b7e7f5ab063b15f4144
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 7bfd6d2a38a843d66473d0729f95e78c
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 80fb904fc23b8a1945604c088cf08d38
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Resources/AssetBundles/backgroundEffect.prefab
+Dependencies: []
