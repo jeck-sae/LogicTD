@@ -19,8 +19,6 @@ namespace TowerDefense
             }
         }
 
-        public bool playSounds;
-
         public static AudioController Instance { get; private set; }
     
         public const float GBC_INTERIOR_BGM_LOWEREDVOLUME = 0.35f;
@@ -110,9 +108,6 @@ namespace TowerDefense
         public AudioSource PlaySound2D(string soundId, float volume = 1f, float skipToTime = 0f, AudioParams.Pitch pitch = null,
             AudioParams.Repetition repetition = null, AudioParams.Randomization randomization = null, AudioParams.Distortion distortion = null, bool looping = false)
         {
-            if (!playSounds)
-                return null;
-
             var source = PlaySound3D(soundId, Vector3.zero, volume, skipToTime, pitch, repetition, randomization, distortion, looping);
     
             if (source != null)
@@ -127,9 +122,6 @@ namespace TowerDefense
         public AudioSource PlaySound3D(string soundId, Vector3 position, float volume = 1f, float skipToTime = 0f, AudioParams.Pitch pitch = null,
             AudioParams.Repetition repetition = null, AudioParams.Randomization randomization = null, AudioParams.Distortion distortion = null, bool looping = false)
         {
-            if (!playSounds)
-                return null;
-
             if (repetition != null)
             {
                 if (RepetitionIsTooFrequent(soundId, repetition.minRepetitionFrequency, repetition.entryId))

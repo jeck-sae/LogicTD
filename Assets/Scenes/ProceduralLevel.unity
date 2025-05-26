@@ -3620,6 +3620,7 @@ GameObject:
   - component: {fileID: 948418056}
   - component: {fileID: 948418057}
   - component: {fileID: 948418058}
+  - component: {fileID: 948418059}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3798,6 +3799,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cacheDuration: 10
+--- !u!114 &948418059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948418044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f2b20b5df20a644bb2a8bc2a2f6aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 1
 --- !u!1001 &991983586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4647,7 +4661,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4f12ebc707eb747873ca668b3203b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playSounds: 0
   loopSources: []
 --- !u!4 &1233943071
 Transform:

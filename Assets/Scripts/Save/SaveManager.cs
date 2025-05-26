@@ -1,4 +1,5 @@
 using System.IO;
+using System;
 using UnityEngine;
 
 
@@ -8,7 +9,8 @@ namespace TowerDefense
     {
         public SaveData data;
         const string SAVE_FILE_NAME = "SaveData.txt";
-    
+        public static event Action OnApplySettings; 
+        
         private void Awake()
         {
             if(isInstanced) 
@@ -41,12 +43,13 @@ namespace TowerDefense
                 Instance.data = new SaveData();
                 SaveState();
             }
+            
             Instance.ApplySettings();
+            OnApplySettings?.Invoke();
         }
     
         void ApplySettings()
         {
-            AudioListener.volume = data.volume;
             Screen.fullScreen = data.fullscreen;
         }
     }

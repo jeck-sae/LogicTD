@@ -966,7 +966,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4f12ebc707eb747873ca668b3203b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playSounds: 0
   loopSources: []
 --- !u!4 &626405754
 Transform:
@@ -1732,6 +1731,7 @@ GameObject:
   - component: {fileID: 1246364679}
   - component: {fileID: 1246364681}
   - component: {fileID: 1246364682}
+  - component: {fileID: 1246364683}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -1892,6 +1892,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1129679564}
   cursorSpeed: 0.5
+--- !u!114 &1246364683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246364667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05f2b20b5df20a644bb2a8bc2a2f6aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 0.3
 --- !u!1 &1281540969
 GameObject:
   m_ObjectHideFlags: 0
