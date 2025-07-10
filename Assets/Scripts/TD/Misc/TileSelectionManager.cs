@@ -62,7 +62,7 @@ namespace TowerDefense
             selectionIndicator.gameObject.SetActive(true);
             selectionIndicator.position = tile.transform.position;
     
-            DisplayInfoUI.Instance.Show(tile.GetDisplayInfo());
+            DisplayInfoUI.Instance?.Show(tile.GetDisplayInfo());
     
             selectedTile = tile;
             tile.Tower?.OnTileSelected();
