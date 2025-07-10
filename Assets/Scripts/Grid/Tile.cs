@@ -6,7 +6,7 @@ using UnityEngine;
 namespace TowerDefense
 {
     [Serializable]
-    public class Tile : MonoBehaviour
+    public class Tile : MonoBehaviour, ITowerSlot
     {
         public enum TileType { path, ground, decoration }
         
@@ -70,7 +70,7 @@ namespace TowerDefense
     
         public virtual bool CanPlace()
         {
-            return CanBuildOver && (Tower == null);
+            return CanBuildOver && !Tower;
         }
     
         public virtual BaseDisplayInfo GetDisplayInfo()
@@ -83,8 +83,8 @@ namespace TowerDefense
     
             return new BaseDisplayInfo(tileName, description, icon);
         }
-    
-    
+        
+
         public void PlaceTower(Tower t)
         {
             if (!CanPlace())
@@ -93,9 +93,9 @@ namespace TowerDefense
             t.gameObject.SetActive(true);
             t.gameObject.transform.position = transform.position;
             t.gameObject.transform.parent = transform;
-            t.Tile = this;
+            t.SetSlot(this);
             name = $"{tileName} [" + t.towerName + "]";
-        }
+        } 
     
         public void RemoveTower()
         {

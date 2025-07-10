@@ -1,16 +1,14 @@
-using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
-using System.Collections.Generic;
-using System.Drawing;
 
 
 namespace TowerDefense
 {
     public class Tower : Interactable2D, IStatObject
     {
-        public Tile Tile { get; set; }
+        public ITowerSlot Slot { get; protected set; }
+        public Tile Tile => Slot as Tile;
     
         [HideInInspector] public EffectHandler effects;
     
@@ -18,7 +16,7 @@ namespace TowerDefense
         public Sprite shopIcon;
         public string towerName;
         [TextArea] public string towerDescription;
-        [ColorPalette] public UnityEngine.Color towerColor;
+        [ColorPalette] public Color towerColor;
     
         public Stat Cost;
         public Stat MaxRange;
@@ -136,6 +134,8 @@ namespace TowerDefense
         }
     
     
+        public void SetSlot(ITowerSlot newSlot) => Slot = newSlot;
+        
         public void DestroyTower()
         {
             Tile.RemoveTower();
@@ -146,7 +146,7 @@ namespace TowerDefense
         {
             if (!InputManager.Instance.acceptInput)
                 return;
-            Tile.RemoveTower();
+            
             TowerPlacementManager.Instance.StartPlacing(this, OnMoveAway, OnCancelMoving, false);
         }
     
@@ -159,7 +159,7 @@ namespace TowerDefense
         {
             isSelected = TileSelectionManager.Instance?.SelectedTile == Tile;
             gameObject.SetActive(true);
-            this.Tile.PlaceTower(this);
+            Tile.PlaceTower(this);
         }
     }
 }
