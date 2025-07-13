@@ -11,8 +11,8 @@ namespace TowerDefense
     public class TowerUpgrade
     {
         public int cost;
-        public string targetTower = "_";
-        [TextArea] public string description = "_";
+        public string targetTower;
+        [TextArea] public string description;
         [OdinSerialize, ShowInInspector] public List<IUpgrade> upgrade = new();
     }
 }

@@ -26,9 +26,9 @@ namespace TowerDefense
             
             var u = upgrades[index];
             
-            if(u.targetTower.Trim() == "_")
+            if(string.IsNullOrEmpty(u.targetTower))
                 u.targetTower = defaultTargetTower;
-            if(u.description.Trim() == "_")
+            if(string.IsNullOrEmpty(u.description))
                 u.description = defaultDescription;
             
             return u;

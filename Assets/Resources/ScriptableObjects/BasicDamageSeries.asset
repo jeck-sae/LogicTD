@@ -26,7 +26,7 @@ MonoBehaviour:
       Data: 0|TowerDefense.TowerUpgrade[], Assembly-CSharp
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 1|TowerDefense.TowerUpgrade, Assembly-CSharp
@@ -38,7 +38,7 @@ MonoBehaviour:
       Data: basic
     - Name: description
       Entry: 1
-      Data: Increase the basic tower's damage by 10%
+      Data: 
     - Name: upgrade
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
@@ -81,40 +81,86 @@ MonoBehaviour:
       Data: 5|TowerDefense.TowerUpgrade, Assembly-CSharp
     - Name: cost
       Entry: 3
-      Data: 0
+      Data: 15
     - Name: targetTower
       Entry: 1
-      Data: _
+      Data: 
     - Name: description
       Entry: 1
-      Data: _
+      Data: 
     - Name: upgrade
       Entry: 7
       Data: 6|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 1
     - Name: 
       Entry: 7
-      Data: 7|TowerDefense.FlagUpgrade, Assembly-CSharp
-    - Name: flag
-      Entry: 6
+      Data: 7|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: damage
+    - Name: modifier
+      Entry: 7
+      Data: 8|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
       Data: 
-    - Name: description
-      Entry: 6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 7
-      Data: 8|TowerDefense.StatUpgrade, Assembly-CSharp
-    - Name: stat
+      Data: 9|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 30
+    - Name: targetTower
       Entry: 6
       Data: 
-    - Name: modifier
+    - Name: description
       Entry: 6
+      Data: 
+    - Name: upgrade
+      Entry: 7
+      Data: 10|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 11|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: damage
+    - Name: modifier
+      Entry: 7
+      Data: 12|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
@@ -136,4 +182,4 @@ MonoBehaviour:
       Data: 
   defaultTargetTower: basic
   defaultTargetStat: damage
-  defaultDescription: Increase the basic tower's damage by 10%
+  defaultDescription: 'Basic Tower: +10% damage'
