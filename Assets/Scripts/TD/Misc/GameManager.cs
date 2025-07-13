@@ -75,7 +75,7 @@ namespace TowerDefense
         {
             foreach (var tower in Towers)
                 if(towerId == "*" || tower.towerID == towerId)
-                    tower.upgradeHandler.UnlockUpgrade(upgrade);
+                    tower.upgradeHandler.UnlockUpgrade("globalUpgrade", upgrade, false);
             TowerFactory.Instance.UnlockUpgrade(towerId, upgrade);
         }
         

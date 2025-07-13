@@ -48,12 +48,21 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 3|TowerDefense.FlagUpgrade, Assembly-CSharp
-    - Name: flag
-      Entry: 6
-      Data: 
-    - Name: description
-      Entry: 6
+      Data: 3|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: damage
+    - Name: modifier
+      Entry: 7
+      Data: 4|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8
@@ -69,7 +78,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 4|TowerDefense.TowerUpgrade, Assembly-CSharp
+      Data: 5|TowerDefense.TowerUpgrade, Assembly-CSharp
     - Name: cost
       Entry: 3
       Data: 0
@@ -81,14 +90,14 @@ MonoBehaviour:
       Data: _
     - Name: upgrade
       Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+      Data: 6|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
       Data: 2
     - Name: 
       Entry: 7
-      Data: 6|TowerDefense.FlagUpgrade, Assembly-CSharp
+      Data: 7|TowerDefense.FlagUpgrade, Assembly-CSharp
     - Name: flag
       Entry: 6
       Data: 
@@ -100,7 +109,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 7|TowerDefense.StatUpgrade, Assembly-CSharp
+      Data: 8|TowerDefense.StatUpgrade, Assembly-CSharp
     - Name: stat
       Entry: 6
       Data: 

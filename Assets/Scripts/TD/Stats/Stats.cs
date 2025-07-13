@@ -163,15 +163,24 @@ namespace TowerDefense
     
         public void AddModifier(string id, float add = 0, float multiply = 1, bool overrideIfDuplicate = true)
         {
+            //override existing
             if (modifiers.ContainsKey(id) && overrideIfDuplicate)
             {
                 modifiers[id].multiply = multiply;
                 modifiers[id].add = add;
             }
-            else
+            //create new (regardless of override)
+            else if(!modifiers.ContainsKey(id))
             {
                 modifiers[id] = new StatModifier(add, multiply);
             }
+            //no override (sum)
+            else
+            {
+                modifiers[id].add += add;
+                modifiers[id].multiply += multiply - 1;
+            }
+            
             UpdateValue();
         }
     

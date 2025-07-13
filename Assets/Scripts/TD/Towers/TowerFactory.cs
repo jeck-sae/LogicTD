@@ -14,9 +14,10 @@ namespace TowerDefense
             var go = Instantiate(prefab);
             var tower = go.GetComponent<Tower>();
             
+            tower.Initialize();
             if(unlockedUpgrades.TryGetValue(towerId, out var unlocked))
                 foreach(var upgrade in unlocked)
-                    tower.upgradeHandler.UnlockUpgrade(upgrade);
+                    tower.upgradeHandler.UnlockUpgrade("globalUpgrade", upgrade, false);
             
             return tower;
         }

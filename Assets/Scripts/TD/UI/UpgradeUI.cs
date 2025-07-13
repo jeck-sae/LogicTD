@@ -1,5 +1,8 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace TowerDefense
 {
@@ -8,6 +11,10 @@ namespace TowerDefense
         public TowerUpgradeSeriesSO upgradeSeries;
                 
         int currentUpgrade;
+
+        public TMP_Text description;
+        public TMP_Text price;
+        public Image icon;
         
         
         public void BuyUpgrade()
@@ -29,6 +36,8 @@ namespace TowerDefense
                 GameManager.Instance.UnlockGlobalUpgrade(upgrade.targetTower, u);
             
             currentUpgrade++;
+            if(currentUpgrade >= upgradeSeries.Count)
+                Destroy(gameObject);
         }
     }
 }
