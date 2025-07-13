@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5237592369338892758}
   - component: {fileID: -1493311375951407957}
   m_Layer: 0
-  m_Name: BasicTower
+  m_Name: basic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortOrder: 0
   effects: {fileID: 0}
+  towerID: basic
   shopIcon: {fileID: -6232723913722592379, guid: b77cfe2e5c80654478fad10249648232, type: 3}
   towerName: Basic
   towerDescription: Shoots at a single target. Has average stats.

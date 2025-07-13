@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: -3436987236222513301}
   - component: {fileID: -5746598715956335208}
   m_Layer: 0
-  m_Name: StunTower
+  m_Name: stun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,6 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortOrder: 0
   effects: {fileID: 0}
+  towerID: stun
   shopIcon: {fileID: -6240021825540437177, guid: b77cfe2e5c80654478fad10249648232, type: 3}
   towerName: Stun
   towerDescription: Damages nearby enemies, and has a chance to stun them for a short

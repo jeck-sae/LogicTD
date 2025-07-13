@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: -1293504078115593503}
   - component: {fileID: 3635735975561972143}
   m_Layer: 0
-  m_Name: IceTower
+  m_Name: ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortOrder: 0
   effects: {fileID: 0}
+  towerID: ice
   shopIcon: {fileID: -2825653136060754799, guid: b77cfe2e5c80654478fad10249648232, type: 3}
   towerName: Ice
   towerDescription: Slows enemies in an area. Does not stack.

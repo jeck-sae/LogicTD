@@ -46,7 +46,15 @@ namespace TowerDefense
             }
             return mods;
         }
-    
+
+        public void UnlockUpgrade(IUpgrade upgrade)
+        {
+            if(upgrade is StatUpgrade statUpgrade)
+                tower.stats.AddModifier(statUpgrade.stat, "upgradeLevel" + CurrentLevel, statUpgrade.modifier.add, statUpgrade.modifier.multiply);
+            else if (upgrade is FlagUpgrade flagUpgrade)
+                unlockedFlagUpgrades.Add(flagUpgrade);
+        }
+        
         public float? UpgradeCost()
         {
             if (NextUpgradeIndex >= levels.Count || levels[NextUpgradeIndex] == null)
@@ -75,9 +83,6 @@ namespace TowerDefense
         }
     
     
-    
-    
-    
         [Serializable]
         public class UpgradeLevel
         {
@@ -85,19 +90,24 @@ namespace TowerDefense
             public List<StatUpgrade> statUpgrades;
             public List<FlagUpgrade> flagUpgrades;
         }
-    
-        [Serializable]
-        public class StatUpgrade
-        {
-            public string stat;
-            public Stat.StatModifier modifier;
-        }
-    
-        [Serializable]
-        public class FlagUpgrade
-        {
-            public string flag;
-            public string description;
     }
-    }
+    
+    public interface IUpgrade
+     {
+         
+     }
+     
+     [Serializable]
+     public class StatUpgrade : IUpgrade
+     {
+         public string stat;
+         public Stat.StatModifier modifier = new();
+     }
+ 
+     [Serializable]
+     public class FlagUpgrade : IUpgrade
+     {
+         public string flag;
+         public string description;
+     }
 }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using Unity.VisualScripting;
@@ -13,6 +14,7 @@ namespace TowerDefense
         [HideInInspector] public EffectHandler effects;
     
         [Header("General")]
+        public string towerID;
         public Sprite shopIcon;
         public string towerName;
         [TextArea] public string towerDescription;
@@ -43,8 +45,13 @@ namespace TowerDefense
     
             SetupRangeIndicators();
 
-
+            GameManager.Instance?.AddTower(this);
             AudioController.Instance.PlaySound2D("tower_" + towerName + "_place", placeSoundVolume);
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.Instance?.RemoveTower(this);
         }
 
         protected override void Start()

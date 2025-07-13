@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -3641711824607459403}
   - component: {fileID: -6962892962487336712}
   m_Layer: 0
-  m_Name: BoostTower
+  m_Name: boost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortOrder: 0
   effects: {fileID: 0}
+  towerID: boost
   shopIcon: {fileID: 6618166012049062949, guid: b77cfe2e5c80654478fad10249648232, type: 3}
   towerName: Boost
   towerDescription: Boosts the range and attack speed of adjacent towers. Does not

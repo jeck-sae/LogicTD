@@ -170,7 +170,7 @@ namespace TowerDefense
             }
             else
             {
-                modifiers[id] = new StatModifier(id, add, multiply);
+                modifiers[id] = new StatModifier(add, multiply);
             }
             UpdateValue();
         }
@@ -222,13 +222,11 @@ namespace TowerDefense
         [Serializable]
         public class StatModifier
         {
-            public string name;
             public float add;
             public float multiply = 1;
             public StatModifier() { }
-            public StatModifier(string name, float add, float multiply)
+            public StatModifier(float add, float multiply)
             {
-                this.name = name;
                 this.add = add;
                 this.multiply = multiply;
             }

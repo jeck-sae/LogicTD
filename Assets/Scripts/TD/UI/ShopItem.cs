@@ -75,7 +75,7 @@ namespace TowerDefense
             {
                 GameStats.Instance.ModifyCoins(-(int)tower.Cost);
                 
-                var t = Instantiate(prefab).GetComponent<Tower>();
+                var t = TowerFactory.Instance.SpawnTower(tower.towerID);
                 TileSelectionManager.Instance.SelectedTile.PlaceTower(t);
                 
                 TowerPreviewManager.Instance.StopPreviewing();

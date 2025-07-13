@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -5241396943819277720}
   - component: {fileID: 5255534212222839749}
   m_Layer: 0
-  m_Name: FireTower
+  m_Name: flamethrower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortOrder: 0
   effects: {fileID: 0}
+  towerID: flamethrower
   shopIcon: {fileID: -8546000511252593766, guid: b77cfe2e5c80654478fad10249648232, type: 3}
   towerName: Flamethrower
   towerDescription: Burns enemies over time. Burning enemies can't be frozen.

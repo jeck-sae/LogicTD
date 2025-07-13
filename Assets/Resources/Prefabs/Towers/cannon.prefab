@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -8063346384651002629}
   - component: {fileID: -3428087962284545194}
   m_Layer: 0
-  m_Name: CannonTower
+  m_Name: cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sortOrder: 0
   effects: {fileID: 0}
+  towerID: cannon
   shopIcon: {fileID: 487614300551021084, guid: b77cfe2e5c80654478fad10249648232, type: 3}
   towerName: Cannon
   towerDescription: Shoots at a single target dealing splash damage.
