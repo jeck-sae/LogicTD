@@ -43,6 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1740342164309263906}
+  - component: {fileID: 8280062612187138738}
   - component: {fileID: 6193861130497882043}
   - component: {fileID: -3436987236222513301}
   - component: {fileID: -5746598715956335208}
@@ -69,6 +70,18 @@ Transform:
   - {fileID: 6985303071227194024}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8280062612187138738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752127049823460849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9561d9b7b236484b9e2147364c35848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6193861130497882043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,12 +136,10 @@ MonoBehaviour:
       statUpgrades:
       - stat: damage
         modifier:
-          name: 
           add: 2
           multiply: 1
       - stat: stunChance
         modifier:
-          name: 
           add: 0.05
           multiply: 1
       flagUpgrades: []
@@ -136,12 +147,10 @@ MonoBehaviour:
       statUpgrades:
       - stat: maxRange
         modifier:
-          name: 
           add: 0.2
           multiply: 1
       - stat: damage
         modifier:
-          name: 
           add: 2
           multiply: 1
       flagUpgrades: []
@@ -149,17 +158,14 @@ MonoBehaviour:
       statUpgrades:
       - stat: stunChance
         modifier:
-          name: 
           add: 0.05
           multiply: 1
       - stat: damage
         modifier:
-          name: 
           add: 3
           multiply: 1
       - stat: attackSpeed
         modifier:
-          name: 
           add: 0.2
           multiply: 1
       flagUpgrades: []

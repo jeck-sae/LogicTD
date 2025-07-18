@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 
 namespace TowerDefense
 {
+    [RequireComponent(typeof(EffectHandler))]
     public class Tower : Interactable2D, IStatObject
     {
         public ITowerSlot Slot { get; protected set; }
@@ -33,12 +34,12 @@ namespace TowerDefense
         protected RangeIndicator minRangeIndicator;
         protected RangeIndicator maxRangeIndicator;
 
-        protected bool isSelected;
+        protected bool IsSelected => Tile && Tile.Equals(TileSelectionManager.Instance?.SelectedTile);
 
         protected override void ManagedInitialize()
         {
             if(!effects)
-                effects = gameObject.AddComponent<EffectHandler>();
+                effects = GetComponent<EffectHandler>();
     
             stats = GetStats();
             upgradeHandler.SetTower(this);
@@ -46,7 +47,7 @@ namespace TowerDefense
             SetupRangeIndicators();
 
             GameManager.Instance?.AddTower(this);
-            AudioController.Instance.PlaySound2D("tower_" + towerName + "_place", placeSoundVolume);
+            AudioController.Instance.PlaySound2D("tower_" + towerID + "_place", placeSoundVolume);
         }
 
         private void OnDestroy()
@@ -86,12 +87,23 @@ namespace TowerDefense
             minRangeIndicator.Hide();
         }
     
+        public void HideRange()
+        {
+            maxRangeIndicator.Hide();
+            minRangeIndicator.Hide();
+        }
+        public void ShowRange(Color min, Color max)
+        {
+            maxRangeIndicator.ShowColor((Color)max);
+            minRangeIndicator.ShowColor((Color)min);
+        }
+        
         protected override void OnCursorEnter()
         {
-            if (!isSelected)
+            if (!IsSelected && Tile)
             {
-                maxRangeIndicator.ShowColor(new UnityEngine.Color(1, 1, 1, 0.3f));
-                minRangeIndicator.ShowColor(new UnityEngine.Color(1, 0, 0, 0.3f));
+                ShowRange(new Color(1, 0, 0, 0.3f), 
+                          new Color(1, 1, 1, 0.3f));
             }
         }
 
@@ -100,10 +112,9 @@ namespace TowerDefense
             if (Input.GetMouseButton(0))
                 StartMoving();
 
-            if (!isSelected)
+            if (!IsSelected)
             {
-                maxRangeIndicator.Hide();
-                minRangeIndicator.Hide();
+                HideRange();
             }
         }
     
@@ -119,20 +130,17 @@ namespace TowerDefense
             this.Tile.tower = null; //hacky way of doing it. Works for now
             TowerPlacementManager.Instance.StartPlacing(this, OnMoveAway, OnCancelMoving, false);*/
         }
-    
+
+        
 
         public void OnTileSelected()
         {
-            isSelected = true;
-            maxRangeIndicator.ShowColor(towerColor);
-            minRangeIndicator.ShowColor(UnityEngine.Color.red);
+            ShowRange(Color.red, towerColor);
         }
     
         public void OnTileDeselected()
         {
-            isSelected = false;
-            maxRangeIndicator.Hide();
-            minRangeIndicator.Hide();
+            HideRange();
         }
 
         public virtual BaseDisplayInfo GetDisplayInfo()
@@ -159,14 +167,13 @@ namespace TowerDefense
     
         protected void OnMoveAway()
         {
-            isSelected = TileSelectionManager.Instance?.SelectedTile == Tile;
+            
         }
     
         protected void OnCancelMoving()
         {
-            isSelected = TileSelectionManager.Instance?.SelectedTile == Tile;
             gameObject.SetActive(true);
-            Tile.PlaceTower(this);
+            Slot.PlaceTower(this);
         }
     }
 }

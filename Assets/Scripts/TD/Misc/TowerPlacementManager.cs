@@ -39,7 +39,7 @@ namespace TowerDefense
             }
     
             //place tower
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonUp(0))
             {
                 var hit = Physics2D.RaycastAll(Helpers.Camera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
                 ITowerSlot slot = null;
@@ -120,13 +120,13 @@ namespace TowerDefense
             this.onCancelPlacing = cancelPlacing;
             startedPlacingThisFrame = true;
     
-            TowerPreviewManager.Instance.PreviewTower(tower, true);
+            TowerPreviewManager.Instance.PreviewTower(tower, false);
     
             //Hide tower
             if (!instantiateNew) 
-            { 
+            {
                 tower.transform.position = Vector3.left * 10000;
-                tower.Slot.RemoveTower();
+                tower.Slot?.RemoveTower();
             }
     
             AudioController.Instance.PlaySound2D("ui_confirm");

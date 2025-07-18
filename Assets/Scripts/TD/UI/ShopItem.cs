@@ -23,8 +23,7 @@ namespace TowerDefense
     
         public void Select()
         {
-            BuyTower();
-            /*
+            //BuyTower();
             //If already placing, deselect instead
             if (TowerPlacementManager.Instance.placingTower == tower)
             {
@@ -44,20 +43,22 @@ namespace TowerDefense
             if (TowerPlacementManager.Instance.placingTower)
                 AudioController.Instance.PlaySound2D("ui_confirm");
             else
-                AudioController.Instance.PlaySound2D("ui_cancel");*/
+                AudioController.Instance.PlaySound2D("ui_cancel");
         }
     
         public void OnCursorHover()
         {
-            if (TileSelectionManager.Instance.SelectedTile)
-                TowerPreviewManager.Instance.PreviewTower(tower, TileSelectionManager.Instance.SelectedTile.Position, placeCondition: () => { return GameStats.Instance.coins >= tower.Cost; });
-            DisplayInfoUI.Instance.Preview(tower.GetDisplayInfo());
+            //if (TileSelectionManager.Instance.SelectedTile)
+            //    TowerPreviewManager.Instance.PreviewTower(tower, TileSelectionManager.Instance.SelectedTile.Position, placeCondition: () => { return GameStats.Instance.coins >= tower.Cost; });
+            //DisplayInfoUI.Instance?.Preview(tower.GetDisplayInfo());
+            
+            
             //DisplayInfoUI.Instance.Show(this, tower.shopIcon, tower.towerName, tower.towerDescription, false, tower.GetStats(), tower.upgradeHandler);
         }
         public void OnCursorExit()
         {
-            TowerPreviewManager.Instance.StopPreviewing();
-            DisplayInfoUI.Instance.StopPreview();
+            //TowerPreviewManager.Instance.StopPreviewing();
+            //DisplayInfoUI.Instance?.StopPreview();
             //DisplayInfoUI.Instance.Hide(this);
         }
     
@@ -70,16 +71,16 @@ namespace TowerDefense
         {
             if (GameStats.Instance && GameStats.Instance.coins < tower.Cost)
                 return;
-    
+            
             if (TileSelectionManager.Instance.SelectedTile && TileSelectionManager.Instance.SelectedTile.Tower == null)
             {
                 GameStats.Instance.ModifyCoins(-(int)tower.Cost);
-                
+
                 var t = TowerFactory.Instance.SpawnTower(tower.towerID);
                 TileSelectionManager.Instance.SelectedTile.PlaceTower(t);
-                
+
                 TowerPreviewManager.Instance.StopPreviewing();
-                DisplayInfoUI.Instance.Show(TileSelectionManager.Instance.SelectedTile.GetDisplayInfo());
+                DisplayInfoUI.Instance?.Show(TileSelectionManager.Instance.SelectedTile.GetDisplayInfo());
             }
         }
     

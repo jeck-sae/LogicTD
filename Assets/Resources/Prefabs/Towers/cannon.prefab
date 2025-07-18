@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1679042965103390246}
+  - component: {fileID: 6782626635449639935}
   - component: {fileID: 5522203492493274359}
   - component: {fileID: -8063346384651002629}
   - component: {fileID: -3428087962284545194}
@@ -35,6 +36,18 @@ Transform:
   - {fileID: 4183334639205925833}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6782626635449639935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2312358700089777820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9561d9b7b236484b9e2147364c35848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5522203492493274359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,12 +101,10 @@ MonoBehaviour:
       statUpgrades:
       - stat: damage
         modifier:
-          name: 
           add: 3
           multiply: 1
       - stat: attackSpeed
         modifier:
-          name: 
           add: 0.3
           multiply: 1
       flagUpgrades: []
@@ -101,17 +112,14 @@ MonoBehaviour:
       statUpgrades:
       - stat: damage
         modifier:
-          name: 
           add: 4
           multiply: 1
       - stat: maxRange
         modifier:
-          name: 
           add: 0.5
           multiply: 1
       - stat: splashDamageArea
         modifier:
-          name: 
           add: 0.2
           multiply: 1
       flagUpgrades: []
@@ -119,22 +127,18 @@ MonoBehaviour:
       statUpgrades:
       - stat: damage
         modifier:
-          name: 
           add: 3
           multiply: 1
       - stat: attackSpeed
         modifier:
-          name: 
           add: 0.2
           multiply: 1
       - stat: projectileSpeed
         modifier:
-          name: 
           add: 0.8
           multiply: 1
       - stat: splashDamageArea
         modifier:
-          name: 
           add: 0.2
           multiply: 1
       flagUpgrades: []

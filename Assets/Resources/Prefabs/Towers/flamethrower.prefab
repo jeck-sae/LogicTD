@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2959914068408384694}
+  - component: {fileID: 9159621772910801453}
   - component: {fileID: 3399822753291046652}
   - component: {fileID: -5241396943819277720}
   - component: {fileID: 5255534212222839749}
@@ -36,6 +37,18 @@ Transform:
   - {fileID: 7117296386387936784}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9159621772910801453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2965188775826439053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9561d9b7b236484b9e2147364c35848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3399822753291046652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,12 +102,10 @@ MonoBehaviour:
       statUpgrades:
       - stat: damage
         modifier:
-          name: 
           add: 3
           multiply: 1
       - stat: burnDuration
         modifier:
-          name: 
           add: 1
           multiply: 1
       flagUpgrades: []
@@ -102,17 +113,14 @@ MonoBehaviour:
       statUpgrades:
       - stat: damage
         modifier:
-          name: 
           add: 3
           multiply: 1
       - stat: burnDPS
         modifier:
-          name: 
           add: 3
           multiply: 1
       - stat: maxRange
         modifier:
-          name: 
           add: 0.3
           multiply: 1
       flagUpgrades: []
