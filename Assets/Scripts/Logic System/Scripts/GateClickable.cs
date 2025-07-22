@@ -5,7 +5,6 @@ public class GateClickable : MonoBehaviour
     public LogicGate logicGate;
     private ConnectionManager connectionManager;
 
-
     void Start()
     {
         connectionManager = FindAnyObjectByType<ConnectionManager>();

@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class ConnectionManager : MonoBehaviour
 {
-    public LogicGate fromGate;               // Gate where drag started
-    private LineRenderer currentLine;        // Line being drawn
+    public LogicGate fromGate;                // The gate we start dragging from
+    private LineRenderer currentLine;         // The line we draw
 
     void Update()
     {
         if (currentLine != null)
         {
-            // Follow mouse with the end of the line
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = 0; // Keep on 2D plane
+            mousePos.z = 0;  // keep on 2D plane
             currentLine.SetPosition(1, mousePos);
         }
     }
@@ -20,11 +19,8 @@ public class ConnectionManager : MonoBehaviour
     {
         fromGate = gate;
 
-        // Create new GameObject for the runtime line
         GameObject lineObj = new GameObject("Wire");
         currentLine = lineObj.AddComponent<LineRenderer>();
-
-        // Setup line appearance
         currentLine.material = new Material(Shader.Find("Sprites/Default"));
         currentLine.startColor = Color.yellow;
         currentLine.endColor = Color.yellow;
@@ -32,22 +28,22 @@ public class ConnectionManager : MonoBehaviour
         currentLine.endWidth = 0.05f;
         currentLine.positionCount = 2;
 
-        // Set start point to gate's connect point
-        Vector3 start = gate.GetComponent<GateConnector>().connectPoint.position;
+        // Use first output point from the gate
+        Vector3 start = gate.GetComponent<GateConnector>().outputPoints[0].position;
         start.z = 0;
         currentLine.SetPosition(0, start);
-        currentLine.SetPosition(1, start); // initial, will move in Update
+        currentLine.SetPosition(1, start); // initial position
     }
 
     public void EndConnection(LogicGate toGate)
     {
         if (fromGate != null && toGate != null && fromGate != toGate)
         {
-            // Connect gates logically
+            // Connect logically
             toGate.AddInput(fromGate);
 
-            // Finish the line visually
-            Vector3 end = toGate.GetComponent<GateConnector>().connectPoint.position;
+            // Use first input point from the toGate
+            Vector3 end = toGate.GetComponent<GateConnector>().inputPoints[0].position;
             end.z = 0;
             currentLine.SetPosition(1, end);
         }
@@ -57,7 +53,7 @@ public class ConnectionManager : MonoBehaviour
             Destroy(currentLine.gameObject);
         }
 
-        // Reset for next drag
+        // Reset for next connection
         fromGate = null;
         currentLine = null;
     }
