@@ -8,7 +8,7 @@ public class GateClickable : MonoBehaviour
 
     void Start()
     {
-        connectionManager = FindObjectOfType<ConnectionManager>();
+        connectionManager = FindAnyObjectByType<ConnectionManager>();
         logicGate = GetComponentInParent<LogicGate>();
     }
 
