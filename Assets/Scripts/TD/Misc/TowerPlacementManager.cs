@@ -51,7 +51,7 @@ namespace TowerDefense
                         break;
                 }
                 
-                if (slot != null && slot.CanPlace() && !Helpers.IsOverUI)
+                if (slot != null && slot.CanPlace(placingTower) && !Helpers.IsOverUI)
                 {
                     PlaceSelectedTower(slot);
                     return;

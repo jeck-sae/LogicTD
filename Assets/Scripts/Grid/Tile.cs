@@ -68,7 +68,7 @@ namespace TowerDefense
             gfx.UpdateGFX();
         }
     
-        public virtual bool CanPlace()
+        public virtual bool CanPlace(Tower t)
         {
             return CanBuildOver && !Tower;
         }
@@ -87,7 +87,7 @@ namespace TowerDefense
 
         public void PlaceTower(Tower t)
         {
-            if (!CanPlace())
+            if (!CanPlace(t))
                 return;
             tower = t;
             t.gameObject.SetActive(true);

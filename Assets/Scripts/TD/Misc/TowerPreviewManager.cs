@@ -52,7 +52,7 @@ namespace TowerDefense
             }
     
             bool conditionMet = (placeCondition == null) ? true : placeCondition();
-            if (tile && tile.CanPlace() && conditionMet)
+            if (tile && tile.CanPlace(previewingTower) && conditionMet)
             {
                 previewRenderers.ForEach(x => x.color = Color.white);
                 rangePreview.ShowColor(previewingTower.towerColor);
