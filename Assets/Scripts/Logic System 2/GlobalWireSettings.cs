@@ -8,7 +8,7 @@ namespace TowerDefense
         public float width;
         public float distanceFromWire;
         public float verticalConnectionArea;
-        public Color onColor;
-        public Color offColor;
+        [ColorPalette] public Color onColor;
+        [ColorPalette] public Color offColor;
     }
 }

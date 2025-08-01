@@ -1417,8 +1417,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 48, y: -48}
-  m_SizeDelta: {x: 64, y: 64}
+  m_AnchoredPosition: {x: 320, y: -188}
+  m_SizeDelta: {x: 270, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &201368620
 MonoBehaviour:
@@ -1705,9 +1705,9 @@ RectTransform:
   m_Father: {fileID: 201368619}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -8.000008}
-  m_SizeDelta: {x: 0, y: 16}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 24, y: -8.000008}
+  m_SizeDelta: {x: 48, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &275489873
 GameObject:
@@ -2115,8 +2115,8 @@ MonoBehaviour:
   width: 0.1
   distanceFromWire: 0.5
   verticalConnectionArea: 0.8
-  onColor: {r: 0.5058824, g: 0.76862746, b: 0.38431373, a: 1}
-  offColor: {r: 0.7607843, g: 0.38039216, b: 0.43529412, a: 1}
+  onColor: {r: 0.7294118, g: 0.37254903, b: 0.75686276, a: 1}
+  offColor: {r: 0.2682647, g: 0.18084727, b: 0.3018868, a: 1}
 --- !u!1 &357631585
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,7 +2654,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 166.72998, y: 202.63}
+  m_AnchoredPosition: {x: 320, y: 202.63}
   m_SizeDelta: {x: 104.630005, y: 23.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &432544142
@@ -3091,7 +3091,7 @@ Transform:
   m_GameObject: {fileID: 533099404}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5389, z: 0}
   m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3137,12 +3137,12 @@ BoxCollider2D:
     border: {x: 0.02, y: 0.02, z: 0.02, w: 0.02}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.06, y: 0.06}
-    newSize: {x: 2.5, y: 1.7}
+    newSize: {x: 2.5, y: 1.5203693}
     adaptiveTilingThreshold: 0.5
     drawMode: 1
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.5, y: 1.7}
+  m_Size: {x: 2.5, y: 1.5}
   m_EdgeRadius: 0
 --- !u!212 &533099409
 SpriteRenderer:
@@ -3193,7 +3193,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
-  m_Size: {x: 2.5, y: 1.7}
+  m_Size: {x: 2.5, y: 1.5203693}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3555,10 +3555,10 @@ RectTransform:
   - {fileID: 936455250}
   m_Father: {fileID: 201368619}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -24}
-  m_SizeDelta: {x: 0, y: 16}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -8}
+  m_SizeDelta: {x: 55.199997, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &642531182
 GameObject:
@@ -8871,7 +8871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1618765037
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9135,10 +9135,10 @@ RectTransform:
   - {fileID: 895662355}
   m_Father: {fileID: 201368619}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -40}
-  m_SizeDelta: {x: 0, y: 16}
+  m_AnchoredPosition: {x: -24, y: -8}
+  m_SizeDelta: {x: 48, y: 16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1672682911 stripped
 MonoBehaviour:
@@ -10761,7 +10761,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 62.099976, y: 201.9}
+  m_AnchoredPosition: {x: 65.9, y: 201.9}
   m_SizeDelta: {x: 104.630005, y: 24.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &2099195976
@@ -11055,6 +11055,10 @@ PrefabInstance:
     - target: {fileID: 3736504837682425242, guid: 085e7fbc800fdb84d8be547b6976a1a3, type: 3}
       propertyPath: m_Name
       value: Puzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3736504837682425242, guid: 085e7fbc800fdb84d8be547b6976a1a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
