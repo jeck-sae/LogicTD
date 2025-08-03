@@ -842,7 +842,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb4f12ebc707eb747873ca668b3203b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playSounds: 0
   loopSources: []
 --- !u!4 &829772858
 Transform:
