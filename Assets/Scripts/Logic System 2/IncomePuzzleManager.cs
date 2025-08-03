@@ -5,14 +5,32 @@ using UnityEngine;
 
 namespace TowerDefense
 {
-    public class IncomePuzzle : MonoBehaviour
+    public class IncomePuzzleManager : MonoBehaviour
     {
-        public List<int> incomeLevels = new(); 
+        public List<int> incomeLevels = new();
+        [ShowInInspector] public List<(int incomeReward, GameObject puzzlePrefab)> levels;
         [DisableInEditorMode, ShowInInspector] int currentLevel = 0;
 
+        
+        
         private void Start()
         {
             GameStats.Instance.SetCoinsPerSecond(incomeLevels[currentLevel]);
+            LogicManager.Instance.OnStatesUpdated += CheckResults;
+        }
+
+        private void OnDestroy()
+        {
+            if (LogicManager.Instance)
+                LogicManager.Instance.OnStatesUpdated -= CheckResults;
+        }
+
+        public void CheckResults()
+        {
+            var puzzle = FindAnyObjectByType<LogicPuzzle>();
+            
+            if(puzzle && puzzle.CheckResult())
+                NextLevel();
         }
 
         [Button, DisableInEditorMode]
