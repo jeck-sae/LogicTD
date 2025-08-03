@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cd8c4725c6c4577be0a3512071367b1, type: 3}
-  m_Name: BasicDamageSeries
+  m_Name: BasicMaxRangeSeries
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -32,7 +32,7 @@ MonoBehaviour:
       Data: 1|TowerDefense.TowerUpgrade, Assembly-CSharp
     - Name: cost
       Entry: 3
-      Data: 5
+      Data: 6
     - Name: targetTower
       Entry: 1
       Data: basic
@@ -181,10 +181,6 @@ MonoBehaviour:
       Entry: 8
       Data: 
   defaultTargetTower: basic
-  defaultTargetStat: damage
-  defaultDescription: 'Basic Tower: +10% damage or
-
-    Current Damage + 1.5 = New
-    Damage
-
-    Caps after 20 upgrades.'
+  defaultTargetStat: max range
+  defaultDescription: "Basic Tower: +10% max range or\nCurrent max range + 0.5 =
+    New  proj. speed \nCaps when max range reaches 15."
