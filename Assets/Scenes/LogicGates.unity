@@ -2084,7 +2084,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startIncome: 1
-  levels: []
+  levels:
+  - rid: 857243166413160527
+  - rid: 857243166413160528
+  references:
+    version: 2
+    RefIds:
+    - rid: 857243166413160527
+      type: {class: IncomePuzzleManager/PuzzleLevel, ns: TowerDefense, asm: Assembly-CSharp}
+      data:
+        incomeReward: 2
+        puzzlePrefab: {fileID: 3736504837682425242, guid: 085e7fbc800fdb84d8be547b6976a1a3, type: 3}
+    - rid: 857243166413160528
+      type: {class: IncomePuzzleManager/PuzzleLevel, ns: TowerDefense, asm: Assembly-CSharp}
+      data:
+        incomeReward: 4
+        puzzlePrefab: {fileID: 1673325759399503939, guid: f22672cc441901d4792583e43c5ab5a0, type: 3}
 --- !u!4 &341353589
 Transform:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ namespace TowerDefense
     public class IncomePuzzleManager : MonoBehaviour
     {
         public int startIncome = 1;
-        public List<PuzzleLevel> levels = new ();
+        [SerializeReference] public List<PuzzleLevel> levels = new ();
         [ReadOnly, ShowInInspector] int currentLevel = 0;
 
         private GameObject puzzleObj;

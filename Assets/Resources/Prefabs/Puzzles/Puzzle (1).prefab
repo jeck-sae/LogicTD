@@ -148,6 +148,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'inputs.Array.data[0]'
+      value: 857243166413160555
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'managedReferences[-2]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
       propertyPath: inputs.Array.data[0].from
       value: 
       objectReference: {fileID: 2432334983937363505}
@@ -157,7 +165,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
       propertyPath: inputs.Array.data[0].verticalOffset
-      value: 0.543
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'managedReferences[857243166413160555]'
+      value: Assembly-CSharp TowerDefense.GateSlot/GateConnection
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160555].from
+      value: 
+      objectReference: {fileID: 2432334983937363505}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160555].wire
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160555].verticalOffset
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3784266799966365366, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -226,6 +250,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'inputs.Array.data[0]'
+      value: 857243166413160556
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'managedReferences[-2]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
       propertyPath: inputs.Array.data[0].from
       value: 
       objectReference: {fileID: 2432334983937363505}
@@ -235,6 +267,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
       propertyPath: inputs.Array.data[0].verticalOffset
+      value: 0.431
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'managedReferences[857243166413160556]'
+      value: Assembly-CSharp TowerDefense.GateSlot/GateConnection
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160556].from
+      value: 
+      objectReference: {fileID: 2432334983937363505}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160556].wire
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160556].verticalOffset
       value: 0.431
       objectReference: {fileID: 0}
     - target: {fileID: 3784266799966365366, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
@@ -304,6 +352,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'inputs.Array.data[0]'
+      value: 857243166413160553
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'managedReferences[-2]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
       propertyPath: inputs.Array.data[0].from
       value: 
       objectReference: {fileID: 2432334983937363505}
@@ -313,7 +369,23 @@ PrefabInstance:
       objectReference: {fileID: 2432334983937363505}
     - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
       propertyPath: inputs.Array.data[0].verticalOffset
-      value: 0.426
+      value: 0.436
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'managedReferences[857243166413160553]'
+      value: Assembly-CSharp TowerDefense.GateSlot/GateConnection
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160553].from
+      value: 
+      objectReference: {fileID: 2432334983937363505}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160553].wire
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160553].verticalOffset
+      value: 0.436
       objectReference: {fileID: 0}
     - target: {fileID: 3784266799966365366, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -382,6 +454,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'inputs.Array.data[0]'
+      value: 857243166413160554
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'managedReferences[-2]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
       propertyPath: inputs.Array.data[0].from
       value: 
       objectReference: {fileID: 2432334983937363505}
@@ -391,7 +471,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
       propertyPath: inputs.Array.data[0].verticalOffset
-      value: 0.325
+      value: 0.351
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'managedReferences[857243166413160554]'
+      value: Assembly-CSharp TowerDefense.GateSlot/GateConnection
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160554].from
+      value: 
+      objectReference: {fileID: 2432334983937363505}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160554].wire
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160554].verticalOffset
+      value: 0.351
       objectReference: {fileID: 0}
     - target: {fileID: 3784266799966365366, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
       propertyPath: m_LocalPosition.x

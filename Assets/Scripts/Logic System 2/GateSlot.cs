@@ -13,7 +13,7 @@ namespace TowerDefense
         [SerializeField, ReadOnly] private LogicComponent connectedGate;
         public bool canPlaceNewComponent;
         
-        public List<GateConnection> inputs;
+        [SerializeReference] public List<GateConnection> inputs = new ();
         [ReadOnly] public List<GateSlot> outputs;
 
         [ReadOnly] public bool state;
@@ -110,7 +110,10 @@ namespace TowerDefense
         void DrawGizmos(bool selected)
         {
             foreach (var input in inputs)
-            {            
+            {
+                if (input == null || !input.from)
+                    return;
+                
                 var xDiff = transform.position.x - input.from.transform.position.x;
                 var midX = input.from.transform.position.x + xDiff * input.verticalOffset;
 
