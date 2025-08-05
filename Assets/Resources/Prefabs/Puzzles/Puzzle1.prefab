@@ -62,6 +62,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 2954029060893106873}
     m_Modifications:
     - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: inputs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'inputs.Array.data[0]'
+      value: 857243166413160557
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'inputs.Array.data[1]'
+      value: 857243166413160558
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
       propertyPath: inputs.Array.data[0].from
       value: 
       objectReference: {fileID: 4964705557313196576}
@@ -69,6 +81,38 @@ PrefabInstance:
       propertyPath: inputs.Array.data[1].from
       value: 
       objectReference: {fileID: 6030242497369646370}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'managedReferences[857243166413160557]'
+      value: Assembly-CSharp TowerDefense.GateSlot/GateConnection
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'managedReferences[857243166413160558]'
+      value: Assembly-CSharp TowerDefense.GateSlot/GateConnection
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160557].from
+      value: 
+      objectReference: {fileID: 4964705557313196576}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160557].wire
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160558].from
+      value: 
+      objectReference: {fileID: 6030242497369646370}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160558].wire
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160557].verticalOffset
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160558].verticalOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3784266799966365366, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.5
@@ -143,6 +187,22 @@ PrefabInstance:
     m_TransformParent: {fileID: 2954029060893106873}
     m_Modifications:
     - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: inputs.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'inputs.Array.data[0]'
+      value: 857243166413160559
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'inputs.Array.data[1]'
+      value: 857243166413160561
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'managedReferences[-2]'
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
       propertyPath: inputs.Array.data[0].from
       value: 
       objectReference: {fileID: 4964705557313196576}
@@ -150,6 +210,54 @@ PrefabInstance:
       propertyPath: inputs.Array.data[1].from
       value: 
       objectReference: {fileID: 920272021701687447}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'managedReferences[857243166413160559]'
+      value: Assembly-CSharp TowerDefense.GateSlot/GateConnection
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'managedReferences[857243166413160560]'
+      value: Assembly-CSharp TowerDefense.GateSlot/GateConnection
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: 'managedReferences[857243166413160561]'
+      value: Assembly-CSharp TowerDefense.GateSlot/GateConnection
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160559].from
+      value: 
+      objectReference: {fileID: 4964705557313196576}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160559].wire
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160560].from
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160560].wire
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160561].from
+      value: 
+      objectReference: {fileID: 920272021701687447}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160561].wire
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160559].verticalOffset
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160560].verticalOffset
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 530121574171613237, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
+      propertyPath: managedReferences[857243166413160561].verticalOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3784266799966365366, guid: d773e1385c419914ead4bf2e84cbb91d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1
@@ -456,6 +564,18 @@ PrefabInstance:
     - target: {fileID: 8985905721458030284, guid: cbf2e6ad1b0712345ae7d1df5d7d7e09, type: 3}
       propertyPath: canPlaceNewComponent
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985905721458030284, guid: cbf2e6ad1b0712345ae7d1df5d7d7e09, type: 3}
+      propertyPath: 'inputs.Array.data[0]'
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985905721458030284, guid: cbf2e6ad1b0712345ae7d1df5d7d7e09, type: 3}
+      propertyPath: 'inputs.Array.data[1]'
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8985905721458030284, guid: cbf2e6ad1b0712345ae7d1df5d7d7e09, type: 3}
+      propertyPath: 'managedReferences[-2]'
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8985905721458030284, guid: cbf2e6ad1b0712345ae7d1df5d7d7e09, type: 3}
       propertyPath: inputs.Array.data[0].from

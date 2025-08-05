@@ -50,10 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connectedGate: {fileID: 0}
   canPlaceNewComponent: 0
-  inputs:
-  - from: {fileID: 0}
-    verticalOffset: 0.5
-    wire: {fileID: 0}
+  inputs: []
   outputs: []
   state: 0
 --- !u!114 &2029864402302363135
