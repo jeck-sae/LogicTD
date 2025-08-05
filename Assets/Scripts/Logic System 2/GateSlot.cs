@@ -34,6 +34,7 @@ namespace TowerDefense
             foreach (var input in inputs)
             {
                 GameObject go = new GameObject("Wire");
+                go.transform.SetParent(transform);
                 input.wire = go.AddComponent<ConnectionWire>();
                 input.wire.Initialize(input.from, this, input.verticalOffset);
             }
@@ -79,6 +80,7 @@ namespace TowerDefense
             tower = null;
             name = "Empty Gate Node";
         }
+
         
         [Serializable]
         public class GateConnection
@@ -93,6 +95,39 @@ namespace TowerDefense
                 wire?.SetOffset(verticalOffset);
             }
         }
+        
+        
+        
+        // ################### Gizmos
+        private void OnDrawGizmosSelected()
+        {
+            DrawGizmos(true);
+        }
+        private void OnDrawGizmos()
+        {
+            DrawGizmos(false);
+        }
+        void DrawGizmos(bool selected)
+        {
+            foreach (var input in inputs)
+            {            
+                var xDiff = transform.position.x - input.from.transform.position.x;
+                var midX = input.from.transform.position.x + xDiff * input.verticalOffset;
 
+                if (selected)
+                {
+                    Gizmos.color = new Color(.3f, .3f, .3f);
+                    Gizmos.DrawLine(
+                        new Vector3(transform.position.x, transform.position.y),
+                        new Vector3(input.from.transform.position.x, input.from.transform.position.y));
+                }
+
+                Gizmos.color = selected ? Color.green : new Color(1, 0, 0, .5f);
+                Gizmos.DrawLine(
+                    new Vector3(midX, input.from.transform.position.y),
+                    new Vector3(midX, transform.position.y));
+                Gizmos.DrawSphere(new Vector3(midX, transform.position.y), .075f);
+            }
+        }
     }
 }

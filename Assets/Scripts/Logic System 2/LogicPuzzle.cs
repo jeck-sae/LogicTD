@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
@@ -10,13 +11,31 @@ namespace TowerDefense
     {
         [SerializeField] protected List<PuzzleResult> outputs = new ();
 
-        public bool CheckResult()
+        public event Action OnPuzzleSolved;
+        private bool solved;
+        
+        private void Start()
         {
-            return outputs.All(x => x.expectedValue == x.outputGate.slot.state);
+            outputs.ForEach(x => x.outputGate.slot.OnStateChanged += CheckResult);
         }
 
-        
-        [System.Serializable]
+        private void CheckResult(bool obj)
+        {
+            if(!solved && outputs.All(x => x.expectedValue == x.outputGate.slot.state))
+                OnPuzzleSolved?.Invoke();
+        }
+
+        private void OnDestroy()
+        {
+            foreach (var output in outputs)
+            {
+                if(!output.outputGate || !output.outputGate.slot)
+                    continue;
+                output.outputGate.slot.OnStateChanged -= CheckResult;
+            }
+        }
+
+        [Serializable]
         public class PuzzleResult
         {
             public bool expectedValue;
