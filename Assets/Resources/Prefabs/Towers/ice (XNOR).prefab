@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 3635735975561972143}
   - component: {fileID: 8090656587053428859}
   m_Layer: 0
-  m_Name: ice
+  m_Name: ice (XNOR)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
