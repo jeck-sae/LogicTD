@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace TowerDefense
         private float fromY;
         private float toY;
         private float offset;
-        private GlobalWireSettings s => GlobalWireSettings.Instance; 
+        private static GlobalWireSettings s => GlobalWireSettings.Instance; 
         
         public void Initialize(GateSlot from, GateSlot to, float offset)
         {
@@ -34,11 +35,9 @@ namespace TowerDefense
         [Button]
         void DrawFullLine()
         {
-            int fromPosition = Array.IndexOf(from.outputs.OrderBy(x => x.transform.position.x).ToArray(), to);
+            int fromPosition = Array.IndexOf(from.outputs.OrderBy(x => x.transform.position.y).ToArray(), to);
             int fromTotal = from.outputs.Count;
-            if(from.transform.position.y < to.transform.position.y)
-                fromPosition = fromTotal - 1 - fromPosition;
-            
+
             int toPosition = to.inputs.FindIndex(x => x.from == from);
             int toTotal = to.inputs.Count;
             toPosition = toTotal - 1 - toPosition;
@@ -62,7 +61,6 @@ namespace TowerDefense
             
             SetOffset(offset);
         }
-        
         public void SetOffset(float offset)
         {
             this.offset = offset;

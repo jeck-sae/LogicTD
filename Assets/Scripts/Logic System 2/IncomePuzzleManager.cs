@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NUnit.Framework;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -7,42 +8,60 @@ namespace TowerDefense
 {
     public class IncomePuzzleManager : MonoBehaviour
     {
-        public List<int> incomeLevels = new();
-        [ShowInInspector] public List<(int incomeReward, GameObject puzzlePrefab)> levels;
-        [DisableInEditorMode, ShowInInspector] int currentLevel = 0;
+        public int startIncome = 1;
+        public List<PuzzleLevel> levels = new ();
+        [ReadOnly, ShowInInspector] int currentLevel = 0;
 
-        
+        private GameObject puzzleObj;
+        private LogicPuzzle puzzle;
         
         private void Start()
         {
-            GameStats.Instance.SetCoinsPerSecond(incomeLevels[currentLevel]);
-            LogicManager.Instance.OnStatesUpdated += CheckResults;
+            GameStats.Instance.SetCoinsPerSecond(startIncome);
+            SpawnPuzzle(0);
         }
 
         private void OnDestroy()
         {
-            if (LogicManager.Instance)
-                LogicManager.Instance.OnStatesUpdated -= CheckResults;
+            if (puzzle)
+                puzzle.OnPuzzleSolved -= OnPuzzleSolved;
         }
 
-        public void CheckResults()
+        public void OnPuzzleSolved()
         {
-            var puzzle = FindAnyObjectByType<LogicPuzzle>();
-            
-            if(puzzle && puzzle.CheckResult())
-                NextLevel();
+            NextLevel();
         }
 
         [Button, DisableInEditorMode]
         public void NextLevel()
         {
-            currentLevel++;
-            
-            // Max Level
-            if (currentLevel >= incomeLevels.Count)
+            if (currentLevel >= levels.Count)
                 return;
             
-            GameStats.Instance.SetCoinsPerSecond(incomeLevels[currentLevel]);
+            GameStats.Instance.SetCoinsPerSecond(levels[currentLevel].incomeReward);
+            
+            currentLevel++;
+            SpawnPuzzle(currentLevel);
+        }
+
+        protected void SpawnPuzzle(int level)
+        {
+            if(puzzle) puzzle.OnPuzzleSolved -= OnPuzzleSolved;
+            if(puzzleObj) Destroy(puzzleObj);
+            if(level >= levels.Count) return;
+            
+            puzzleObj = Instantiate(levels[level].puzzlePrefab, transform);
+            puzzleObj.transform.localPosition = Vector3.zero;
+            puzzle = puzzleObj.GetComponent<LogicPuzzle>();
+            puzzle.OnPuzzleSolved += OnPuzzleSolved;
+            LogicManager.Instance.RefreshNodes();
+        }
+
+        [Serializable]
+        public class PuzzleLevel
+        {
+            public int incomeReward;
+            public GameObject puzzlePrefab;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace TowerDefense
         
         private void Start()
         {
-            LoadNodes();
+            RefreshNodes();
         }
 
         private float nextUpdate;
@@ -31,7 +31,7 @@ namespace TowerDefense
             }
         }
 
-        public void LoadNodes()
+        public void RefreshNodes()
         {
             inputs = FindObjectsByType<LogicInput>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).ToList();
         }

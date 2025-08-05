@@ -3,7 +3,7 @@ using UnityEngine;
 public class ClickablePoint : MonoBehaviour
 {
     public LogicGate parentGate;
-    public bool isOutput; // true = output point, false = input point
+    public bool isOutput; // Set in inspector
 
     private ConnectionManager connectionManager;
 
@@ -16,14 +16,7 @@ public class ClickablePoint : MonoBehaviour
     {
         if (connectionManager != null)
         {
-            if (isOutput)
-            {
-                connectionManager.StartConnectionFromPoint(parentGate, transform);
-            }
-            else
-            {
-                connectionManager.EndConnectionAtPoint(parentGate, transform);
-            }
+            connectionManager.OnClickConnectionPoint(parentGate, transform, isOutput);
         }
     }
 }
