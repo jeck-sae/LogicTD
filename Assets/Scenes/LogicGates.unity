@@ -2088,6 +2088,7 @@ MonoBehaviour:
   - rid: 857243166413160527
   - rid: 857243166413160528
   - rid: 4773390224217604179
+  - rid: 4773390228011352071
   references:
     version: 2
     RefIds:
@@ -2106,6 +2107,11 @@ MonoBehaviour:
       data:
         incomeReward: 8
         puzzlePrefab: {fileID: 1673325759399503939, guid: daff7deff108a8643a73e00c50b774cf, type: 3}
+    - rid: 4773390228011352071
+      type: {class: IncomePuzzleManager/PuzzleLevel, ns: TowerDefense, asm: Assembly-CSharp}
+      data:
+        incomeReward: 10
+        puzzlePrefab: {fileID: 1673325759399503939, guid: 1ead3fefe0a70b142bd39ce532e1a759, type: 3}
 --- !u!4 &341353589
 Transform:
   m_ObjectHideFlags: 0
