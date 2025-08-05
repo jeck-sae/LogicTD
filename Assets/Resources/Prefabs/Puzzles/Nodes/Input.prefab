@@ -52,6 +52,9 @@ MonoBehaviour:
   inputs: []
   outputs: []
   state: 0
+  references:
+    version: 2
+    RefIds: []
 --- !u!114 &3155648296831528403
 MonoBehaviour:
   m_ObjectHideFlags: 0
