@@ -41,7 +41,9 @@ namespace TowerDefense
             //place tower
             if (Input.GetMouseButtonDown(0) || Input.GetMouseButtonUp(0))
             {
-                var hit = Physics2D.RaycastAll(Helpers.Camera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+                var hit = Physics2D.RaycastAll(
+                    Helpers.Camera.ScreenToWorldPoint(Input.mousePosition), 
+                    Vector2.zero);
                 ITowerSlot slot = null;
 
                 foreach (var h in hit)
