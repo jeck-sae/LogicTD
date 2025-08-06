@@ -12,25 +12,12 @@ namespace TowerDefense
         private HashSet<GateSlot> alreadyUpdatedThisThread = new ();
         private Queue<(GateSlot current, HashSet<GateSlot> updatedSlots)> queuedThreadStarts =  new ();
 
-        [SerializeField] protected int ticksPerSecond;
-
-        public event Action OnStatesUpdated;
         
         private void Start()
         {
             RefreshNodes();
         }
-
-        private float nextUpdate;
-        private void Update()
-        {
-            if (Time.time > nextUpdate)
-            {
-                nextUpdate = Time.time + (1f / ticksPerSecond);
-                UpdateStates();
-            }
-        }
-
+        
         public void RefreshNodes()
         {
             inputs = FindObjectsByType<LogicInput>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).ToList();
@@ -61,8 +48,6 @@ namespace TowerDefense
                     current = current.outputs.Count == 0 ? null : current.outputs[0];
                 }
             }
-            OnStatesUpdated?.Invoke();
         }
-        
     }
 }

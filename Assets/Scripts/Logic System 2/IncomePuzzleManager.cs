@@ -55,6 +55,7 @@ namespace TowerDefense
             puzzle = puzzleObj.GetComponent<LogicPuzzle>();
             puzzle.OnPuzzleSolved += OnPuzzleSolved;
             LogicManager.Instance.RefreshNodes();
+            LogicManager.Instance.UpdateStates();
         }
 
         [Serializable]
