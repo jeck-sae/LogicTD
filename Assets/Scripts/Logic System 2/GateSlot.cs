@@ -71,6 +71,8 @@ namespace TowerDefense
             
             connectedGate = t.GetComponent<LogicComponent>();
             connectedGate.slot = this;
+            
+            LogicManager.Instance.UpdateStates();
         }
 
         public void RemoveTower()
@@ -79,6 +81,7 @@ namespace TowerDefense
             connectedGate = null;
             tower = null;
             name = "Empty Gate Node";
+            LogicManager.Instance.UpdateStates();
         }
 
         
