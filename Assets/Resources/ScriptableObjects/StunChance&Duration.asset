@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cd8c4725c6c4577be0a3512071367b1, type: 3}
-  m_Name: GlobalDamageSeries
+  m_Name: StunChance&Duration
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -35,23 +35,23 @@ MonoBehaviour:
       Data: 32
     - Name: targetTower
       Entry: 1
-      Data: '*'
+      Data: stun
     - Name: description
       Entry: 1
-      Data: 'All: +10% <color=#c2616f>Damage</color>'
+      Data: 
     - Name: upgrade
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: 3|TowerDefense.StatUpgrade, Assembly-CSharp
     - Name: stat
       Entry: 1
-      Data: damage
+      Data: stunChance
     - Name: modifier
       Entry: 7
       Data: 4|TowerDefense.Stat+StatModifier, Assembly-CSharp
@@ -60,16 +60,7 @@ MonoBehaviour:
       Data: 0
     - Name: multiply
       Entry: 4
-      Data: 1.1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
+      Data: 1.025
     - Name: 
       Entry: 8
       Data: 
@@ -78,38 +69,19 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 5|TowerDefense.TowerUpgrade, Assembly-CSharp
-    - Name: cost
-      Entry: 3
-      Data: 128
-    - Name: targetTower
-      Entry: 1
-      Data: '*'
-    - Name: description
-      Entry: 1
-      Data: 'All: +10% <color=#c2616f>Damage</color>'
-    - Name: upgrade
-      Entry: 7
-      Data: 6|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 7|TowerDefense.StatUpgrade, Assembly-CSharp
+      Data: 5|TowerDefense.StatUpgrade, Assembly-CSharp
     - Name: stat
       Entry: 1
-      Data: damage
+      Data: stunDuration
     - Name: modifier
       Entry: 7
-      Data: 8|TowerDefense.Stat+StatModifier, Assembly-CSharp
+      Data: 6|TowerDefense.Stat+StatModifier, Assembly-CSharp
     - Name: add
       Entry: 4
       Data: 0
     - Name: multiply
       Entry: 4
-      Data: 1.1
+      Data: 1.05
     - Name: 
       Entry: 8
       Data: 
@@ -127,29 +99,50 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 9|TowerDefense.TowerUpgrade, Assembly-CSharp
+      Data: 7|TowerDefense.TowerUpgrade, Assembly-CSharp
     - Name: cost
       Entry: 3
-      Data: 512
+      Data: 128
     - Name: targetTower
       Entry: 1
-      Data: '*'
+      Data: stun
     - Name: description
       Entry: 1
       Data: 
     - Name: upgrade
       Entry: 7
-      Data: 10|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+      Data: 8|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 9|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: stunChance
+    - Name: modifier
+      Entry: 7
+      Data: 10|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.025
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 7
       Data: 11|TowerDefense.StatUpgrade, Assembly-CSharp
     - Name: stat
       Entry: 1
-      Data: damage
+      Data: stunDuration
     - Name: modifier
       Entry: 7
       Data: 12|TowerDefense.Stat+StatModifier, Assembly-CSharp
@@ -158,7 +151,7 @@ MonoBehaviour:
       Data: 0
     - Name: multiply
       Entry: 4
-      Data: 1.1
+      Data: 1.05
     - Name: 
       Entry: 8
       Data: 
@@ -179,10 +172,10 @@ MonoBehaviour:
       Data: 13|TowerDefense.TowerUpgrade, Assembly-CSharp
     - Name: cost
       Entry: 3
-      Data: 2048
+      Data: 512
     - Name: targetTower
       Entry: 1
-      Data: '*'
+      Data: stun
     - Name: description
       Entry: 1
       Data: 
@@ -192,13 +185,13 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: 15|TowerDefense.StatUpgrade, Assembly-CSharp
     - Name: stat
       Entry: 1
-      Data: damage
+      Data: stunChance
     - Name: modifier
       Entry: 7
       Data: 16|TowerDefense.Stat+StatModifier, Assembly-CSharp
@@ -207,16 +200,7 @@ MonoBehaviour:
       Data: 0
     - Name: multiply
       Entry: 4
-      Data: 1.1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
+      Data: 1.025
     - Name: 
       Entry: 8
       Data: 
@@ -225,38 +209,19 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 17|TowerDefense.TowerUpgrade, Assembly-CSharp
-    - Name: cost
-      Entry: 3
-      Data: 8192
-    - Name: targetTower
-      Entry: 1
-      Data: '*'
-    - Name: description
-      Entry: 1
-      Data: 
-    - Name: upgrade
-      Entry: 7
-      Data: 18|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 19|TowerDefense.StatUpgrade, Assembly-CSharp
+      Data: 17|TowerDefense.StatUpgrade, Assembly-CSharp
     - Name: stat
       Entry: 1
-      Data: damage
+      Data: stunDuration
     - Name: modifier
       Entry: 7
-      Data: 20|TowerDefense.Stat+StatModifier, Assembly-CSharp
+      Data: 18|TowerDefense.Stat+StatModifier, Assembly-CSharp
     - Name: add
       Entry: 4
       Data: 0
     - Name: multiply
       Entry: 4
-      Data: 1.1
+      Data: 1.05
     - Name: 
       Entry: 8
       Data: 
@@ -274,29 +239,50 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 21|TowerDefense.TowerUpgrade, Assembly-CSharp
+      Data: 19|TowerDefense.TowerUpgrade, Assembly-CSharp
     - Name: cost
       Entry: 3
-      Data: 32784
+      Data: 2048
     - Name: targetTower
       Entry: 1
-      Data: '*'
+      Data: stun
     - Name: description
       Entry: 1
       Data: 
     - Name: upgrade
       Entry: 7
-      Data: 22|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+      Data: 20|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 21|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: stunChance
+    - Name: modifier
+      Entry: 7
+      Data: 22|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.025
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 7
       Data: 23|TowerDefense.StatUpgrade, Assembly-CSharp
     - Name: stat
       Entry: 1
-      Data: damage
+      Data: stunDuration
     - Name: modifier
       Entry: 7
       Data: 24|TowerDefense.Stat+StatModifier, Assembly-CSharp
@@ -305,7 +291,147 @@ MonoBehaviour:
       Data: 0
     - Name: multiply
       Entry: 4
-      Data: 1.1
+      Data: 1.05
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 25|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 8196
+    - Name: targetTower
+      Entry: 1
+      Data: stun
+    - Name: description
+      Entry: 1
+      Data: 
+    - Name: upgrade
+      Entry: 7
+      Data: 26|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 27|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: stunChance
+    - Name: modifier
+      Entry: 7
+      Data: 28|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.025
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 29|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: stunDuration
+    - Name: modifier
+      Entry: 7
+      Data: 30|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.05
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 31|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 32784
+    - Name: targetTower
+      Entry: 1
+      Data: stun
+    - Name: description
+      Entry: 1
+      Data: 
+    - Name: upgrade
+      Entry: 7
+      Data: 32|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 33|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: stunChance
+    - Name: modifier
+      Entry: 7
+      Data: 34|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.025
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 35|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: stunDuration
+    - Name: modifier
+      Entry: 7
+      Data: 36|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.05
     - Name: 
       Entry: 8
       Data: 
@@ -327,8 +453,10 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  defaultTargetTower: '*'
+  defaultTargetTower: stun
   defaultTargetStat: 
-  upgradeTitle: Global
+  upgradeTitle: Stun Tower
   upgradeIcon: {fileID: 0}
-  defaultDescription: <color=#c2616f>+10% Damage</color>
+  defaultDescription: '<color=#bcb4c1>+2.5% Chance
+
+    +5% Duration</color>'

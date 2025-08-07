@@ -26,7 +26,7 @@ MonoBehaviour:
       Data: 0|TowerDefense.TowerUpgrade[], Assembly-CSharp
     - Name: 
       Entry: 12
-      Data: 5
+      Data: 6
     - Name: 
       Entry: 7
       Data: 1|TowerDefense.TowerUpgrade, Assembly-CSharp
@@ -38,7 +38,7 @@ MonoBehaviour:
       Data: '*'
     - Name: description
       Entry: 1
-      Data: 
+      Data: 'All: +10% <color=#81c462>Range</color>'
     - Name: upgrade
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
@@ -273,11 +273,62 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 21|TowerDefense.TowerUpgrade, Assembly-CSharp
+    - Name: cost
+      Entry: 3
+      Data: 32784
+    - Name: targetTower
+      Entry: 1
+      Data: '*'
+    - Name: description
+      Entry: 1
+      Data: 
+    - Name: upgrade
+      Entry: 7
+      Data: 22|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 23|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: maxRange
+    - Name: modifier
+      Entry: 7
+      Data: 24|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 1.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
       Entry: 8
       Data: 
   defaultTargetTower: '*'
-  defaultTargetStat: maxRange
-  defaultDescription: 'All: +10% <color=#81c462>Range</color>'
+  defaultTargetStat: 
+  upgradeTitle: Global
+  upgradeIcon: {fileID: 0}
+  defaultDescription: <color=#81c462>+10% Range</color>
