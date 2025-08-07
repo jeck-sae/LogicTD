@@ -71,7 +71,7 @@ namespace TowerDefense
             Tower tower = null;
             if (instantiateNew)
             {
-                tower = Instantiate(placingTower.gameObject).GetComponent<Tower>();
+                tower = TowerFactory.Instance.SpawnTower(placingTower.towerID);
             }
             else
             {

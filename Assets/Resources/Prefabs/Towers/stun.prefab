@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: -5746598715956335208}
   - component: {fileID: 4669379796999818579}
   m_Layer: 0
-  m_Name: stun (XOR)
+  m_Name: stun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ namespace TowerDefense
 {
     public class TowerFactory : Singleton<TowerFactory>
     {
+        [ShowInInspector, ReadOnly]
         private Dictionary<string, List<IUpgrade>> unlockedUpgrades = new();
         
         public Tower SpawnTower(string towerId)
