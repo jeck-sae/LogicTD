@@ -85,7 +85,7 @@ namespace TowerDefense
         }
         
 
-        public void PlaceTower(Tower t)
+        public virtual void PlaceTower(Tower t)
         {
             if (!CanPlace(t))
                 return;
@@ -97,7 +97,7 @@ namespace TowerDefense
             name = $"{tileName} [" + t.towerName + "]";
         } 
     
-        public void RemoveTower()
+        public virtual void RemoveTower()
         {
             tower = null;
             if(TileSelectionManager.Instance?.SelectedTile == this)

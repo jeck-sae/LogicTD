@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 namespace TowerDefense
@@ -10,20 +11,20 @@ namespace TowerDefense
     {
         public int lives;
         public int coins;
-        public int coinsPerSecond;
+        [FormerlySerializedAs("coinsPerSecond")] 
+        public int coinsPerTick;
         public event Action livesChanged;
         public event Action coinsChanged;
 
-        private float moneyTimer;
+        private float nextTick;
         private void Update()
         {
             if (!WaveManager.Instance.SpawningPaused)
             {
-                moneyTimer += Time.deltaTime;
-                if (moneyTimer >= 1)
+                if (Time.time > nextTick)
                 {
-                    moneyTimer -= 1;
-                    ModifyCoins(coinsPerSecond);
+                    ModifyCoins(coinsPerTick);
+                    nextTick = Time.time + .5f;
                 }
             }
         }
@@ -42,7 +43,7 @@ namespace TowerDefense
 
         public void SetCoinsPerSecond(int amount)
         {
-            coinsPerSecond = amount;
+            coinsPerTick = amount;
         }
     }
 }
