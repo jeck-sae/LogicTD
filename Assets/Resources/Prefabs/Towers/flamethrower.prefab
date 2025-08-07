@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortOrder: 0
+  costMultiplier: 4
   effects: {fileID: 0}
   towerID: flamethrower
   shopIcon: {fileID: -8546000511252593766, guid: b77cfe2e5c80654478fad10249648232, type: 3}
@@ -71,7 +72,7 @@ MonoBehaviour:
   towerColor: {r: 0.7607844, g: 0.6745098, b: 0.3803922, a: 1}
   Cost:
     m_name: 
-    m_baseValue: 150
+    m_baseValue: 128
     min: 1
     max: 0
     tempMin: 0

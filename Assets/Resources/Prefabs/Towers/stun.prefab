@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortOrder: 0
+  costMultiplier: 4
   effects: {fileID: 0}
   towerID: stun
   shopIcon: {fileID: -6240021825540437177, guid: b77cfe2e5c80654478fad10249648232, type: 3}
@@ -105,7 +106,7 @@ MonoBehaviour:
   towerColor: {r: 0.7372549, g: 0.7058824, b: 0.7568628, a: 1}
   Cost:
     m_name: 
-    m_baseValue: 75
+    m_baseValue: 4
     min: 1
     max: 0
     tempMin: 0

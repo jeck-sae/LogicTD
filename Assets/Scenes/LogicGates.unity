@@ -2995,9 +2995,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 365219409}
-  - {fileID: 562414229}
-  - {fileID: 1311233781}
   - {fileID: 2123214186}
+  - {fileID: 1311233781}
+  - {fileID: 562414229}
   - {fileID: 808338807}
   - {fileID: 1706040933}
   m_Father: {fileID: 109170415}
@@ -5270,7 +5270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 15
-  coins: 100
+  coins: 1
   coinsPerSecond: 0
 --- !u!114 &948418049
 MonoBehaviour:

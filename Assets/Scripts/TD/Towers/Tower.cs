@@ -11,6 +11,7 @@ namespace TowerDefense
     {
         public ITowerSlot Slot { get; protected set; }
         public Tile Tile => Slot as Tile;
+        public float costMultiplier = 1f;
     
         [HideInInspector] public EffectHandler effects;
     
