@@ -10,6 +10,9 @@ namespace TowerDefense
     {
         public string defaultTargetTower;
         public string defaultTargetStat;
+        public string upgradeTitle;
+        public Sprite upgradeIcon;
+        
         [TextArea] public string defaultDescription;
         [NonSerialized, OdinSerialize] public TowerUpgrade[] upgrades;
 

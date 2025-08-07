@@ -280,4 +280,6 @@ MonoBehaviour:
       Data: 
   defaultTargetTower: '*'
   defaultTargetStat: damage
+  upgradeTitle: Global Damage
+  upgradeIcon: {fileID: 0}
   defaultDescription: 'All: +10% <color=#c2616f>Damage</color>'
