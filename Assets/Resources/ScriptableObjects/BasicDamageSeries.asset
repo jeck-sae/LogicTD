@@ -32,13 +32,13 @@ MonoBehaviour:
       Data: 1|TowerDefense.TowerUpgrade, Assembly-CSharp
     - Name: cost
       Entry: 3
-      Data: 5
+      Data: 32
     - Name: targetTower
       Entry: 1
-      Data: basic
+      Data: '*'
     - Name: description
       Entry: 1
-      Data: 'Cost for next upgrade is: Current cost x 1.5 = New Cost'
+      Data: 
     - Name: upgrade
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
@@ -81,13 +81,13 @@ MonoBehaviour:
       Data: 5|TowerDefense.TowerUpgrade, Assembly-CSharp
     - Name: cost
       Entry: 3
-      Data: 15
+      Data: 128
     - Name: targetTower
       Entry: 1
       Data: 
     - Name: description
       Entry: 1
-      Data: 'Cost for next upgrade is: Current cost x 1.5 = New Cost'
+      Data: 
     - Name: upgrade
       Entry: 7
       Data: 6|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
@@ -130,13 +130,13 @@ MonoBehaviour:
       Data: 9|TowerDefense.TowerUpgrade, Assembly-CSharp
     - Name: cost
       Entry: 3
-      Data: 30
+      Data: 512
     - Name: targetTower
       Entry: 6
       Data: 
     - Name: description
       Entry: 1
-      Data: 'Cost for next upgrade is: Current cost x 1.5 = New Cost'
+      Data: 
     - Name: upgrade
       Entry: 7
       Data: 10|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
@@ -180,11 +180,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  defaultTargetTower: basic
+  defaultTargetTower: '*'
   defaultTargetStat: damage
-  defaultDescription: 'Basic Tower: +10% damage or
-
-    Current Damage + 1.5 = New
-    Damage
-
-    Caps after 20 upgrades.'
+  defaultDescription: 'All Towers: Attack Damage+10%'
