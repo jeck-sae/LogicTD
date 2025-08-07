@@ -33,6 +33,8 @@ namespace TowerDefense
     
             AddStat(name, new Stat(name, baseValue, minValue, maxValue));
         }
+        
+        public bool HasStat(string name) => stats.ContainsKey(name);
     
         public void AddModifier(string statName, string modifierName, float add = 0, float multiply = 1, bool overrideIfDuplicate = true)
             => stats[statName].AddModifier(modifierName, add, multiply, overrideIfDuplicate);
