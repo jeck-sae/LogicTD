@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cd8c4725c6c4577be0a3512071367b1, type: 3}
-  m_Name: FlameThrowerGeneric
+  m_Name: IceDurationi&Amount
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -35,7 +35,7 @@ MonoBehaviour:
       Data: 32
     - Name: targetTower
       Entry: 1
-      Data: flamethrower
+      Data: ice
     - Name: description
       Entry: 1
       Data: 
@@ -45,13 +45,13 @@ MonoBehaviour:
         mscorlib
     - Name: 
       Entry: 12
-      Data: 1
+      Data: 2
     - Name: 
       Entry: 7
       Data: 3|TowerDefense.StatUpgrade, Assembly-CSharp
     - Name: stat
       Entry: 1
-      Data: burnDuration
+      Data: slowDuration
     - Name: modifier
       Entry: 7
       Data: 4|TowerDefense.Stat+StatModifier, Assembly-CSharp
@@ -68,8 +68,20 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
-      Entry: 13
-      Data: 
+      Entry: 7
+      Data: 5|TowerDefense.StatUpgrade, Assembly-CSharp
+    - Name: stat
+      Entry: 1
+      Data: slowAmount
+    - Name: modifier
+      Entry: 7
+      Data: 6|TowerDefense.Stat+StatModifier, Assembly-CSharp
+    - Name: add
+      Entry: 4
+      Data: 0
+    - Name: multiply
+      Entry: 4
+      Data: 0.975
     - Name: 
       Entry: 8
       Data: 
@@ -82,6 +94,19 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  defaultTargetTower: '*'
-  defaultTargetStat: burnDuration
-  defaultDescription: 'Flame Thrower: Burn Duration+10%'
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  defaultTargetTower: ice
+  defaultTargetStat: 
+  upgradeTitle: Ice Tower
+  upgradeIcon: {fileID: 0}
+  defaultDescription: '<color=#bcb4c1>+2.5% Slow
+
+    +10% Duration</color>'
