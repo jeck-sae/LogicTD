@@ -18,6 +18,9 @@ namespace TowerDefense
             if(unlockedUpgrades.TryGetValue(towerId, out var unlocked))
                 foreach(var upgrade in unlocked)
                     tower.upgradeHandler.UnlockUpgrade("globalUpgrade", upgrade, false);
+            if(unlockedUpgrades.TryGetValue("*", out var unlockedGlobal))
+                foreach(var upgrade in unlockedGlobal)
+                    tower.upgradeHandler.UnlockUpgrade("globalUpgrade", upgrade, false);
             
             return tower;
         }
