@@ -57,6 +57,7 @@ namespace TowerDefense
                 out var c) && c.RequiredInputs == inputs.Count;
         }
 
+        List<(Transform transform, bool state)> previousGFXStates = new();
         public void PlaceTower(Tower t)
         {
             if (!CanPlace(t))
@@ -68,6 +69,17 @@ namespace TowerDefense
             t.gameObject.transform.parent = transform;
             t.SetSlot(this);
             name = $"Gate Node [" + t.towerName + "]";
+
+            var gfx = tower.transform.Find("GFX");
+            for (int i = 0; i < gfx.childCount; i++)
+            {
+                var child = gfx.GetChild(i);
+                if (child.name == "Base")
+                    continue;
+                
+                previousGFXStates.Add((child, child.gameObject.activeSelf));
+                child.gameObject.SetActive(false);
+            }
             
             connectedGate = t.GetComponent<LogicComponent>();
             connectedGate.slot = this;
@@ -81,6 +93,10 @@ namespace TowerDefense
             connectedGate = null;
             tower = null;
             name = "Empty Gate Node";
+
+            previousGFXStates.ForEach(x 
+                => x.transform.gameObject.SetActive(x.state));
+            
             LogicManager.Instance.UpdateStates();
         }
 

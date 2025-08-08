@@ -54,6 +54,8 @@ MonoBehaviour:
   outputs:
   - expectedValue: 1
     outputGate: {fileID: 2610725379197420298}
+  allSlotsFilled: 0
+  solved: 0
 --- !u!1001 &1504302712566580090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -446,10 +448,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8985905721458030284, guid: cbf2e6ad1b0712345ae7d1df5d7d7e09, type: 3}
-      propertyPath: canPlaceNewComponent
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8985905721458030284, guid: cbf2e6ad1b0712345ae7d1df5d7d7e09, type: 3}
       propertyPath: 'inputs.Array.data[0]'
       value: 4773390224217604098
       objectReference: {fileID: 0}
@@ -460,7 +458,7 @@ PrefabInstance:
     - target: {fileID: 8985905721458030284, guid: cbf2e6ad1b0712345ae7d1df5d7d7e09, type: 3}
       propertyPath: inputs.Array.data[1].from
       value: 
-      objectReference: {fileID: 1897127088482649794, guid: 085e7fbc800fdb84d8be547b6976a1a3, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8985905721458030284, guid: cbf2e6ad1b0712345ae7d1df5d7d7e09, type: 3}
       propertyPath: inputs.Array.data[1].verticalOffset
       value: 0.5

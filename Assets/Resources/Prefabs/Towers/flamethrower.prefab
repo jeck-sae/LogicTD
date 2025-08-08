@@ -34,7 +34,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8711475530282827606}
   - {fileID: 7117296386387936784}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -528,6 +527,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2047992552024771149}
+  - {fileID: 8711475530282827606}
   m_Father: {fileID: 2959914068408384694}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5060277931546009581
@@ -561,7 +561,7 @@ Transform:
   m_Children:
   - {fileID: 2759899366994034821}
   - {fileID: 1064000223984385472}
-  m_Father: {fileID: 2959914068408384694}
+  m_Father: {fileID: 7117296386387936784}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7477521586472166616
 GameObject:
@@ -741,7 +741,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:

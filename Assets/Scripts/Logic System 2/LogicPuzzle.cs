@@ -12,17 +12,26 @@ namespace TowerDefense
         [SerializeField] protected List<PuzzleResult> outputs = new ();
 
         public event Action OnPuzzleSolved;
-        private bool solved;
+        public event Action OnPuzzleUnsolved;
+        public bool allSlotsFilled;
+        public bool solved;
+        private GateSlot[] gates;
         
         private void Start()
         {
             outputs.ForEach(x => x.outputGate.slot.OnStateChanged += CheckResult);
+            gates = GetComponentsInChildren<GateSlot>();
         }
 
         private void CheckResult(bool obj)
         {
-            if(!solved && outputs.All(x => x.expectedValue == x.outputGate.slot.state))
-                OnPuzzleSolved?.Invoke();
+            bool before = allSlotsFilled && solved;
+            allSlotsFilled = gates.All(x => !x.canPlaceNewComponent || x.Tower);
+            solved = outputs.All(x => x.outputGate.slot.state == x.expectedValue);
+            bool after = allSlotsFilled && solved;
+            
+            if(before && !after) OnPuzzleUnsolved?.Invoke();
+            if(after) OnPuzzleSolved?.Invoke();
         }
 
         private void OnDestroy()
