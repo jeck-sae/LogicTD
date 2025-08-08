@@ -5,76 +5,69 @@ public class ConnectionManager : MonoBehaviour
 {
     public static ConnectionManager Instance;
 
-    private ClickablePoint selectedPoint;
-    private List<Wire> wires = new List<Wire>();
-    public GameObject wirePrefab;
+    public GameObject linePrefab;
+
+    private ConnectionPoint selectedOutput;
+
+    private List<ConnectionLine> lines = new List<ConnectionLine>();
 
     void Awake()
     {
         Instance = this;
     }
 
-    public void PointClicked(ClickablePoint point)
+    void Update()
     {
-        if (selectedPoint == null)
+        if (Input.GetKeyDown(KeyCode.Backspace) && lines.Count > 0)
         {
-            selectedPoint = point;
+            Destroy(lines[^1].gameObject);
+            lines.RemoveAt(lines.Count - 1);
         }
-        else
+
+        if (Input.GetMouseButtonDown(1))
         {
-            // Prevent connecting input-to-input or output-to-output
-            if (selectedPoint.isOutput == point.isOutput)
-            {
-                Debug.LogWarning("Cannot connect input to input or output to output.");
-                selectedPoint = null;
-                return;
-            }
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0;
 
-            // Ensure output connects to input
-            ClickablePoint from = selectedPoint.isOutput ? selectedPoint : point;
-            ClickablePoint to = selectedPoint.isOutput ? point : selectedPoint;
-
-            // Remove existing wires going into 'to'
-            foreach (var wire in new List<Wire>(wires))
+            foreach (var line in lines)
             {
-                if (wire.to == to)
+                if (line.IsMouseNearLine(mousePos))
                 {
-                    Destroy(wire.gameObject);
-                    wires.Remove(wire);
+                    Destroy(line.gameObject);
+                    lines.Remove(line);
+                    break;
                 }
             }
-
-            Wire wireObj = Instantiate(wirePrefab).GetComponent<Wire>();
-            wireObj.SetConnection(from, to);
-            wires.Add(wireObj);
-
-            selectedPoint = null;
         }
     }
 
-    void Update()
+    public void HandleClick(ConnectionPoint point)
     {
-        // Delete wire with right click
-        if (Input.GetMouseButtonDown(1))
+        if (point.isOutput)
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-            if (hit.collider != null)
-            {
-                Wire wire = hit.collider.GetComponent<Wire>();
-                if (wire != null)
-                {
-                    wires.Remove(wire);
-                    Destroy(wire.gameObject);
-                }
-            }
+            selectedOutput = point;
         }
-
-        // Remove last wire with backspace
-        if (Input.GetKeyDown(KeyCode.Backspace) && wires.Count > 0)
+        else
         {
-            Wire lastWire = wires[wires.Count - 1];
-            wires.RemoveAt(wires.Count - 1);
-            Destroy(lastWire.gameObject);
+            if (selectedOutput == null) return;
+
+            // Prevent output-to-output
+            if (!point.isOutput)
+            {
+                // Remove existing line going to this input
+                ConnectionLine existing = lines.Find(l => l.input == point);
+                if (existing != null)
+                {
+                    Destroy(existing.gameObject);
+                    lines.Remove(existing);
+                }
+
+                GameObject lineGO = Instantiate(linePrefab);
+                ConnectionLine line = lineGO.GetComponent<ConnectionLine>();
+                line.Initialize(selectedOutput, point);
+                lines.Add(line);
+                selectedOutput = null;
+            }
         }
     }
 }
