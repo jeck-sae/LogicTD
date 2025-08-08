@@ -1,60 +1,58 @@
 using UnityEngine;
 
+[RequireComponent(typeof(LineRenderer), typeof(Collider2D))]
 public class Wire : MonoBehaviour
 {
-    private bool isHovered = false;
-    private LineRenderer lineRenderer;
-    private BoxCollider2D boxCollider;
+    public ClickablePoint from;
+    public ClickablePoint to;
+    private LineRenderer line;
 
-    void Start()
+    void Awake()
     {
-        lineRenderer = GetComponent<LineRenderer>();
-        boxCollider = GetComponent<BoxCollider2D>();
-        if (lineRenderer == null)
-        {
-            Debug.LogWarning("Wire requires a LineRenderer component.");
-        }
-        if (boxCollider == null)
-        {
-            Debug.LogWarning("Wire requires a BoxCollider2D component.");
-        }
+        line = GetComponent<LineRenderer>();
+        line.positionCount = 2;
+
+        // Ensure collider is visible and clickable
+        BoxCollider2D col = GetComponent<BoxCollider2D>();
+        col.isTrigger = true;
+    }
+
+    public void SetConnection(ClickablePoint fromPoint, ClickablePoint toPoint)
+    {
+        from = fromPoint;
+        to = toPoint;
+        UpdateLine();
     }
 
     void Update()
     {
-        if (lineRenderer == null || boxCollider == null) return;
+        UpdateLine();
+    }
 
-        // Update collider to match line
-        Vector3 start = lineRenderer.GetPosition(0);
-        Vector3 end = lineRenderer.GetPosition(1);
-        Vector3 midPoint = (start + end) / 2f;
-
-        transform.position = midPoint;
-
-        float length = Vector3.Distance(start, end);
-        boxCollider.size = new Vector2(length, 0.1f);
-
-        float angle = Mathf.Atan2(end.y - start.y, end.x - start.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-
-        // Check Delete key while hovering
-        if (isHovered && Input.GetKeyDown(KeyCode.Delete))
+    void UpdateLine()
+    {
+        if (from && to)
         {
-            Destroy(gameObject);
+            Vector3 start = from.transform.position;
+            Vector3 end = to.transform.position;
+            line.SetPosition(0, start);
+            line.SetPosition(1, end);
+
+            // Update collider to match line
+            UpdateCollider(start, end);
         }
     }
 
-    void OnMouseEnter()
+    void UpdateCollider(Vector3 start, Vector3 end)
     {
-        isHovered = true;
-        if (lineRenderer != null)
-            lineRenderer.startColor = lineRenderer.endColor = Color.red;
-    }
+        BoxCollider2D col = GetComponent<BoxCollider2D>();
+        Vector3 midPoint = (start + end) / 2f;
+        transform.position = midPoint;
 
-    void OnMouseExit()
-    {
-        isHovered = false;
-        if (lineRenderer != null)
-            lineRenderer.startColor = lineRenderer.endColor = Color.yellow;
+        float length = Vector3.Distance(start, end);
+        col.size = new Vector2(length, 0.1f);
+        Vector3 direction = (end - start).normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 }

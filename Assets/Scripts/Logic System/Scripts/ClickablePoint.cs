@@ -1,22 +1,12 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Collider2D))]
 public class ClickablePoint : MonoBehaviour
 {
-    public LogicGate parentGate;
-    public bool isOutput; // Set in inspector
+    public bool isOutput;
 
-    private ConnectionManager connectionManager;
-
-    void Start()
+    private void OnMouseDown()
     {
-        connectionManager = FindAnyObjectByType<ConnectionManager>();
-    }
-
-    void OnMouseDown()
-    {
-        if (connectionManager != null)
-        {
-            connectionManager.OnClickConnectionPoint(parentGate, transform, isOutput);
-        }
+        ConnectionManager.Instance.PointClicked(this);
     }
 }
