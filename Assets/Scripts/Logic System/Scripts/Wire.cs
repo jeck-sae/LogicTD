@@ -3,8 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer), typeof(Collider2D))]
 public class Wire : MonoBehaviour
 {
-    public ClickablePoint from;
-    public ClickablePoint to;
+    public ConnectionPoint from;
+    public ConnectionPoint to;
     private LineRenderer line;
 
     void Awake()
@@ -17,7 +17,7 @@ public class Wire : MonoBehaviour
         col.isTrigger = true;
     }
 
-    public void SetConnection(ClickablePoint fromPoint, ClickablePoint toPoint)
+    public void SetConnection(ConnectionPoint fromPoint, ConnectionPoint toPoint)
     {
         from = fromPoint;
         to = toPoint;

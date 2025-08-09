@@ -1,46 +1,47 @@
-using UnityEditor;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
 public class ConnectionLine : MonoBehaviour
 {
-    public ConnectionPoint output;
-    public ConnectionPoint input;
+    private LineRenderer lineRenderer;
+    public ConnectionPoint inputPoint;
+    public ConnectionPoint outputPoint;
 
-    private LineRenderer lr;
+    private const float LineClickThreshold = 0.1f;
 
-    void Awake()
+    public void Initialize(ConnectionPoint output, ConnectionPoint input)
     {
-        lr = GetComponent<LineRenderer>();
-        lr.positionCount = 2;
+        lineRenderer = GetComponent<LineRenderer>();
+        outputPoint = output;
+        inputPoint = input;
     }
 
-    public void Initialize(ConnectionPoint from, ConnectionPoint to)
+    private void Update()
     {
-        output = from;
-        input = to;
-        UpdateLine();
-    }
-
-    void Update()
-    {
-        if (output != null && input != null)
+        if (lineRenderer != null && outputPoint != null && inputPoint != null)
         {
-            UpdateLine();
+            lineRenderer.positionCount = 2;
+            lineRenderer.SetPosition(0, outputPoint.Position);
+            lineRenderer.SetPosition(1, inputPoint.Position);
         }
-    }
-
-    void UpdateLine()
-    {
-        lr.SetPosition(0, output.transform.position);
-        lr.SetPosition(1, input.transform.position);
     }
 
     public bool IsMouseNearLine(Vector3 mousePos)
     {
-        Vector3 a = output.transform.position;
-        Vector3 b = input.transform.position;
-        float distance = HandleUtility.DistancePointLine(mousePos, a, b);
-        return distance < 0.2f;
+        if (outputPoint == null || inputPoint == null) return false;
+
+        Vector3 p1 = outputPoint.Position;
+        Vector3 p2 = inputPoint.Position;
+        float distance = DistancePointToLine(mousePos, p1, p2);
+        return distance <= LineClickThreshold;
+    }
+
+    private float DistancePointToLine(Vector3 point, Vector3 lineStart, Vector3 lineEnd)
+    {
+        float length = Vector3.Distance(lineStart, lineEnd);
+        if (length == 0f) return Vector3.Distance(point, lineStart);
+        float t = Mathf.Clamp01(Vector3.Dot(point - lineStart, lineEnd - lineStart) / (length * length));
+        Vector3 projection = lineStart + t * (lineEnd - lineStart);
+        return Vector3.Distance(point, projection);
     }
 }
