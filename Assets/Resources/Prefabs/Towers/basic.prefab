@@ -54,8 +54,8 @@ MonoBehaviour:
   effects: {fileID: 0}
   towerID: basic
   shopIcon: {fileID: -6232723913722592379, guid: b77cfe2e5c80654478fad10249648232, type: 3}
-  towerName: Basic
-  towerDescription: Shoots at a single target. Has average stats.
+  towerName: AND
+  towerDescription: Single target projectile.
   towerColor: {r: 0.7294118, g: 0.37254903, b: 0.7568628, a: 1}
   Cost:
     m_name: 

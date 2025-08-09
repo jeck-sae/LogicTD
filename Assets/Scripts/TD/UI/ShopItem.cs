@@ -10,7 +10,9 @@ namespace TowerDefense
         public GameObject prefab;
         public Image iconUI;
         public TMP_Text costUI;
-    
+        public TMP_Text towerNameUI;
+        public TMP_Text towerDescUI;
+        
         protected Tower tower;
 
         private float currentCostMultiplier = 1;
@@ -20,6 +22,10 @@ namespace TowerDefense
             tower = prefab.GetComponent<Tower>();
             iconUI.sprite = tower.shopIcon;
             costUI.text = ((int)tower.Cost).ToString();
+            towerNameUI.text = tower.towerName;
+            towerNameUI.color = tower.towerColor;
+            towerDescUI.text = tower.towerDescription;
+            towerDescUI.color = new Color(tower.towerColor.r, tower.towerColor.g, tower.towerColor.b, .5f);
             GameStats.Instance.coinsChanged += UpdatePriceUI;
             tower.Cost.OnValueChanged += CostChanged;
             UpdatePriceUI();
@@ -73,7 +79,7 @@ namespace TowerDefense
             UpdatePriceUI();
         }
 
-        protected int GetCost() => (int)(tower.Cost * currentCostMultiplier);
+        protected int GetCost() => Mathf.RoundToInt(tower.Cost * currentCostMultiplier);
         
         protected void BuyTower()
         {

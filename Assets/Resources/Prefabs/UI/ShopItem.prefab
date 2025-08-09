@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 118, y: -22}
-  m_SizeDelta: {x: 172, y: 19.1047}
+  m_AnchoredPosition: {x: 83.5, y: -20.77501}
+  m_SizeDelta: {x: 103, y: 21.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7994196070430360834
 CanvasRenderer:
@@ -65,7 +65,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +10% upgrade description
+  m_text: 'Tower desc Tower desc
+
+    Tower desc Tower desc'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4c40d461330aeda4c91af938d4627cdb, type: 2}
   m_sharedMaterial: {fileID: -3992230642964536134, guid: 4c40d461330aeda4c91af938d4627cdb, type: 2}
@@ -74,8 +76,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4289418143
-  m_fontColor: {r: 0.62352943, g: 0.3254902, b: 0.67058825, a: 1}
+    rgba: 2158711711
+  m_fontColor: {r: 0.62352943, g: 0.3254902, b: 0.67058825, a: 0.5019608}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -170,8 +172,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 118, y: -6.000002}
-  m_SizeDelta: {x: 172, y: 12.895}
+  m_AnchoredPosition: {x: 83.5, y: -5.000005}
+  m_SizeDelta: {x: 103, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4693282795999062192
 CanvasRenderer:
@@ -201,7 +203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '[1] Upgrade Title'
+  m_text: Tower Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4c40d461330aeda4c91af938d4627cdb, type: 2}
   m_sharedMaterial: {fileID: -3992230642964536134, guid: 4c40d461330aeda4c91af938d4627cdb, type: 2}
@@ -328,6 +330,8 @@ MonoBehaviour:
   prefab: {fileID: 2367323786301763600, guid: a2b27ead675d829448ab1ef20097b82e, type: 3}
   iconUI: {fileID: 4439425331214751238}
   costUI: {fileID: 8148294254818815632}
+  towerNameUI: {fileID: 8715985897000892542}
+  towerDescUI: {fileID: 8704164471763676616}
 --- !u!114 &5988439531322665775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,9 +564,9 @@ RectTransform:
   - {fileID: 581141954867378318}
   m_Father: {fileID: 8987167224616257800}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 148, y: -16}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -19, y: -16}
   m_SizeDelta: {x: 34, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5803217971210120482

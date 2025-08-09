@@ -116,7 +116,7 @@ MonoBehaviour:
   effects: {fileID: 0}
   towerID: ice
   shopIcon: {fileID: -2825653136060754799, guid: b77cfe2e5c80654478fad10249648232, type: 3}
-  towerName: Ice
+  towerName: XNOR
   towerDescription: Slows enemies in an area. Does not stack.
   towerColor: {r: 0.3803922, g: 0.7294118, b: 0.7607844, a: 1}
   Cost:

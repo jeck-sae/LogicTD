@@ -66,8 +66,8 @@ MonoBehaviour:
   effects: {fileID: 0}
   towerID: cannon
   shopIcon: {fileID: 487614300551021084, guid: b77cfe2e5c80654478fad10249648232, type: 3}
-  towerName: Cannon
-  towerDescription: Shoots at a single target dealing splash damage.
+  towerName: OR
+  towerDescription: Single target splash damage projectile.
   towerColor: {r: 0.7607844, g: 0.3803922, b: 0.43529415, a: 1}
   Cost:
     m_name: 

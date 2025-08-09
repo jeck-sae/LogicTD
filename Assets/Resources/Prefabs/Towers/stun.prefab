@@ -100,9 +100,8 @@ MonoBehaviour:
   effects: {fileID: 0}
   towerID: stun
   shopIcon: {fileID: -6240021825540437177, guid: b77cfe2e5c80654478fad10249648232, type: 3}
-  towerName: Stun
-  towerDescription: Damages nearby enemies, and has a chance to stun them for a short
-    time.
+  towerName: XOR
+  towerDescription: Has a chance to stun enemies.
   towerColor: {r: 0.7372549, g: 0.7058824, b: 0.7568628, a: 1}
   Cost:
     m_name: 

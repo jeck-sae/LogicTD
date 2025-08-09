@@ -66,8 +66,8 @@ MonoBehaviour:
   effects: {fileID: 0}
   towerID: flamethrower
   shopIcon: {fileID: -8546000511252593766, guid: b77cfe2e5c80654478fad10249648232, type: 3}
-  towerName: Flamethrower
-  towerDescription: Burns enemies over time. Burning enemies can't be frozen.
+  towerName: NAND
+  towerDescription: Burns enemies over time. Does not stack.
   towerColor: {r: 0.7607844, g: 0.6745098, b: 0.3803922, a: 1}
   Cost:
     m_name: 
