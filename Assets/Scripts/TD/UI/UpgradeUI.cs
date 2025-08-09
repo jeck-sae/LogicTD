@@ -12,6 +12,7 @@ namespace TowerDefense
 
         public TMP_Text description;
         public TMP_Text price;
+        public TMP_Text title;
         public Image icon;
 
         private void Start()
@@ -24,6 +25,8 @@ namespace TowerDefense
             var upgrade = upgradeSeries.GetUpgrade(currentUpgrade);
             description.text = upgrade.description;
             price.text = upgrade.cost.ToString();
+            icon.sprite = upgradeSeries.upgradeIcon;
+            title.text = $"[{currentUpgrade + 1}] " + upgradeSeries.upgradeTitle;
             //icon.sprite = upgrade.
         }
 

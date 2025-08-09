@@ -40,27 +40,57 @@ namespace TowerDefense
     
         void UpdatePreview()
         {
-            Vector2Int coords = followCursor ? GridManager.FixCoordinates(Helpers.Camera.ScreenToWorldPoint(Input.mousePosition))
-                                             : startPosition;
-    
-            var tile = GridManager.Instance.Get(coords);
-    
+            ITowerSlot slot = null;
+            var mousePos = Helpers.Camera.ScreenToWorldPoint(Input.mousePosition);
+            Vector2Int coords = followCursor ? GridManager.FixCoordinates(mousePos) : startPosition;
+            Vector3 pos = coords.ToVector3();
             if (followCursor)
             {
-                rangePreview.transform.position = coords.ToVector3();
-                preview.transform.position = coords.ToVector3();
+                var hit = Physics2D.RaycastAll(
+                    mousePos, Vector2.zero);
+                
+                foreach (var h in hit)
+                {
+                    slot = h.collider.GetComponent<ITowerSlot>();
+                    if (slot != null)
+                    {
+                        if (slot is GateSlot gateSlot)
+                        {
+                            pos = gateSlot.transform.position; 
+                        }
+                        break;
+                    }
+                }
             }
-    
+            else
+            {
+                slot = GridManager.Instance.Get(coords);
+                if(slot != null)
+                    pos = ((Tile)slot).transform.position;
+            }
+            
+            if (followCursor)
+            {
+                rangePreview.transform.position = pos;
+                preview.transform.position = pos;
+            }
+
             bool conditionMet = (placeCondition == null) ? true : placeCondition();
-            if (tile && tile.CanPlace() && conditionMet)
+            if (slot != null && conditionMet && slot.CanPlace(previewingTower))
             {
                 previewRenderers.ForEach(x => x.color = Color.white);
-                rangePreview.ShowColor(previewingTower.towerColor);
+                if(slot is GateSlot)
+                    rangePreview.Hide();
+                else
+                    rangePreview.ShowColor(previewingTower.towerColor);
             }
             else
             {
                 previewRenderers.ForEach(x => x.color = Color.red);
-                rangePreview.ShowColor(Color.red);
+                if(slot is GateSlot)
+                    rangePreview.Hide();
+                else
+                    rangePreview.ShowColor(Color.red);
             }
         }
     

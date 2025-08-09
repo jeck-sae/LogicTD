@@ -68,7 +68,7 @@ namespace TowerDefense
             gfx.UpdateGFX();
         }
     
-        public virtual bool CanPlace()
+        public virtual bool CanPlace(Tower t)
         {
             return CanBuildOver && !Tower;
         }
@@ -85,9 +85,9 @@ namespace TowerDefense
         }
         
 
-        public void PlaceTower(Tower t)
+        public virtual void PlaceTower(Tower t)
         {
-            if (!CanPlace())
+            if (!CanPlace(t))
                 return;
             tower = t;
             t.gameObject.SetActive(true);
@@ -97,7 +97,7 @@ namespace TowerDefense
             name = $"{tileName} [" + t.towerName + "]";
         } 
     
-        public void RemoveTower()
+        public virtual void RemoveTower()
         {
             tower = null;
             if(TileSelectionManager.Instance?.SelectedTile == this)

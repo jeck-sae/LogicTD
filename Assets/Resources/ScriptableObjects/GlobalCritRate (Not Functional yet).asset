@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9cd8c4725c6c4577be0a3512071367b1, type: 3}
-  m_Name: BasicDamageSeries
+  m_Name: GlobalCritRate (Not Functional yet)
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -32,7 +32,7 @@ MonoBehaviour:
       Data: 1|TowerDefense.TowerUpgrade, Assembly-CSharp
     - Name: cost
       Entry: 3
-      Data: 5
+      Data: 10
     - Name: targetTower
       Entry: 1
       Data: basic
@@ -87,7 +87,7 @@ MonoBehaviour:
       Data: 
     - Name: description
       Entry: 1
-      Data: 
+      Data: 'Cost for next upgrade is: Current cost x 1.5 = New Cost'
     - Name: upgrade
       Entry: 7
       Data: 6|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
@@ -135,8 +135,8 @@ MonoBehaviour:
       Entry: 6
       Data: 
     - Name: description
-      Entry: 6
-      Data: 
+      Entry: 1
+      Data: 'Cost for next upgrade is: Current cost x 1.5 = New Cost'
     - Name: upgrade
       Entry: 7
       Data: 10|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
@@ -181,5 +181,10 @@ MonoBehaviour:
       Entry: 8
       Data: 
   defaultTargetTower: basic
-  defaultTargetStat: damage
-  defaultDescription: 'Basic Tower: +10% damage'
+  defaultTargetStat: critical rate
+  defaultDescription: 'Basic Tower: +10% crit rate or
+
+    Current Speed + 0.5% =
+    New crit rate
+
+    Caps when crit rate reaches 45%'

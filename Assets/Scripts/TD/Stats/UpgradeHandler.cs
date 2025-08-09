@@ -49,12 +49,18 @@ namespace TowerDefense
 
         public void UnlockUpgrade(string upgradeName, IUpgrade upgrade, bool overrideIfDuplicate = true)
         {
-            if(upgrade is StatUpgrade statUpgrade)
-                tower.stats.AddModifier(statUpgrade.stat, upgradeName, 
-                    statUpgrade.modifier.add, statUpgrade.modifier.multiply, overrideIfDuplicate);
-            
+
+            if (upgrade is StatUpgrade statUpgrade)
+            {
+                if(tower.stats.HasStat(statUpgrade.stat))
+                    tower.stats.AddModifier(statUpgrade.stat, upgradeName, 
+                        statUpgrade.modifier.add, statUpgrade.modifier.multiply, 
+                        overrideIfDuplicate);
+            }
             else if (upgrade is FlagUpgrade flagUpgrade)
+            {
                 unlockedFlagUpgrades.Add(flagUpgrade);
+            }
         }
         
         public float? UpgradeCost()

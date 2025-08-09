@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2190030188186193377}
   - component: {fileID: 3518599096552766535}
+  - component: {fileID: 1916935658660805796}
   - component: {fileID: 5237592369338892758}
   - component: {fileID: -1493311375951407957}
+  - component: {fileID: 7175351171447990395}
   m_Layer: 0
   m_Name: basic
   m_TagString: Untagged
@@ -48,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortOrder: 0
+  costMultiplier: 1.8
   effects: {fileID: 0}
   towerID: basic
   shopIcon: {fileID: -6232723913722592379, guid: b77cfe2e5c80654478fad10249648232, type: 3}
@@ -56,7 +59,7 @@ MonoBehaviour:
   towerColor: {r: 0.7294118, g: 0.37254903, b: 0.7568628, a: 1}
   Cost:
     m_name: 
-    m_baseValue: 50
+    m_baseValue: 1
     min: 1
     max: 0
     tempMin: 71.5
@@ -65,7 +68,7 @@ MonoBehaviour:
     m_maxValue: 3.4028235e+38
   MaxRange:
     m_name: 
-    m_baseValue: 3.4
+    m_baseValue: 3.5
     min: 1
     max: 0
     tempMin: 0
@@ -88,7 +91,6 @@ MonoBehaviour:
       statUpgrades:
       - stat: damage
         modifier:
-          name: 
           add: 5
           multiply: 1
       flagUpgrades: []
@@ -96,12 +98,10 @@ MonoBehaviour:
       statUpgrades:
       - stat: damage
         modifier:
-          name: 
           add: 8
           multiply: 1
       - stat: maxRange
         modifier:
-          name: 
           add: 0.5
           multiply: 1
       flagUpgrades: []
@@ -109,12 +109,10 @@ MonoBehaviour:
       statUpgrades:
       - stat: damage
         modifier:
-          name: 
           add: 10
           multiply: 1
       - stat: attackSpeed
         modifier:
-          name: 
           add: 0.5
           multiply: 1
       flagUpgrades: []
@@ -183,6 +181,18 @@ MonoBehaviour:
     m_minValue: 0
     m_maxValue: 3.4028235e+38
   projectileHitSoundVolume: 0.5
+--- !u!114 &1916935658660805796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143269408887725404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9561d9b7b236484b9e2147364c35848, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &5237592369338892758
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -256,6 +266,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7175351171447990395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143269408887725404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb18bc1212a5471ba7f67c52d41cd7fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slot: {fileID: 0}
 --- !u!1 &3167749927198372477
 GameObject:
   m_ObjectHideFlags: 0
