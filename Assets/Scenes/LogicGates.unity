@@ -5628,7 +5628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8a015abb092fc24298cc9148638d2a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  affordableColor: {r: 0.73333335, g: 1, b: 0.5294118, a: 1}
+  affordableColor: {r: 1, g: 0.8901961, b: 0.5294118, a: 1}
   unaffordableColor: {r: 1, g: 0.5411765, b: 0.74509805, a: 1}
 --- !u!114 &948418051
 MonoBehaviour:
@@ -9245,10 +9245,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopItem (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 8285864440097895374, guid: 4cc94a9bbac3839418cd69dd1a30aa5e, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2099195978}
     - target: {fileID: 8987167224616257800, guid: 4cc94a9bbac3839418cd69dd1a30aa5e, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12209,17 +12205,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3773256272046661766, guid: f1b77e11826971345b822a479b75e925, type: 3}
   m_PrefabInstance: {fileID: 2099195976}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2099195978 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 548599948596665306, guid: f1b77e11826971345b822a479b75e925, type: 3}
-  m_PrefabInstance: {fileID: 2099195976}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e79dfc113102f00438b71c0331ad42d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2112222439 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 996072464881437350, guid: 4cc94a9bbac3839418cd69dd1a30aa5e, type: 3}
