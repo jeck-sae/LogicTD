@@ -19,6 +19,7 @@ namespace TowerDefense
         [ReadOnly] public bool state;
 
         public event Action<bool> OnStateChanged;
+        public event Action<bool> OnTowerPlacedOrRemoved;
         
         private void Awake()
         {
@@ -83,8 +84,9 @@ namespace TowerDefense
             
             connectedGate = t.GetComponent<LogicComponent>();
             connectedGate.slot = this;
-            
+
             LogicManager.Instance.UpdateStates();
+            OnTowerPlacedOrRemoved?.Invoke(true);
         }
 
         public void RemoveTower()
@@ -95,9 +97,10 @@ namespace TowerDefense
             name = "Empty Gate Node";
 
             previousGFXStates.ForEach(x 
-                => x.transform.gameObject.SetActive(x.state));
+                => x.transform?.gameObject.SetActive(x.state));
             
             LogicManager.Instance.UpdateStates();
+            OnTowerPlacedOrRemoved?.Invoke(false);
         }
 
         
