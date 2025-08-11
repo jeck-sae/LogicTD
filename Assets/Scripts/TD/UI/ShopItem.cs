@@ -12,6 +12,8 @@ namespace TowerDefense
         public TMP_Text costUI;
         public TMP_Text towerNameUI;
         public TMP_Text towerDescUI;
+
+        public bool disablePrice = false;
         
         protected Tower tower;
 
@@ -79,7 +81,7 @@ namespace TowerDefense
             UpdatePriceUI();
         }
 
-        protected int GetCost() => Mathf.RoundToInt(tower.Cost * currentCostMultiplier);
+        protected int GetCost() => disablePrice ? 0 : Mathf.RoundToInt(tower.Cost * currentCostMultiplier);
         
         protected void BuyTower()
         {
