@@ -8,9 +8,9 @@ namespace TowerDefense
 {
     public class GateSlot : MonoBehaviour, ITowerSlot
     {
-        private Tower tower;
+        protected Tower tower;
         public Tower Tower => tower;
-        [SerializeField, ReadOnly] private LogicComponent connectedGate;
+        [SerializeField, ReadOnly] protected LogicComponent connectedGate;
         public bool canPlaceNewComponent;
         
         [SerializeReference] public List<GateConnection> inputs = new ();
@@ -21,7 +21,7 @@ namespace TowerDefense
         public event Action<bool> OnStateChanged;
         public event Action<bool> OnTowerPlacedOrRemoved;
         
-        private void Awake()
+        protected virtual void Awake()
         {
             connectedGate = GetComponentInChildren<LogicComponent>();
             if (connectedGate) connectedGate.slot = this;
@@ -52,14 +52,14 @@ namespace TowerDefense
         }
         
         
-        public bool CanPlace(Tower t)
+        public virtual bool CanPlace(Tower t)
         {
             return canPlaceNewComponent && !tower && t.TryGetComponent<LogicComponent>(
                 out var c) && c.RequiredInputs == inputs.Count;
         }
 
         List<(Transform transform, bool state)> previousGFXStates = new();
-        public void PlaceTower(Tower t)
+        public virtual void PlaceTower(Tower t)
         {
             if (!CanPlace(t))
                 return;
@@ -89,7 +89,7 @@ namespace TowerDefense
             OnTowerPlacedOrRemoved?.Invoke(true);
         }
 
-        public void RemoveTower()
+        public virtual void RemoveTower()
         {
             connectedGate.slot = null;
             connectedGate = null;
