@@ -30,6 +30,7 @@ namespace TowerDefense
             
             placeholder.enabled = false;
             LogicManager.Instance.UpdateStates();
+            InvokeTowerPlacedOrRemoved(false);
         }
         public void ParallelPlace(Tower t)
         {
@@ -41,6 +42,7 @@ namespace TowerDefense
             
             connectedGate = t.GetComponent<LogicComponent>();
             LogicManager.Instance.UpdateStates();
+            InvokeTowerPlacedOrRemoved(true);
         }
         
         public override void PlaceTower(Tower t)
@@ -57,7 +59,6 @@ namespace TowerDefense
 
         public override void RemoveTower()
         {
-            Debug.Log("REMOVE");
             var parallel = FindObjectsByType<ParallelGateSlot>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
             parallel.ForEach(x => {
                 x.ParallelRemove();

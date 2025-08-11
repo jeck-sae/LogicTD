@@ -20,6 +20,8 @@ namespace TowerDefense
 
         public event Action<bool> OnStateChanged;
         public event Action<bool> OnTowerPlacedOrRemoved;
+        protected void InvokeTowerPlacedOrRemoved(bool state) 
+            => OnTowerPlacedOrRemoved?.Invoke(state);
         
         protected virtual void Awake()
         {
