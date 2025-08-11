@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
+using Sirenix.Utilities;
 using UnityEngine;
 
 namespace TowerDefense
@@ -13,17 +14,17 @@ namespace TowerDefense
 
         public event Action OnPuzzleSolved;
         public event Action OnPuzzleUnsolved;
-        public bool allSlotsFilled;
-        public bool solved;
+        [ReadOnly] public bool allSlotsFilled;
+        [ReadOnly] public bool solved;
         private GateSlot[] gates;
         
         private void Start()
         {
-            outputs.ForEach(x => x.outputGate.slot.OnStateChanged += CheckResult);
             gates = GetComponentsInChildren<GateSlot>();
+            gates.ForEach(x => x.OnTowerPlacedOrRemoved += CheckResult);
         }
 
-        private void CheckResult(bool obj)
+        private void CheckResult(bool placed)
         {
             bool before = allSlotsFilled && solved;
             allSlotsFilled = gates.All(x => !x.canPlaceNewComponent || x.Tower);
@@ -40,7 +41,7 @@ namespace TowerDefense
             {
                 if(!output.outputGate || !output.outputGate.slot)
                     continue;
-                output.outputGate.slot.OnStateChanged -= CheckResult;
+                output.outputGate.slot.OnTowerPlacedOrRemoved -= CheckResult;
             }
         }
 

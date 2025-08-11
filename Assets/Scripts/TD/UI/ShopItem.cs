@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,7 @@ namespace TowerDefense
         
         protected Tower tower;
 
-        private float currentCostMultiplier = 1;
+        [ShowInInspector, ReadOnly] private float currentCostMultiplier = 1;
         
         protected void Awake()
         {
