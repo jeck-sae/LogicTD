@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8755452695882483669}
   - component: {fileID: 8674422806132872298}
   m_Layer: 0
-  m_Name: AND In 1,0. Out 0
+  m_Name: 03.AND In 0,1. Out 0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3155648296831528403, guid: f856dc0acbc4d034688d5ed0a18659f6, type: 3}
       propertyPath: inputState
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4443605549917868199, guid: f856dc0acbc4d034688d5ed0a18659f6, type: 3}
       propertyPath: m_Name
@@ -71,15 +71,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5572102445592245209, guid: f856dc0acbc4d034688d5ed0a18659f6, type: 3}
       propertyPath: m_Color.b
-      value: 0.43529412
+      value: 0.5294118
       objectReference: {fileID: 0}
     - target: {fileID: 5572102445592245209, guid: f856dc0acbc4d034688d5ed0a18659f6, type: 3}
       propertyPath: m_Color.g
-      value: 0.38039216
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5572102445592245209, guid: f856dc0acbc4d034688d5ed0a18659f6, type: 3}
       propertyPath: m_Color.r
-      value: 0.7607843
+      value: 0.73333335
       objectReference: {fileID: 0}
     - target: {fileID: 7520517843728136357, guid: f856dc0acbc4d034688d5ed0a18659f6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -402,7 +402,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3155648296831528403, guid: f856dc0acbc4d034688d5ed0a18659f6, type: 3}
       propertyPath: inputState
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4443605549917868199, guid: f856dc0acbc4d034688d5ed0a18659f6, type: 3}
       propertyPath: m_Name
@@ -410,15 +410,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5572102445592245209, guid: f856dc0acbc4d034688d5ed0a18659f6, type: 3}
       propertyPath: m_Color.b
-      value: 0.5294118
+      value: 0.43529412
       objectReference: {fileID: 0}
     - target: {fileID: 5572102445592245209, guid: f856dc0acbc4d034688d5ed0a18659f6, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.38039216
       objectReference: {fileID: 0}
     - target: {fileID: 5572102445592245209, guid: f856dc0acbc4d034688d5ed0a18659f6, type: 3}
       propertyPath: m_Color.r
-      value: 0.73333335
+      value: 0.7607843
       objectReference: {fileID: 0}
     - target: {fileID: 7520517843728136357, guid: f856dc0acbc4d034688d5ed0a18659f6, type: 3}
       propertyPath: m_LocalPosition.x
