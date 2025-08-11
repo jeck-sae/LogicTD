@@ -1,16 +1,42 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class LogicGate : MonoBehaviour
 {
-    public List<LogicGate> inputs = new List<LogicGate>();
+    public ConnectionPoint[] inputs; // assign in inspector
+
     public bool output;
 
-    public void AddInput(LogicGate gate)
+    public virtual void Evaluate()
     {
-        if (!inputs.Contains(gate))
-            inputs.Add(gate);
+        bool[] inputValues = new bool[inputs.Length];
+
+        for (int i = 0; i < inputs.Length; i++)
+        {
+            ConnectionPoint input = inputs[i];
+
+            if (input.connectedLine != null)
+            {
+                ConnectionPoint connectedOutput = input.connectedLine.from;
+                LogicGate connectedGate = connectedOutput.GetComponentInParent<LogicGate>();
+
+                if (connectedGate != null)
+                {
+                    connectedGate.Evaluate();
+                    inputValues[i] = connectedGate.output;
+                }
+                else
+                {
+                    inputValues[i] = false;
+                }
+            }
+            else
+            {
+                inputValues[i] = false;
+            }
+        }
+
+        output = CalculateOutput(inputValues);
     }
 
-    public abstract void Evaluate();
+    protected abstract bool CalculateOutput(bool[] inputs);
 }

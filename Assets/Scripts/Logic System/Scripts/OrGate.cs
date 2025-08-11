@@ -1,18 +1,11 @@
-using UnityEngine;
-
 public class OrGate : LogicGate
 {
-    public override void Evaluate()
+    protected override bool CalculateOutput(bool[] inputs)
     {
-        output = false; // start with false
-        foreach (var gate in inputs)
+        foreach (bool b in inputs)
         {
-            gate.Evaluate();
-            if (gate.output)
-            {
-                output = true;
-                break; // if any input is true, we're done
-            }
+            if (b) return true;
         }
+        return false;
     }
 }

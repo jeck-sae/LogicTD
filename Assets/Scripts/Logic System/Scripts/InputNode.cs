@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class InputNode : LogicGate
 {
-    public bool value;  // set this in Inspector or via UI
+    public bool value;
 
     public override void Evaluate()
     {
         output = value;
+    }
+
+    protected override bool CalculateOutput(bool[] inputs)
+    {
+        return value;
     }
 }

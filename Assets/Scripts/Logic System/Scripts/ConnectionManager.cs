@@ -6,6 +6,7 @@ public class ConnectionManager : MonoBehaviour
     public static ConnectionManager Instance;
 
     public GameObject linePrefab;
+
     private ConnectionPoint firstPoint;
 
     private List<ConnectionLine> lines = new List<ConnectionLine>();
@@ -24,12 +25,26 @@ public class ConnectionManager : MonoBehaviour
         }
         else
         {
-            // Prevent connecting output to output or input to input
             if (firstPoint.isOutput != point.isOutput)
             {
-                CreateConnection(firstPoint.isOutput ? firstPoint : point,
-                                 firstPoint.isInput ? firstPoint : point);
+                // Ensure output is first argument
+                ConnectionPoint output = firstPoint.isOutput ? firstPoint : point;
+                ConnectionPoint input = firstPoint.isInput ? firstPoint : point;
+
+                // Remove old connection to input if exists
+                if (input.connectedLine != null)
+                {
+                    Destroy(input.connectedLine.gameObject);
+                    input.connectedLine = null;
+                }
+
+                CreateConnection(output, input);
             }
+            else
+            {
+                Debug.LogWarning("Cannot connect two inputs or two outputs!");
+            }
+
             firstPoint = null;
         }
     }
@@ -44,7 +59,7 @@ public class ConnectionManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(1)) // Right-click to delete a line
+        if (Input.GetMouseButtonDown(1)) // Right-click to delete line
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;
@@ -53,8 +68,8 @@ public class ConnectionManager : MonoBehaviour
             {
                 if (line.IsMouseNearLine(mousePos))
                 {
-                    Destroy(line.gameObject);
                     lines.Remove(line);
+                    Destroy(line.gameObject);
                     break;
                 }
             }

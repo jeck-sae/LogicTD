@@ -1,17 +1,8 @@
-using UnityEngine;
-
 public class NotGate : LogicGate
 {
-    public override void Evaluate()
+    protected override bool CalculateOutput(bool[] inputs)
     {
-        if (inputs.Count > 0)
-        {
-            inputs[0].Evaluate();
-            output = !inputs[0].output;
-        }
-        else
-        {
-            output = true; // or false, depending how you want to handle no input
-        }
+        if (inputs.Length == 0) return true;
+        return !inputs[0];
     }
 }
