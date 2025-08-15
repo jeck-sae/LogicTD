@@ -38,7 +38,7 @@ MonoBehaviour:
       Data: '*'
     - Name: description
       Entry: 1
-      Data: 'All: +30% <color=#c2b661>Proj. Speed</color>'
+      Data: 
     - Name: upgrade
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
@@ -527,4 +527,4 @@ MonoBehaviour:
   defaultTargetStat: 
   upgradeTitle: Global
   upgradeIcon: {fileID: -3168733581550749585, guid: 91a2e310f2d789348ac8066aeea4276a, type: 3}
-  defaultDescription: <color=#c2b661>+30% Proj. Speed</color>
+  defaultDescription: 'All: <color=#c2b661>+30% Proj. Speed</color>'

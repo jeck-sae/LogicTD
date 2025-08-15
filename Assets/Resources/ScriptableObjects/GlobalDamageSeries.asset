@@ -38,7 +38,7 @@ MonoBehaviour:
       Data: '*'
     - Name: description
       Entry: 1
-      Data: 'All: +10% <color=#c2616f>Damage</color>'
+      Data: 
     - Name: upgrade
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
@@ -87,7 +87,7 @@ MonoBehaviour:
       Data: '*'
     - Name: description
       Entry: 1
-      Data: 'All: +10% <color=#c2616f>Damage</color>'
+      Data: 
     - Name: upgrade
       Entry: 7
       Data: 6|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
@@ -527,4 +527,4 @@ MonoBehaviour:
   defaultTargetStat: 
   upgradeTitle: Global
   upgradeIcon: {fileID: 5524590292671962877, guid: 91a2e310f2d789348ac8066aeea4276a, type: 3}
-  defaultDescription: <color=#c2616f>+10% Damage</color>
+  defaultDescription: 'All: <color=#c2616f>+10% Damage</color>'

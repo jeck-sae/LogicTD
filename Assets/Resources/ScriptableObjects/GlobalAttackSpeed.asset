@@ -38,7 +38,7 @@ MonoBehaviour:
       Data: '*'
     - Name: description
       Entry: 1
-      Data: <color=#618fc2>+10% Att. Speed</color>
+      Data: 'All: <color=#618fc2>+10% Att. Speed</color>'
     - Name: upgrade
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
@@ -87,7 +87,7 @@ MonoBehaviour:
       Data: '*'
     - Name: description
       Entry: 1
-      Data: 'All: +10% <color=#618fc2>Att. Speed</color>'
+      Data: 
     - Name: upgrade
       Entry: 7
       Data: 6|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
@@ -136,7 +136,7 @@ MonoBehaviour:
       Data: '*'
     - Name: description
       Entry: 1
-      Data: 'All: +10% <color=#618fc2>Att. Speed</color>'
+      Data: 
     - Name: upgrade
       Entry: 7
       Data: 10|System.Collections.Generic.List`1[[TowerDefense.IUpgrade, Assembly-CSharp]],
@@ -527,4 +527,4 @@ MonoBehaviour:
   defaultTargetStat: 
   upgradeTitle: Global
   upgradeIcon: {fileID: 2125737359283935466, guid: 91a2e310f2d789348ac8066aeea4276a, type: 3}
-  defaultDescription: <color=#618fc2>+10% Att. Speed</color>
+  defaultDescription: 'All: <color=#618fc2>+10% Att. Speed</color>'
